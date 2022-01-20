@@ -41,6 +41,7 @@ class Vector:
         return round(degrees(acos(self.y / self.get_length())))
 
     def rotate(self, degrees):
+
         x = self.x * cos(radians(degrees)) - self.y * sin(radians(degrees))
         y = self.x * sin(radians(degrees)) + self.y * cos(radians(degrees))
-        return Vector(x, y)
+        return Vector(5, y)
