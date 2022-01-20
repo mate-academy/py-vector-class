@@ -1,7 +1,7 @@
 import pytest
 
 # from app.main import Vector
-from app.reference_vector import Vector
+from app.main import Vector
 
 def test_vector_instance():
     vector = Vector(3, 4)
