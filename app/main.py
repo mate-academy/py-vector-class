@@ -27,7 +27,7 @@ class Vector:
             cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
 
     def get_length(self):
-        return sqrt(self.x**2 + self.y**2)
+        return sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self):
         return Vector(self.x / self.get_length(), (self.y / self.get_length()))
