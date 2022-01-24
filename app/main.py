@@ -27,8 +27,6 @@ class Vector:
             x = self.x * other
             y = self.y * other
             return Vector(x, y)
-        x = self.x * other.x
-        y = self.y * other.y
         return (self.x * other.x) + (self.y * other.y)
 
     @classmethod
@@ -57,8 +55,8 @@ class Vector:
         return round(math.degrees(math.acos(cos_a)))
 
     def rotate(self, degrees):
-        converted = math.radians(degrees)
+        radians = math.radians(degrees)
         return Vector(
-            x=(math.cos(converted) * self.x) - (math.sin(converted) * self.y),
-            y=(math.sin(converted) * self.x) + (math.cos(converted) * self.y)
+            x=(math.cos(radians) * self.x) - (math.sin(radians) * self.y),
+            y=(math.sin(radians) * self.x) + (math.cos(radians) * self.y)
         )
