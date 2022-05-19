@@ -35,22 +35,26 @@ class Vector:
         return Vector(self.x * inv_length, self.y * inv_length)
 
     def angle_between(self, other):
-        cos_a = ((self * other)
-                 / (Vector.get_length(self)
-                    * Vector.get_length(other)))
+        cos_a = (self * other) / \
+                (Vector.get_length(self) * Vector.get_length(other))
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self):
         other = Vector(0, 1)
-        cos_a = ((self * other)
-                 / (Vector.get_length(self)
-                    * Vector.get_length(other)))
+        cos_a = (self * other) / \
+                (Vector.get_length(self) * Vector.get_length(other))
         return round(math.degrees(math.acos(cos_a)))
 
     def rotate(self, degrees):
         return Vector(
-            math.cos(math.radians(degrees)) * self.x
-            - math.sin(math.radians(degrees)) * self.y,
-            math.sin(math.radians(degrees)) * self.x
-            + math.cos(math.radians(degrees)) * self.y
+            math.cos(
+                math.radians(degrees)
+            ) * self.x - math.sin(
+                math.radians(degrees)
+            ) * self.y,
+            math.sin(
+                math.radians(degrees)
+            ) * self.x + math.cos(
+                math.radians(degrees)
+            ) * self.y
         )
