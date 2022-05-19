@@ -31,12 +31,11 @@ class Vector:
             y=self.y * other
         )
 
-    @staticmethod
-    def create_vector_by_two_points(start_point, end_point):
-        return Vector(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
-        )
+    @classmethod
+    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple):
+        start_point = cls(start_point[0], start_point[1])
+        end_point = cls(end_point[0], end_point[1])
+        return end_point - start_point
 
     def get_length(self):
         length = math.sqrt(self.x ** 2 + self.y ** 2)
@@ -45,8 +44,8 @@ class Vector:
     def get_normalized(self):
         vector_length = self.get_length()
         return Vector(
-            x=round(self.x / abs(vector_length), 2),
-            y=round(self.y / abs(vector_length), 2)
+            x=round(self.x / vector_length, 2),
+            y=round(self.y / vector_length, 2)
         )
 
     def angle_between(self, other):
