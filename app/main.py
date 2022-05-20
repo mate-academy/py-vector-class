@@ -10,13 +10,13 @@ class Vector:
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
         else:
-            raise TypeError
+            raise TypeError(f"{other} is not {type(Vector)}")
 
     def __sub__(self, other):
         if isinstance(other, Vector):
             return Vector(self.x - other.x, self.y - other.y)
         else:
-            raise TypeError
+            raise TypeError(f"{other} is not {type(Vector)}")
 
     def __mul__(self, other):
         if isinstance(other, (int, float)):
@@ -25,7 +25,7 @@ class Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         else:
-            raise TypeError
+            raise TypeError(f"{other} is not {type(Vector)}")
 
     @classmethod
     def create_vector_by_two_points(cls, start_point, end_point):
