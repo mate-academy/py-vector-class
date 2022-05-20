@@ -13,7 +13,7 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
-        if not isinstance(other, Vector):
+        if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         return self.x * other.x + self.y * other.y
 
@@ -28,8 +28,7 @@ class Vector:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self):
-        m = (self.x * self.x + self.y * self.y) ** 0.5
-        return Vector(self.x / m, self.y / m)
+        return Vector(self.x / self.get_length(), self.y / self.get_length())
 
     def angle_between(self, other):
         a = self * other / (Vector.get_length(self) * Vector.get_length(other))
