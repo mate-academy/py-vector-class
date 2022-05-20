@@ -2,7 +2,7 @@ import math
 
 
 class Vector:
-    # write your code here
+
     def __init__(self, x: float, y: float):
         self.x = round(x, 2)
         self.y = round(y, 2)
@@ -10,17 +10,20 @@ class Vector:
     def __add__(self, other):
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
-        return Vector(self.x + other, self.y + other)
+        if isinstance(other, (int, float)):
+            return Vector(self.x + other, self.y + other)
 
     def __sub__(self, other):
         if isinstance(other, Vector):
             return Vector(self.x - other.x, self.y - other.y)
-        return Vector(self.x - other, self.y - other)
+        if isinstance(other, (int, float)):
+            return Vector(self.x - other, self.y - other)
 
     def __mul__(self, other):
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
-        return Vector(self.x * other, self.y * other)
+        if isinstance(other, (int, float)):
+            return Vector(self.x * other, self.y * other)
 
     @staticmethod
     def create_vector_by_two_points(start_point: tuple, end_point: tuple):
