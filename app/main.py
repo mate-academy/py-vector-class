@@ -58,8 +58,8 @@ class Vector:
         return round(self.angle_between(Vector(0, 1)))
 
     def rotate(self, angle):
-        cs = math.cos(math.radians(angle))
-        sn = math.sin(math.radians(angle))
-        x = self.x * cs - self.y * sn
-        y = self.x * sn + self.y * cs
+        cosinus = math.cos(math.radians(angle))
+        sinus = math.sin(math.radians(angle))
+        x = self.x * cosinus - self.y * sinus
+        y = self.x * sinus + self.y * cosinus
         return Vector(x, y)
