@@ -7,16 +7,10 @@ class Vector:
         self.y = round(y, 2)
 
     def __add__(self, other):
-        if type(other) == int or type(other) == float:
-            return Vector(self.x + other, self.y + other)
-        else:
-            return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):
-        if type(other) == int or type(other) == float:
-            return Vector(self.x - other, self.y - other)
-        else:
-            return Vector(self.x - other.x, self.y - other.y)
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
         if type(other) == int or type(other) == float:
