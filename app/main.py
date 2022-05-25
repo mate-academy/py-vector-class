@@ -41,17 +41,14 @@ class Vector:
         )
 
     def angle_between(self, other):
-        numerator = self.x * other.x + self.y * other.y
-        sqrt_1 = math.sqrt(self.x ** 2 + self.y ** 2)
-        sqrt_2 = math.sqrt(other.x ** 2 + other.y ** 2)
+        numerator = self * other
+        sqrt_1 = self.get_length()
+        sqrt_2 = other.get_length()
         radians = math.acos(numerator / (sqrt_1 * sqrt_2))
         return round(math.degrees(radians))
 
     def get_angle(self):
-        dif = self.x * 0 + self.y * 1
-        sqrt_1 = math.sqrt(self.x ** 2 + self.y ** 2)
-        sqrt_2 = math.sqrt(0 ** 2 + 1 ** 2)
-        radians = math.acos(dif / (sqrt_1 * sqrt_2))
+        radians = math.acos(self.y / self.get_length())
         return round(math.degrees(radians))
 
     def rotate(self, degrees):
