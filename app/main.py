@@ -2,7 +2,6 @@ import math
 
 
 class Vector:
-    # write your code here
     def __init__(self, x, y):
         self.x = round(x, 2)
         self.y = round(y, 2)
