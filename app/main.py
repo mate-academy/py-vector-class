@@ -45,5 +45,3 @@ class Vector:
         x = self.x * math.cos(rad) - self.y * math.sin(rad)
         y = self.x * math.sin(rad) + self.y * math.cos(rad)
         return Vector(x, y)
-
-    pass
