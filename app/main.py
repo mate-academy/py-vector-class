@@ -18,8 +18,8 @@ class Vector:
         if isinstance(other, Vector):
             return (self.x * other.x) + (self.y * other.y)
         if isinstance(other, (int, float)):
-            return Vector(round((self.x * other), 2),
-                          round((self.y * other), 2))
+            return Vector((self.x * other),
+                          (self.y * other))
 
     @staticmethod
     def create_vector_by_two_points(start_point: tuple, end_point: tuple):
@@ -30,8 +30,8 @@ class Vector:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self):
-        return Vector(round((self.x / Vector.get_length(self)), 2),
-                      round((self.y / Vector.get_length(self)), 2))
+        return Vector((self.x / Vector.get_length(self)),
+                      (self.y / Vector.get_length(self)))
 
     def angle_between(self, vector):
         cos_a = (self * vector) / (self.get_length() * vector.get_length())
