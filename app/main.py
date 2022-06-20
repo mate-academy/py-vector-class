@@ -23,8 +23,8 @@ class Vector:
 
     @staticmethod
     def create_vector_by_two_points(start_point: tuple, end_point: tuple):
-        return Vector(round((start_point[0] - end_point[0]) * -1, 2),
-                      round((start_point[1] - end_point[1]) * -1, 2))
+        return Vector((end_point[0] - start_point[0]),
+                      (end_point[1] - start_point[1]))
 
     def get_length(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
