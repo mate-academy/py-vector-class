@@ -7,12 +7,12 @@ class Vector:
         self.y = round(y, 2)
 
     def __add__(self, other):
-        return Vector(round((self.x + other.x), 2),
-                      round((self.y + other.y), 2))
+        return Vector((self.x + other.x),
+                      (self.y + other.y))
 
     def __sub__(self, other):
-        return Vector(round((self.x - other.x), 2),
-                      round((self.y - other.y), 2))
+        return Vector((self.x - other.x),
+                      (self.y - other.y))
 
     def __mul__(self, other):
         if isinstance(other, Vector):
