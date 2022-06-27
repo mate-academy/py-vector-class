@@ -18,9 +18,7 @@ class Vector:
     def __mul__(self, other):
         if isinstance(other, Vector):
             return (self.x * other.x) + (self.y * other.y)
-        else:
-            return Vector(x=round(self.x * other, 2),
-                          y=round(self.y * other, 2))
+        return Vector(x=round(self.x * other, 2), y=round(self.y * other, 2))
 
     @staticmethod
     def create_vector_by_two_points(start_point: tuple, end_point: tuple):
@@ -36,12 +34,11 @@ class Vector:
 
     def angle_between(self, other):
         cos_a = (self.x * other.x + self.y * other.y) / (
-                ((self.x ** 2 + self.y ** 2) ** 0.5
-                 ) * ((other.x ** 2 + other.y ** 2) ** 0.5))
+                (self.get_length()) * other.get_length())
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self):
-        cos_a = self.y / (self.x ** 2 + self.y ** 2) ** 0.5
+        cos_a = self.y / self.get_length()
         return round(math.degrees(math.acos(cos_a)))
 
     def rotate(self, degrees):
