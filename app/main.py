@@ -29,8 +29,8 @@ class Vector:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self):
-        return Vector(x=round(self.x / (self.x ** 2 + self.y ** 2) ** 0.5, 2),
-                      y=round(self.y / (self.x ** 2 + self.y ** 2) ** 0.5, 2))
+        return Vector(x=round(self.x / (self.get_length()), 2),
+                      y=round(self.y / (self.get_length()), 2))
 
     def angle_between(self, other):
         cos_a = (self.x * other.x + self.y * other.y) / (
