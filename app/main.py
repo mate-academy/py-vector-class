@@ -33,9 +33,10 @@ class Vector:
                       y=round(self.y / (self.get_length()), 2))
 
     def angle_between(self, other):
-        cos_a = (self.x * other.x + self.y * other.y) / (
-                (self.get_length()) * other.get_length())
-        return round(math.degrees(math.acos(cos_a)))
+
+        cos_a = ((other.get_length()) ** 2 + (self.get_length()) ** 2 - ((self + other).get_length()) ** 2) / (
+                2 * (other.get_length()) * (self.get_length()))
+        return round(180 - (math.degrees(math.acos(cos_a))))
 
     def get_angle(self):
         cos_a = self.y / self.get_length()
