@@ -40,10 +40,8 @@ class Vector:
         return round(degrees(acos(mult_vect / abs_vect)))
 
     def get_angle(self):
-        """ >Vektor(0,1)< which I used here it's the
-        coordinates of Y axis and its more useful than make
-        new staticmethod in this task"""
-        return Vector.angle_between(self, Vector(0, 1))
+        y_axis = Vector(0, 1)
+        return Vector.angle_between(self, y_axis)
 
     def rotate(self, grad):
         angle_radn = radians(grad)
