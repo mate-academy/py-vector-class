@@ -33,11 +33,12 @@ class Vector:
                       y=round(self.y / (self.get_length()), 2))
 
     def angle_between(self, other):
-
-        cos_a = ((other.get_length()) ** 2 + (self.get_length()) ** 2 - (
-            (self + other).get_length()) ** 2) / (
-            2 * (other.get_length()) * (self.get_length()))
-        return round(180 - (math.degrees(math.acos(cos_a))))
+        if not isinstance(other, Vector):
+            raise TypeError(f"unsupported operand type(s) for Vector and"
+                            f" {type(other)}")
+        cos_a = (self * other) / (
+                (self.get_length()) * other.get_length())
+        return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self):
         cos_a = self.y / self.get_length()
