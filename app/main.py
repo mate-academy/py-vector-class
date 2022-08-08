@@ -1,6 +1,7 @@
 from math import sqrt, degrees, acos, cos, sin, radians
 
 
+# update progress
 class Vector:
     def __init__(self, x, y):
         self.x = round(x, 2)
