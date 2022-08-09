@@ -28,12 +28,6 @@ class Vector:
     def get_length(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
-    def get_normalized(self):
-        return Vector(
-            round(self.x / self.get_length(), 2),
-            round(self.y / self.get_length(), 2)
-        )
-
     def angle_between(self, other):
         cos_a = (self * other) / (self.get_length() * other.get_length())
         return round(math.degrees(math.acos(cos_a)))
@@ -41,6 +35,12 @@ class Vector:
     def get_angle(self):
         y_axis_vector = Vector(0, abs(self.y))
         return self.angle_between(y_axis_vector)
+
+    def get_normalized(self):
+        return Vector(
+            round(self.x / self.get_length(), 2),
+            round(self.y / self.get_length(), 2)
+        )
 
     def rotate(self, degrees: int):
         new_x = math.cos(math.radians(degrees)) * self.x - \
