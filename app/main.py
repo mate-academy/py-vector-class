@@ -44,4 +44,5 @@ class Vector:
         sn = math.sin(math.radians(degrees))
         x = self.x * cs - self.y * sn
         y = self.x * sn + self.y * cs
+
         return Vector(x, y)
