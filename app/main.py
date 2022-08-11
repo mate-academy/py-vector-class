@@ -63,4 +63,3 @@ class Vector:
             x=rotated_x,
             y=rotated_y,
         )
- 
