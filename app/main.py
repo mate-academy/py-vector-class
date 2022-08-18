@@ -37,7 +37,7 @@ class Vector:
 
     def get_normalized(self):
         if self.get_length() != 0:
-            return self * (1.0 / self.get_length())
+            return self * (1 / self.get_length())
         return Vector(0, 0)
 
     def angle_between(self, other):
