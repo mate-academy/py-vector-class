@@ -8,8 +8,8 @@ class Vector:
 
     def __add__(self, other):
         return Vector(
-             x=self.x + other.x,
-             y=self.y + other.y
+            x=self.x + other.x,
+            y=self.y + other.y
         )
 
     def __sub__(self, other):
@@ -45,14 +45,16 @@ class Vector:
 
     def angle_between(self, vector):
         dot_product = self * vector
-        cos_a = dot_product / (Vector.get_length(self) * Vector.get_length(vector))
+        cos_a = dot_product / \
+            (Vector.get_length(self) * Vector.get_length(vector))
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self):
         return self.angle_between(Vector(0, 1))
 
     def rotate(self, degrees):
+        radians = math.radians(degrees)
         return Vector(
-            x=self.x * math.cos(math.radians(degrees)) - self.y * math.sin(math.radians(degrees)),
-            y=self.x * math.sin(math.radians(degrees)) + self.y * math.cos(math.radians(degrees))
+            x=self.x * math.cos(radians) - self.y * math.sin(radians),
+            y=self.x * math.sin(radians) + self.y * math.cos(radians)
         )
