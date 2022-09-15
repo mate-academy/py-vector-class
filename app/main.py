@@ -41,7 +41,7 @@ class Vector:
         # arccos (------------)
         #          |a| * |b|
         numeral = self.__mul__(other)
-        banner = abs(self.get_length()) * abs(other.get_length())
+        banner = self.get_length() * other.get_length()
         angle = numeral / banner
         return round(math.degrees(math.acos(angle)))
 
