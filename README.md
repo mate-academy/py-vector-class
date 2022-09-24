@@ -123,7 +123,8 @@ to get degrees.
 **NOTE**: In this method round only returning degrees.
 - `get_angle`
 
-Returns angle between current vector and positive Y axis.
+Returns 
+.
 ```python
 vector = Vector(33, 8)
 vector.get_angle() == 76
