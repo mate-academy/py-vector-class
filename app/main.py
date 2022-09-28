@@ -34,22 +34,25 @@ class Vector:
 
     def get_angle(self):
         import math
-        cos_a = (self.__mul__(self.__class__(0, abs(self.y)))
-                 / (self.get_length()
-                    * self.__class__(0, abs(self.y)).get_length()))
+        mul_vectors = self.__mul__(self.__class__(0, abs(self.y)))
+        mul_length = self.get_length() * (
+            self.__class__(0, abs(self.y)).get_length())
+        cos_a = mul_vectors / mul_length
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle_x(self):
         import math
-        cos_a = (self.__mul__(self.__class__(abs(self.x), 0))
-                 / (self.get_length()
-                    * self.__class__(abs(self.x), 0).get_length()))
+        mul_vectors = self.__mul__(self.__class__(abs(self.x), 0))
+        mul_length = self.get_length() * (
+            self.__class__(abs(self.x), 0).get_length())
+        cos_a = mul_vectors / mul_length
+
         return round(math.degrees(math.acos(cos_a)))
 
     def rotate(self, degrees):
         import math
-        x = (self.x * math.cos(math.radians(degrees))
-             - self.y * math.sin(math.radians(degrees)))
-        y = (self.x * math.sin(math.radians(degrees))
-             + self.y * math.cos(math.radians(degrees)))
+        x = (self.x * math.cos(math.radians(degrees)) - (
+             self.y * math.sin(math.radians(degrees))))
+        y = (self.x * math.sin(math.radians(degrees)) + (
+             self.y * math.cos(math.radians(degrees))))
         return self.__class__(x, y)
