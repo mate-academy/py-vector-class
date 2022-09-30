@@ -19,8 +19,10 @@ class Vector:
         return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple,  end_point: tuple):
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(cls, start_point: tuple,
+                                    end_point: tuple):
+        return cls(end_point[0] - start_point[0], end_point[1]
+                   - start_point[1])
 
     def get_length(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
