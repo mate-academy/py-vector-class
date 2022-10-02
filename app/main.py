@@ -50,8 +50,3 @@ class Vector:
                 self.x * math.sin(ange_rad) + self.y * math.cos(ange_rad), 2
             )
         )
-
-
-vector = Vector(33, 8)
-vector2 = vector.rotate(45)
-print(vector2.x)
