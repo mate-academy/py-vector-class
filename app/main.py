@@ -47,10 +47,7 @@ class Vector:
         return round(math.degrees(math.acos(cos_fi)))
 
     def get_angle(self) -> float:
-        cos_fi = (self.x * 0 + self.y * 1) / \
-                 (Vector.get_length(self) * ((0 ** 2 + 1 ** 2) * 0.5))
-
-        return round(math.degrees(math.acos(cos_fi)))
+        return self.angle_between(Vector(0, 1))
 
     def rotate(self, degrees: int) -> Vector:
         rad = math.radians(degrees)
