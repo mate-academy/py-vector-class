@@ -65,4 +65,4 @@ class Vector:
         r_point = self.y * math.cos(math.radians(degrees))
         result = Vector((q_point - w_point), (e_point + r_point))
 
-        return result
+        return resul
