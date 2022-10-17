@@ -66,4 +66,3 @@ class Vector:
         result = Vector((q_point - w_point), (e_point + r_point))
 
         return result
-
