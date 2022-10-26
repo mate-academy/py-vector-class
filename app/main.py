@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)  # - не работает
-        self.y = round(y, 2)
+    def __init__(self, x_num: float, y_num: float) -> None:
+        self.x = round(x_num, 2)  # - не работает
+        self.y = round(y_num, 2)
 
     def __add__(self, other: int) -> Vector:
         res_x = self.x + other.x
@@ -32,8 +32,8 @@ class Vector:
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
-        start = cls(x=start_point[0], y=start_point[1])
-        end = cls(x=end_point[0], y=end_point[1])
+        start = cls(x_num=start_point[0], y_num=start_point[1])
+        end = cls(x_num=end_point[0], y_num=end_point[1])
         return end - start
 
     def get_length(self) -> float:
