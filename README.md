@@ -68,7 +68,10 @@ vector1 = Vector(2.11, 4.55)
 vector2 = Vector(-3.51, 10.33)
 dot_product = vector1 * vector2
 dot_product == 39.5954
-```
+```4/4521 
+20/7025
+12/3201
+
 
 Also, Vector class should have such methods:
 - `create_vector_by_two_points`
