@@ -3,9 +3,14 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float | int, y: float | int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+
+    def __init__(
+            self,
+            x_axis: float | int,
+            y_axis: float | int
+    ) -> None:
+        self.x = round(x_axis, 2)
+        self.y = round(y_axis, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
@@ -39,21 +44,21 @@ class Vector:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
-        l = self.get_length()
+        length = self.get_length()
         return Vector(
-            self.x / l, self.y / l
+            self.x / length, self.y / length
         )
 
     def angle_between(self, other: Vector) -> int:
         cos_a = self.__mul__(other) / (self.get_length() * other.get_length())
-        return math.degrees(math.acos(cos_a))
+        return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
-        sin_g = self.x / self.get_length()
-        return math.degrees(math.asin(sin_g))
+        cos_b = self.y / self.get_length()
+        return round(math.degrees(math.acos(cos_b)))
 
-    def rotate(self, d: int) -> Vector:
-        rd = math.radians(d)
+    def rotate(self, deg: int) -> Vector:
+        rd = math.radians(deg)
         x_ = self.x * math.cos(rd) - self.y * math.sin(rd)
         y_ = self.x * math.sin(rd) + self.y * math.cos(rd)
         return Vector(x_, y_)
