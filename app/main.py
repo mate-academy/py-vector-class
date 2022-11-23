@@ -4,21 +4,27 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float | int, y: float | int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float | int, y_coord: float | int) -> None:
+        self.x_coord = round(x_coord, 2)
+        self.y_coord = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
-            return Vector(self.x + other.x, self.y + other.y)
+            return Vector(
+                self.x_coord + other.x_coord,
+                self.y_coord + other.y_coord
+            )
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(
+            self.x_coord - other.x_coord,
+            self.y_coord - other.y_coord
+        )
 
     def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
-        return Vector(self.x * other, self.y * other)
+            return self.x_coord * other.x_coord + self.y_coord * other.y_coord
+        return Vector(self.x_coord * other, self.y_coord * other)
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
@@ -30,7 +36,7 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return (self.x ** 2 + self.y ** 2) ** 0.5
+        return (self.x_coord ** 2 + self.y_coord ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
@@ -45,8 +51,8 @@ class Vector:
 
     def rotate(self, degrees: int) -> object:
         return Vector(
-            self.x * math.cos(math.radians(degrees))
-            - self.y * math.sin(math.radians(degrees)),
-            self.x * math.sin(math.radians(degrees))
-            + self.y * math.cos(math.radians(degrees))
+            self.x_coord * math.cos(math.radians(degrees))
+            - self.y_coord * math.sin(math.radians(degrees)),
+            self.x_coord * math.sin(math.radians(degrees))
+            + self.y_coord * math.cos(math.radians(degrees))
         )
