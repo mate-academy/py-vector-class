@@ -61,7 +61,3 @@ class Vector:
         rotated_y = math.sin(math.radians(degrees)) * self.x + \
             math.cos(math.radians(degrees)) * self.y
         return Vector(rotated_x, rotated_y)
-
-
-vector1 = Vector(-3, -4)
-print(vector1.get_angle())
