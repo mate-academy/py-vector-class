@@ -1,3 +1,5 @@
+import math
+
 import pytest
 
 from app.main import Vector
@@ -209,3 +211,4 @@ def test_rotate(coords_1, degrees, coords_2):
         f"and 'vector2' is 'vector.rotate({degrees})',"
         f"'vector2' coordinates should equal to {coords_2}"
     )
+
