@@ -4,20 +4,20 @@ import math
 
 class Vector:
 
-    def __init__(self, x_coord: float, y_coord: float) -> callable:
-        self.x = round(x_coord, 2)
-        self.y = round(y_coord, 2)
+    def __init__(self, point_x: float, point_y: float) -> callable:
+        self.x = round(point_x, 2)
+        self.y = round(point_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            point_x=self.x + other.x,
+            point_y=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            point_x=self.x - other.x,
+            point_y=self.y - other.y
         )
 
     def __mul__(self, other: float | int | Vector) -> Vector | float:
@@ -25,16 +25,16 @@ class Vector:
             res = self.x * other.x + self.y * other.y
             return res
         return Vector(
-            x=self.x * other,
-            y=self.y * other
+            point_x=self.x * other,
+            point_y=self.y * other
         )
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            point_x=end_point[0] - start_point[0],
+            point_y=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float:
@@ -44,8 +44,8 @@ class Vector:
     def get_normalized(self) -> callable:
         length = self.get_length()
         return Vector(
-            x=self.x / length,
-            y=self.y / length
+            point_x=self.x / length,
+            point_y=self.y / length
         )
 
     def angle_between(self, other: Vector) -> int:
@@ -74,6 +74,6 @@ class Vector:
         new_x = round(new_x, 2)
         new_y = round(new_y, 2)
         return Vector(
-            x=new_x,
-            y=new_y
+            point_x=new_x,
+            point_y=new_y
         )
