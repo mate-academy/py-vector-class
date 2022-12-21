@@ -40,7 +40,7 @@ class Vector:
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
-        vector = Vector(x=0, y=10)
+        vector = Vector(0, 10)
         return self.angle_between(vector)
 
     def rotate(self, alpha: int) -> Vector:
