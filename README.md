@@ -21,36 +21,39 @@ starts in (0, 0) and ends in coordinates (x, y).
 Implement Vector class, its constructor takes and stores two 
 coordinates: x, y - coordinates of end of the vector, **rounded 
 to two decimals**.
+
 ```python
 vector = Vector(-2.343, 8.008)
-vector.x == -2.34
-vector.y == 8.0
+vector.x_coord == -2.34
+vector.y_coord == 8.0
 ```
 
 Vector class should have such magic methods:
 - `__add__`
 
 Addition of two Vectors should return Vector.
+
 ```python
 vector1 = Vector(2, 4)
 vector2 = Vector(-1, 3)
 vector3 = vector1 + vector2
 
 isinstance(vector3, Vector) is True
-vector3.x == 1
-vector3.y == 7
+vector3.x_coord == 1
+vector3.y_coord == 7
 ```
 - `__sub__`
 
 Subtraction of two Vectors should return Vector.
+
 ```python
 vector1 = Vector(2, 4)
 vector2 = Vector(-1, 3)
 vector3 = vector1 - vector2
 
 isinstance(vector3, Vector) is True
-vector3.x == 3
-vector3.y == 1
+vector3.x_coord == 3
+vector3.y_coord == 1
 ```
 - `__mul__`
 
@@ -75,14 +78,15 @@ Also, Vector class should have such methods:
 Takes `start_point` - tuple of point coordinates, start of the vector,
 `end_point` - tuple of point coordinates, end of the vector. It returns
 Vector.
+
 ```python
 start_point = (5.2, 2.6)
 end_point = (10.7, 6)
 
 vector = Vector.create_vector_by_two_points(start_point, end_point)
 isinstance(vector, Vector) is True
-vector.x == 5.5
-vector.y == 3.4
+vector.x_coord == 5.5
+vector.y_coord == 3.4
 ```
 **NOTE**: `create_vector_by_two_points` should be a `classmethod`
 
@@ -96,14 +100,15 @@ vector.get_length() == 4.47213595499958
 - `get_normalized`
 
 Returns normalized copy of vector.
+
 ```python
 vector1 = Vector(13, -4)
 vector1.get_length() == 13.6
 
 vector2 = vector1.get_normalized()
 
-vector2.x == 0.96
-vector2.y == -0.29
+vector2.x_coord == 0.96
+vector2.y_coord == -0.29
 vector2.get_length() == 1.0
 ```
 - `angle_between`
@@ -132,12 +137,13 @@ vector.get_angle() == 76
 
 Takes `degrees` that is integer rotation degrees.
 It returns rotated Vector by `degrees`.
+
 ```python
 vector = Vector(33, 8)
 vector2 = vector.rotate(45)
 
-vector2.x == 17.68
-vector2.y == 28.99
+vector2.x_coord == 17.68
+vector2.y_coord == 28.99
 ```
 You may use `math.cos`, `math.sin` here, but they use **radians**.
 In order to convert degrees to radians use `math.radians`.
