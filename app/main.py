@@ -1,34 +1,30 @@
 from __future__ import annotations
+import math
 
 
 class Vector:
-    x = None
-    y = None
 
-    # start_point = None
-    # end_point = None
-
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, point_x: int | float, point_y: int | float) -> None:
+        self.x = round(point_x, 2)
+        self.y = round(point_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + round(other.x, 2),
-            y=self.y + round(other.y, 2),
+            point_x=self.x + round(other.x, 2),
+            point_y=self.y + round(other.y, 2),
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - round(other.x, 2),
-            y=self.y - round(other.y, 2),
+            point_x=self.x - round(other.x, 2),
+            point_y=self.y - round(other.y, 2),
         )
 
     def __mul__(self, other: Vector | int | float) -> Vector | float:
         if isinstance(other, (int, float)):
             return Vector(
-                x=round(self.x * other, 2),
-                y=round(self.y * other, 2),
+                point_x=round(self.x * other, 2),
+                point_y=round(self.y * other, 2),
             )
         else:
             return self.x * other.x + self.y * other.y
@@ -41,10 +37,10 @@ class Vector:
     ) -> Vector:
         cls.x = end_point[0] - start_point[0]
         cls.y = end_point[1] - start_point[1]
-        return cls(cls.x, cls.y)
+        return Vector(cls.x, cls.y)
 
     def get_length(self) -> float:
-        return round((self.x**2 + self.y**2) ** 0.5, 2)
+        return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         return Vector(
@@ -52,12 +48,18 @@ class Vector:
             round(self.y / self.get_length(), 2)
         )
 
+    def angle_between(self, vector: Vector) -> int:
+        return round(math.degrees(math.acos(
+            (self.__mul__(vector))
+            / (self.get_length() * vector.get_length())
+        )))
 
-    def angle_between(self, vector):
+    def get_angle(self: Vector) -> int:
+        positive_y_axis = Vector(0, 1)
+        return round(self.angle_between(positive_y_axis))
 
-
-vector1 = Vector(13, -4)
-vector2 = Vector(-6, -11)
-
-v1 = vector1.get_normalized()
-print(v1)
+    def rotate(self, degrees: int) -> Vector:
+        radians = math.radians(degrees)
+        x2 = math.cos(radians) * self.x - math.sin(radians) * self.y
+        y2 = math.sin(radians) * self.x + math.cos(radians) * self.y
+        return Vector(x2, y2)
