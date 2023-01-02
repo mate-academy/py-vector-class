@@ -57,7 +57,8 @@ class Vector:
         dot_product_of_vectors = self.x * other.x + self.y * other.y
         angle_between = math.degrees(
             math.acos(
-                dot_product_of_vectors / (self.get_length() * other.get_length())
+                dot_product_of_vectors
+                / (self.get_length() * other.get_length())
             )
         )
         return round(angle_between)
