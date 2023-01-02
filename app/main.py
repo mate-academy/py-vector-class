@@ -77,28 +77,3 @@ class Vector:
             x=rotated_x,
             y=rotated_y
         )
-
-#################################################
-class RockBand:
-
-    def __init__(self, name: str, members: list) -> None:
-        self.name = name
-        self.members = members
-
-    def add_new_member(self, new_member: str) -> None:
-        if new_member in self.members:
-            print(f"{new_member} is already in the band!")
-        else:
-            return self.members.append(new_member)
-
-    def __add__(self, other: None) -> None:
-        united_bands = RockBand(
-            name=f"{self.name} {other.name} United",
-            members=self.members + other.members
-        )
-        updated_members = []
-        for band_member in united_bands.members:
-            if band_member not in updated_members:
-                updated_members.append(band_member)
-        united_bands.members = updated_members
-        return united_bands
