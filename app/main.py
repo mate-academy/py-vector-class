@@ -4,28 +4,28 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_asix: float, y_asix: float) -> None:
+        self.x = round(x_asix, 2)
+        self.y = round(y_asix, 2)
 
-    def __add__(self, other: tuple) -> Vector:
+    def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            x_asix=self.x + other.x,
+            y_asix=self.y + other.y
         )
 
-    def __sub__(self, other: tuple) -> Vector:
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            x_asix=self.x - other.x,
+            y_asix=self.y - other.y
         )
 
-    def __mul__(self, other: tuple) -> Vector | float:
+    def __mul__(self, other: float | Vector) -> float | Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(
-            x=self.x * other,
-            y=self.y * other
+            x_asix=self.x * other,
+            y_asix=self.y * other
         )
 
     @classmethod
@@ -37,8 +37,8 @@ class Vector:
         x_coordinate = (end_point[0]) - (start_point[0])
         y_coordinate = (end_point[1]) - (start_point[1])
         return Vector(
-            x=x_coordinate,
-            y=y_coordinate
+            x_asix=x_coordinate,
+            y_asix=y_coordinate
         )
 
     def get_length(self) -> float:
@@ -48,8 +48,8 @@ class Vector:
     def get_normalized(self) -> Vector:
         unit_vector = self.get_length()
         result_normalized_vector = Vector(
-            x=round(self.x / unit_vector, 2),
-            y=round(self.y / unit_vector, 2)
+            x_asix=round(self.x / unit_vector, 2),
+            y_asix=round(self.y / unit_vector, 2)
         )
         return result_normalized_vector
 
@@ -75,6 +75,6 @@ class Vector:
             math.sin(math.radians(degrees)) * self.x
             + math.cos(math.radians(degrees)) * self.y)
         return Vector(
-            x=rotated_x,
-            y=rotated_y
+            x_asix=rotated_x,
+            y_asix=rotated_y
         )
