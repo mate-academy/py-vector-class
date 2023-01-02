@@ -8,19 +8,19 @@ class Vector:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, other: tuple) -> Vector:
+    def __add__(self, other: Vector) -> Vector:
         return Vector(
             x=self.x + other.x,
             y=self.y + other.y
         )
 
-    def __sub__(self, other: tuple) -> Vector:
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(
             x=self.x - other.x,
             y=self.y - other.y
         )
 
-    def __mul__(self, other: tuple) -> Vector | float:
+    def __mul__(self, other: tuple | float) -> Vector | float:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(
