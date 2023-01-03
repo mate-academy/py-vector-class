@@ -4,9 +4,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float = 0.0, y: float = 0.0) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, _x: float, _y: float) -> None:
+        self.x = round(_x, 2)
+        self.y = round(_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -21,7 +21,7 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-            cls, start_point: tuple, end_point: tuple
+            cls, start_point: Vector, end_point: Vector
     ) -> Vector:
         return Vector(
             end_point[0] - start_point[0], end_point[1] - start_point[1]
@@ -42,6 +42,6 @@ class Vector:
 
     def rotate(self, degrees: int) -> Vector:
         radians = math.radians(degrees)
-        x2 = self.x * math.cos(radians) - self.y * math.sin(radians)
-        y2 = self.x * math.sin(radians) + self.y * math.cos(radians)
-        return Vector(x2, y2)
+        vector_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        vector_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(vector_x, vector_y)
