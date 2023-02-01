@@ -11,11 +11,11 @@ class Vector:
         self.coord_y = round(coord_y, 2)
 
     @property
-    def x(self):
+    def x(self) -> float:
         return self.coord_x
 
     @property
-    def y(self):
+    def y(self) -> float:
         return self.coord_y
 
     def __add__(self, other: Vector) -> Vector:
