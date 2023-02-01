@@ -25,10 +25,10 @@ class Vector:
 
         return Vector(round(self.x * other, 2), round(self.y * other, 2))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Vector: x = {self.x}, y = {self.y}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
     def get_length(self) -> float:
@@ -50,7 +50,7 @@ class Vector:
         y_normalized = round(self.y / self.get_length(), 2)
         return Vector(x_normalized, y_normalized)
 
-    def get_angle(self):
+    def get_angle(self) -> float:
         return round(self.angle_between(Vector(0, 1)))
 
     def rotate(self, degrees: Union[int, float]) -> Vector:
