@@ -7,8 +7,16 @@ from typing import Union, Tuple
 class Vector:
 
     def __init__(self, coord_x: float, coord_y: float) -> None:
-        self.x = round(coord_x, 2)
-        self.y = round(coord_y, 2)
+        self.coord_x = round(coord_x, 2)
+        self.coord_y = round(coord_y, 2)
+
+    @property
+    def x(self):
+        return self.coord_x
+
+    @property
+    def y(self):
+        return self.coord_y
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
