@@ -64,9 +64,9 @@ class Vector:
     def rotate(self, degrees: Union[int, float]) -> Vector:
         cos_b = math.cos(math.radians(degrees))
         sin_b = math.sin(math.radians(degrees))
-        x = round((cos_b * self.x) - (sin_b * self.y), 2)
-        y = round((sin_b * self.x) + (cos_b * self.y), 2)
-        return Vector(x, y)
+        cord_x = round((cos_b * self.x) - (sin_b * self.y), 2)
+        cord_y = round((sin_b * self.x) + (cos_b * self.y), 2)
+        return Vector(cord_x, cord_y)
 
     @classmethod
     def create_vector_by_two_points(
