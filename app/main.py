@@ -48,9 +48,9 @@ class Vector:
 
     def angle_between(self, other: Vector) -> float:
         skal = self.x * other.x + self.y * other.y
-        a_sqrt = math.sqrt(self.x ** 2 + self.y ** 2)
+        a_sqrt_ = math.sqrt(self.x ** 2 + self.y ** 2)
         b_sqrt = math.sqrt(other.x ** 2 + other.y ** 2)
-        return round(math.degrees(math.acos(skal / (a_sqrt * b_sqrt))))
+        return round(math.degrees(math.acos(skal / (a_sqrt_ * b_sqrt))))
 
     def get_angle(self) -> int:
         other = Vector(0, 1)
