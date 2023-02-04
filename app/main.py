@@ -23,16 +23,17 @@ class Vector:
         if isinstance(other, Real):
             return Vector(x_coord=self.x * other, y_coord=self.y * other)
 
-    @staticmethod
+    @classmethod
     def create_vector_by_two_points(
+            cls,
             start_point: tuple,
             end_point: tuple
     ) -> Vector:
-        return Vector(x_coord=end_point[0] - start_point[0],
-                      y_coord=end_point[1] - end_point[1])
+        return cls(x_coord=end_point[0] - start_point[0],
+                   y_coord=end_point[1] - end_point[1])
 
     def get_length(self) -> Real:
-        return math.sqrt(self.x**2 + self.y**2)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
         return Vector(x_coord=self.x / self.get_length(),
