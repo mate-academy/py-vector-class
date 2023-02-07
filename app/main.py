@@ -49,12 +49,8 @@ class Vector:
         return self.angle_between(Vector(0, 1))
 
     def rotate(self, degrees: int) -> Vector:
-        new_x = (
-            math.cos(math.radians(degrees)) * self.x
-            - math.sin(math.radians(degrees)) * self.y
-        )
-        new_y = (
-            math.sin(math.radians(degrees)) * self.x
-            + math.cos(math.radians(degrees)) * self.y
-        )
+        cos = math.cos(math.radians(degrees))
+        sin = math.sin(math.radians(degrees))
+        new_x = (cos * self.x - sin * self.y)
+        new_y = (sin * self.x + cos * self.y)
         return Vector(new_x, new_y)
