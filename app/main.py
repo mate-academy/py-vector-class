@@ -1,5 +1,5 @@
 from __future__ import annotations
-import numpy as np
+import math
 
 
 class Vector:
@@ -34,14 +34,14 @@ class Vector:
     def angle_between(self, other_vector: Vector) -> int:
         dot = self * other_vector
         cos_angle = dot / (self.get_length() * other_vector.get_length())
-        return round(np.rad2deg(np.arccos(cos_angle)))
+        return round(math.degrees(math.acos(cos_angle)))
 
     def get_angle(self) -> int:
         return self.angle_between(Vector(0, 1))
 
     def rotate(self, degrees) -> Vector:
-        sine = np.sin(np.deg2rad(degrees))
-        cosine = np.cos(np.deg2rad(degrees))
+        sine = math.sin(math.radians(degrees))
+        cosine = math.cos(math.radians(degrees))
         x_rot = cosine * self.x - sine * self.y
         y_rot = sine * self.x + cosine * self.y
         return Vector(x_rot, y_rot)
