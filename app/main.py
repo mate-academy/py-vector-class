@@ -4,9 +4,9 @@ import math
 
 class Vector:
     # write your code here
-    def __init__(self, x: float | int, y: float | int) -> Vector:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_cor: float | int, y_cor: float | int) -> Vector:
+        self.x = round(x_cor, 2)
+        self.y = round(y_cor, 2)
 
     def __add__(self, other_vector: Vector) -> Vector:
         return Vector(self.x + other_vector.x, self.y + other_vector.y)
@@ -23,7 +23,8 @@ class Vector:
     def create_vector_by_two_points(
         cls, start_point: tuple, end_point: tuple
     ) -> Vector:
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+        return cls(end_point[0] - start_point[0],
+                   end_point[1] - start_point[1])
 
     def get_length(self) -> float:
         return (self.x**2 + self.y**2) ** 0.5
@@ -39,7 +40,7 @@ class Vector:
     def get_angle(self) -> int:
         return self.angle_between(Vector(0, 1))
 
-    def rotate(self, degrees) -> Vector:
+    def rotate(self, degrees: int) -> Vector:
         sine = math.sin(math.radians(degrees))
         cosine = math.cos(math.radians(degrees))
         x_rot = cosine * self.x - sine * self.y
