@@ -1,5 +1,4 @@
 import math
-import numpy as np
 
 
 class Vector:
@@ -20,7 +19,7 @@ class Vector:
             return Vector(round((self.x * other), 2),
                           round((self.y * other), 2))
         if isinstance(other, Vector):
-            new_vec = np.dot((self.x, self.y), (other.x, other.y))
+            new_vec = (self.x * other.x) + (self.y * other.y)
             return new_vec
 
     @classmethod
