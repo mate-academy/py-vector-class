@@ -3,9 +3,9 @@ import numpy as np
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_point: int | float, y_point: int | float) -> None:
+        self.x = round(x_point, 2)
+        self.y = round(y_point, 2)
 
     def __add__(self, other: int | float) -> object:
         if isinstance(other, Vector):
