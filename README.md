@@ -18,7 +18,7 @@ it is impossible without using vectors.
 Vector on coordinate plane is directed line segment, that always
 starts in (0, 0) and ends in coordinates (x, y).
 
-Implement Vector class, its constructor takes and stores two 
+Implement Vector class, its `__init__` method takes and stores two 
 coordinates: x, y - coordinates of end of the vector, **rounded 
 to two decimals**.
 ```python
