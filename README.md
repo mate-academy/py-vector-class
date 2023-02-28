@@ -11,15 +11,15 @@ In order to get information about vectors follow this:
 - [Angle between two vectors](https://www.wikihow.com/Find-the-Angle-Between-Two-Vectors)
 - [Rotating vectors](https://matthew-brett.github.io/teaching/rotation_2d.html)
 
-You recently got a job at a game development company as a 
+You recently got a job at a game development company as a
 graphic engineer. You have to calculate light tracing, but
 it is impossible without using vectors.
 
 Vector on coordinate plane is directed line segment, that always
 starts in (0, 0) and ends in coordinates (x, y).
 
-Implement Vector class, its constructor takes and stores two 
-coordinates: x, y - coordinates of end of the vector, **rounded 
+Implement Vector class, its constructor takes and stores two
+coordinates: x, y - coordinates of end of the vector, **rounded
 to two decimals**.
 ```python
 vector = Vector(-2.343, 8.008)
@@ -117,7 +117,7 @@ vector1.angle_between(vector2) == 102
 ```
 Most likely you get cosine of the angle. To correct calculate angle
 use `math` library.
-For your cosine `cos_a` use `math.degrees(math.acos(cos_a))` in order 
+For your cosine `cos_a` use `math.degrees(math.acos(cos_a))` in order
 to get degrees.
 
 **NOTE**: In this method round only returning degrees.
@@ -141,3 +141,34 @@ vector2.y == 28.99
 ```
 You may use `math.cos`, `math.sin` here, but they use **radians**.
 In order to convert degrees to radians use `math.radians`.
+
+
+
+_________________________________________________________
+
+Задача состоит в написании класса Vector, который представляет собой двумерный вектор. Класс должен иметь следующие методы:
+
+Конструктор класса, который принимает две координаты x и y и сохраняет их в экземпляре класса.
+
+Метод add для сложения двух векторов.
+
+Метод sub для вычитания одного вектора из другого.
+
+Метод mul, который умножает вектор на число или на другой вектор и возвращает скалярное произведение.
+
+Метод create_vector_by_two_points, который принимает две координаты начала и конца вектора и возвращает новый
+вектор.
+
+Метод get_length, который возвращает длину вектора.
+
+Метод get_normalized, который возвращает нормализованный вектор.
+
+Метод angle_between, который принимает другой вектор и возвращает угол между текущим вектором и переданным вектором в градусах.
+
+Метод get_angle, который возвращает угол между текущим вектором и положительной осью Y в градусах.
+
+Метод rotate, который принимает угол в градусах и возвращает повернутый вектор.
+
+Для решения задачи необходимо реализовать все методы класса Vector, используя математические формулы для вычисления длины, скалярного произведения, нормализации, углов и поворота векторов.
+
+Если у вас возникнут трудности в процессе решения задачи, можете задавать конкретные вопросы, и я постараюсь помочь.
