@@ -30,7 +30,7 @@ class Vector:
         vec_y = other[1] - self[1]
         return Vector(vec_x, vec_y)
 
-    def get_length(self):
+    def get_length(self) -> float:
         return (self.x**2 + self.y**2)**0.5
 
     def get_normalized(self) -> Vector:
@@ -43,15 +43,15 @@ class Vector:
         vec2_length = vector1.get_length()
         vec1_length = self.get_length()
         cos_a = dot_product / (vec1_length * vec2_length)
-        return  round(math.degrees(math.acos(cos_a)))
+        return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
-        axis_y = Vector(0, 1) 
+        axis_y = Vector(0, 1)
         dot_product = self.__mul__(axis_y)
         vec2_length = axis_y.get_length()
         vec1_length = self.get_length()
         cos_a = dot_product / (vec1_length * vec2_length)
-        return  int(math.degrees(math.acos(cos_a)))
+        return int(math.degrees(math.acos(cos_a)))
 
     def rotate(self, grad: int) -> Vector:
         angle = grad * math.pi / 180
