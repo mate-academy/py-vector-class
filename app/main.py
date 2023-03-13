@@ -21,7 +21,7 @@ class Vector:
     def __mul__(self, other: Union[int, float, Vector]) -> Any:
         if isinstance(other, Vector):
             dot_product = self.x * other.x \
-                          + self.y * other.y
+                + self.y * other.y
             return dot_product
         x_coord = self.x * other
         y_coord = self.y * other
