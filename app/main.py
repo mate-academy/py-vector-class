@@ -56,4 +56,3 @@ class Vector:
         x_new = self.x * math.cos(angle) - self.y * math.sin(angle)
         y_new = self.x * math.sin(angle) + self.y * math.cos(angle)
         return Vector(round(x_new, 2), round(y_new, 2))
-#
