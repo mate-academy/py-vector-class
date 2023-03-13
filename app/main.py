@@ -5,9 +5,10 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> Vector:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float
+                 ) -> Vector:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     @classmethod
     def create_vector_by_two_points(
