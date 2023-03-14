@@ -132,7 +132,7 @@ def test_create_vector_by_two_points(start_point, end_point, vector_coords):
 )
 def test_get_length(coords, length):
     vector = Vector(*coords)
-    assert vector.get_length == length, (
+    assert vector.get_length() == length, (
         f"When 'vector' coords equals to {coords}, "
         f"'vector.get_length()' should return {length}"
     )

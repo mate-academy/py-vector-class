@@ -5,9 +5,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, iks: float, ygre: float) -> None:
+        self.x = round(iks, 2)
+        self.y = round(ygre, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
@@ -36,23 +36,22 @@ class Vector:
             end_point: tuple,
     ) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1],
+            end_point[0] - start_point[0],
+            end_point[1] - start_point[1],
         )
 
-    @property
     def get_length(self) -> float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
-        length_vector = self.get_length
+        length_vector = self.get_length()
         return Vector(
-            x=round(self.x / length_vector, 2),
-            y=round(self.y / length_vector, 2),
+            round(self.x / length_vector, 2),
+            round(self.y / length_vector, 2),
         )
 
     def angle_between(self, other: Vector) -> float:
-        cos_a = self * other / (self.get_length * other.get_length)
+        cos_a = self * other / (self.get_length() * other.get_length())
         return round(deg(ac(cos_a)))
 
     def get_angle(self) -> float:
@@ -61,6 +60,6 @@ class Vector:
     def rotate(self, degrees: float) -> Vector:
         a_in_r = math.radians(degrees)
         return Vector(
-            x=round(self.x * math.cos(a_in_r) - self.y * math.sin(a_in_r), 2),
-            y=round(self.x * math.sin(a_in_r) + self.y * math.cos(a_in_r), 2)
+            round(self.x * math.cos(a_in_r) - self.y * math.sin(a_in_r), 2),
+            round(self.x * math.sin(a_in_r) + self.y * math.cos(a_in_r), 2)
         )
