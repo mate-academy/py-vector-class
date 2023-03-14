@@ -134,7 +134,7 @@ Takes `degrees` that is integer rotation degrees.
 It returns rotated Vector by `degrees`.
 ```python
 vector = Vector(33, 8)
-vector2 = vector.rotate(45)
+vector2 = vector.rotate(1)
 
 vector2.x == 17.68
 vector2.y == 28.99
