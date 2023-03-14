@@ -40,18 +40,19 @@ class Vector:
             y=end_point[1] - start_point[1],
         )
 
+    @property
     def get_length(self) -> float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
-        length_vector = self.get_length()
+        length_vector = self.get_length
         return Vector(
             x=round(self.x / length_vector, 2),
             y=round(self.y / length_vector, 2),
         )
 
     def angle_between(self, other: Vector) -> float:
-        cos_a = self * other / (self.get_length() * other.get_length())
+        cos_a = self * other / (self.get_length * other.get_length)
         return round(deg(ac(cos_a)))
 
     def get_angle(self) -> float:
