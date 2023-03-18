@@ -20,19 +20,21 @@ class Vector:
         return Vector(self.x_x * other, (self.y_y * other))
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
-        return Vector(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+        return Vector(end_point[0] - start_point[0], end_point[1] -
+                      start_point[1])
 
     def get_length(self) -> float:
         return math.sqrt(self.x_x**2 + self.y_y**2)
 
     def get_normalized(self) -> Vector:
-        return Vector(self.x_x / self.get_length(), self.y_y / self.get_length())
+        return Vector(self.x_x / self.get_length(), self.y_y /
+                      self.get_length())
 
     def angle_between(self, other: Vector) -> int:
-        return round(math.degrees(math.acos((self.x_x * other.x_x + self.y_y *
-                                             other.y_y) / (self.get_length() *
-                                                           math.sqrt(other.x_x**2 + other.y_y**2)))))
+        return round(math.degrees(math.acos((self.x_x * other.x_x + self.y_y
+        * other.y_y) / (self.get_length()
+        * math.sqrt(other.x_x**2 + other.y_y**2)))))
 
     def get_angle(self) -> int:
         return self.angle_between(Vector(0, 1))
