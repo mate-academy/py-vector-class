@@ -28,13 +28,14 @@ class Vector:
         return math.sqrt(self.x_x**2 + self.y_y**2)
 
     def get_normalized(self) -> Vector:
-        return Vector(self.x_x / self.get_length(), self.y_y /
-                      self.get_length())
+        return Vector(self.x_x / self.get_length(), self.y_y
+                      / self.get_length())
 
     def angle_between(self, other: Vector) -> int:
         return round(math.degrees(math.acos((self.x_x * other.x_x + self.y_y
                                             * other.y_y) / (self.get_length()
-                                            * math.sqrt(other.x_x**2 + other.y_y**2)))))
+                                            * math.sqrt(other.x_x**2
+                                                        + other.y_y**2)))))
 
     def get_angle(self) -> int:
         return self.angle_between(Vector(0, 1))
