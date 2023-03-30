@@ -1,6 +1,5 @@
 from __future__ import annotations
 import math
-import numpy as np
 
 
 class Vector:
@@ -52,9 +51,7 @@ class Vector:
             return round(math.degrees(math.atan(abs(self.x / self.y))))
 
     def rotate(self, degrees: int) -> Vector:
-        theta = np.deg2rad(degrees)
-        rot = np.array([[math.cos(theta), -math.sin(theta)],
-                        [math.sin(theta), math.cos(theta)]])
-        v0 = np.array([self.x, self.y])
-        v2 = list(np.dot(rot, v0))
-        return Vector(round(v2[0], 2), round(v2[1], 2))
+        angle = math.radians(degrees)
+        xr = (self.x * math.cos(angle)) - (self.y * math.sin(angle))
+        yr = (self.x * math.sin(angle)) + (self.y * math.cos(angle))
+        return Vector(round(xr, 2), round(yr, 2))
