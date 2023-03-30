@@ -29,7 +29,11 @@ class Vector:
         return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls,
+            start_point: tuple,
+            end_point: tuple
+    ) -> Vector:
         return Vector(
             x=end_point[0] - start_point[0],
             y=end_point[1] - start_point[1]
@@ -49,8 +53,8 @@ class Vector:
         return round(
             math.degrees(
                 math.acos(
-                    self * second_vector /
-                    self.get_length() * second_vector.get_length()
+                    self * second_vector
+                    / (self.get_length() * second_vector.get_length())
                 )
             )
         )
