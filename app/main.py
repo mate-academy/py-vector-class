@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, l_x: int | float, l_y: int | float) -> None:
+        self.x = round(l_x, 2)
+        self.y = round(l_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         sum_x = self.x + other.x
@@ -20,12 +20,15 @@ class Vector:
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
-        x = round(self.x * other, 2)
-        y = round(self.y * other, 2)
-        return Vector(x, y)
+        l_x = round(self.x * other, 2)
+        l_y = round(self.y * other, 2)
+        return Vector(l_x, l_y)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: int | float, end_point: int | float) -> Vector:
+    def create_vector_by_two_points(
+            cls,
+            start_point: int | float,
+            end_point: int | float) -> Vector:
         cls.x = end_point[0] - start_point[0]
         cls.y = end_point[1] - start_point[1]
         return Vector(cls.x, cls.y)
@@ -49,6 +52,6 @@ class Vector:
     def rotate(self, degrees: int | float) -> Vector:
         cos = math.cos(math.radians(degrees))
         sin = math.sin(math.radians(degrees))
-        x = cos * self.x - sin * self.y
-        y = sin * self.x + cos * self.y
-        return Vector(x, y)
+        l_x = cos * self.x - sin * self.y
+        l_y = sin * self.x + cos * self.y
+        return Vector(l_x, l_y)
