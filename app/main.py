@@ -30,9 +30,9 @@ class Vector:
         return math.sqrt(self.x**2 + self.y**2)
 
     def get_normalized(self: int) -> float:
-        return Vector(self.x / (math.sqrt(self.x ** 2
-                      + self.y**2)), self.y / (math.sqrt(self.x
-                            ** 2 + self.y**2)))
+        return Vector(self.x / (math.sqrt
+                      (self.x ** 2 + self.y**2)), self.y
+                      / (math.sqrt(self.x ** 2 + self.y**2)))
 
     def angle_between(self, number: int) -> float:
         return round(math.degrees(math.acos((self.x * number.x + self.y
