@@ -131,7 +131,7 @@ def test_create_vector_by_two_points(start_point, end_point, vector_coords):
     ]
 )
 def test_get_length(coords, length):
-    vector = Vector(,
+    vector = Vector(*coords)
     assert vector.get_length() == length, (
         f"When 'vector' coords equals to {coords}, "
         f"'vector.get_length()' should return {length}"
@@ -147,7 +147,7 @@ def test_get_length(coords, length):
     ]
 )
 def test_get_normalized(coords, normalized_coords):
-    vector = Vector(,
+    vector = Vector(*coords)
     normalized_vector = vector.get_normalized()
     assert (normalized_vector.x, normalized_vector.y) == normalized_coords, (
         f"When 'vector' coords equals to {coords}, "
@@ -165,8 +165,8 @@ def test_get_normalized(coords, normalized_coords):
     ]
 )
 def test_angle_between(coords_1, coords_2, angle):
-    vector1 = Vector(,
-    vector2 = Vector(,
+    vector1 = Vector(*coords_1)
+    vector2 = Vector(*coords_2)
     assert vector1.angle_between(vector2) == angle, (
         f"'vector1.angle_between(vector2)' should equal to {angle}, "
         f"when 'vector1' coordinates equal to {coords_1}, "
@@ -183,7 +183,7 @@ def test_angle_between(coords_1, coords_2, angle):
     ]
 )
 def test_get_angle(coords_1, angle):
-    vector = Vector(,
+    vector = Vector(*coords_1)
     assert vector.get_angle() == angle, (
         f"'vector.get_angle()' should equal to {angle}, "
         f"when 'vector' coordinates equal to {coords_1}"
@@ -199,7 +199,7 @@ def test_get_angle(coords_1, angle):
     ]
 )
 def test_rotate(coords_1, degrees, coords_2):
-    vector = Vector(,
+    vector = Vector(*coords_1)
     vector2 = vector.rotate(degrees)
     assert isinstance(vector2, Vector), (
         "Result of 'vector.rotate(degrees)' should be Vector"
