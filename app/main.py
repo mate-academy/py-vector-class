@@ -56,4 +56,4 @@ class Vector:
         return Vector(
             math.cos(degrees) * self.x - math.sin(degrees) * self.y,
             math.sin(degrees) * self.x + math.cos(degrees) * self.y
-        )
+        )k
