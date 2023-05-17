@@ -5,9 +5,9 @@ from math import sqrt, degrees, acos, atan, cos, sin, radians
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coord_x: float, coord_y: float) -> None:
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return self.create_vector_by_two_points(
