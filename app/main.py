@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -19,11 +19,11 @@ class Vector:
             return Vector(self.x * other, self.y * other)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: float, end_point: float)\
+    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple)\
             -> "Vector":
-        x = round(end_point[0] - start_point[0], 2)
-        y = round(end_point[1] - start_point[1], 2)
-        return cls(x, y)
+        x_coordinate = round(end_point[0] - start_point[0], 2)
+        y_coordinate = round(end_point[1] - start_point[1], 2)
+        return cls(x_coordinate, y_coordinate)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -46,6 +46,6 @@ class Vector:
         radians = math.radians(degrees)
         cos_a = math.cos(radians)
         sin_a = math.sin(radians)
-        x = self.x * cos_a - self.y * sin_a
-        y = self.x * sin_a + self.y * cos_a
-        return Vector(x, y)
+        x_x = self.x * cos_a - self.y * sin_a
+        y_y = self.x * sin_a + self.y * cos_a
+        return Vector(x_x, y_y)
