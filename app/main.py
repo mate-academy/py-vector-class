@@ -44,8 +44,8 @@ class Vector:
     def angle_between(self, other: "Vector") -> int:
         mul = self.__mul__(other)
         a = Vector.get_length(self)
-        b = Vector.get_length(other)
-        cos_a = mul / (a * b)
+        c = Vector.get_length(other)
+        cos_a = mul / (a * c)
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
