@@ -3,25 +3,25 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_cont: float, y_cont: float) -> None:
+        self.x = round(x_cont, 2)
+        self.y = round(y_cont, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y)
+            x_cont=self.x + other.x,
+            y_cont=self.y + other.y)
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y)
+            x_cont=self.x - other.x,
+            y_cont=self.y - other.y)
 
     def __mul__(self, other: float | "Vector") -> float | "Vector":
         if isinstance(other, Vector):
             return (self.y * other.y) + (self.x * other.x)
 
-        return Vector(x=self.x * other, y=self.y * other)
+        return Vector(x_cont=self.x * other, y_cont=self.y * other)
 
     @staticmethod
     def create_vector_by_two_points(
@@ -37,8 +37,8 @@ class Vector:
 
     def get_normalized(self) -> "Vector":
         return Vector(
-            x=self.x / Vector.get_length(self),
-            y=self.y / Vector.get_length(self)
+            x_cont=self.x / Vector.get_length(self),
+            y_cont=self.y / Vector.get_length(self)
         )
 
     def angle_between(self, other: "Vector") -> int:
