@@ -41,8 +41,10 @@ class Vector:
         return abs(round(math.degrees(math.atan2(self.x, self.y))))
 
     def rotate(self, degrees: int) -> Vector:
-        rotate_x = self.get_length() * math.radians(
-            math.cos(degrees + self.get_angle()))
-        rotate_y = self.get_length() * math.radians(
-            math.sin(degrees + self.get_angle()))
+        rotate_x = self.x * math.cos(math.radians(degrees)) - (
+            self.y * math.sin(math.radians(degrees))
+        )
+        rotate_y = self.x * math.sin(math.radians(degrees)) + (
+            self.y * math.cos(math.radians(degrees))
+        )
         return Vector(rotate_x, rotate_y)
