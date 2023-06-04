@@ -4,9 +4,9 @@ from math import radians, sin, cos, degrees, acos
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, iks: int | float, igrik: int | float) -> None:
+        self.x = round(iks, 2)
+        self.y = round(igrik, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
