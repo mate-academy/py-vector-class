@@ -111,7 +111,7 @@ def test_vector_mul_vector(vector1_x, vector1_y, vector2_x, vector2_y, result):
     ]
 )
 def test_create_vector_by_two_points(start_point, end_point, vector_coords):
-    vector = Vector.create_vector_by_two_points(end_point)
+    vector = Vector.create_vector_by_two_points(start_point, end_point)
     assert isinstance(vector, Vector), (
         "Result of 'create_vector_by_two_points' should be Vector"
     )
