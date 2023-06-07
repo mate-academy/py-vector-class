@@ -4,9 +4,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, vec_x: float, vec_y: float) -> None:
+        self.x = round(vec_x, 2)
+        self.y = round(vec_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
