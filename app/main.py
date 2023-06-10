@@ -30,7 +30,7 @@ class Vector:
         return cls(x_coord, y_coord)
 
     def get_length(self) -> float:
-        return round(math.sqrt(self.x ** 2 + self.y ** 2), 10)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> "Vector":
         length: float = self.get_length()
