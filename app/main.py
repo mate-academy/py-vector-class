@@ -1,5 +1,4 @@
 from __future__ import annotations
-from typing import Self
 import math
 
 
@@ -25,7 +24,7 @@ class Vector:
             cls,
             start_point: int | float,
             end_point: int | float
-    ) -> Self:
+    ) -> Vector:
         return cls(
             x_axis=end_point[0] - start_point[0],
             y_axis=end_point[1] - start_point[1]
