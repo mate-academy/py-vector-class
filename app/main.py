@@ -54,7 +54,7 @@ class Vector:
     def get_angle(self) -> Union[int, float]:
         return self.angle_between(Vector(0, 1))
 
-    def rotate(self, degrees: int) -> Vector:
+    def rotate(self, degrees: Union[int, float]) -> Vector:
         radians = math.radians(degrees)
         cos_a = math.cos(radians)
         sin_a = math.sin(radians)
