@@ -5,20 +5,20 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float):
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_point: float, y_point: float) -> None:
+        self.x = round(x_point, 2)
+        self.y = round(y_point, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            x_point=self.x + other.x,
+            y_point=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            x_point=self.x - other.x,
+            y_point=self.y - other.y
         )
 
     def __mul__(self, other: Vector | int) -> Vector | int | float:
@@ -26,26 +26,28 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
         return Vector(
-            x=self.x * other,
-            y=self.y * other
+            x_point=self.x * other,
+            y_point=self.y * other
         )
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_pont: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls, start_point: tuple, end_pont: tuple
+    ) -> Vector:
         return Vector(
-            x=end_pont[0] - start_point[0],
-            y=end_pont[1] - start_point[1]
+            x_point=end_pont[0] - start_point[0],
+            y_point=end_pont[1] - start_point[1]
         )
 
     def get_length(self) -> float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
-        a = self.get_length()
+        length = self.get_length()
 
         return __class__(
-            x=self.x / a,
-            y=self.y / a
+            x_point=self.x / length,
+            y_point=self.y / length
         )
 
     def angle_between(self, other: Vector) -> int:
