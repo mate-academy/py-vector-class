@@ -5,28 +5,30 @@ from typing import Union
 
 class Vector:
     # write your code here
-    def __init__(self, x: Union[int, float], y: Union[int, float]) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self,
+                 var_x: Union[int, float],
+                 var_y: Union[int, float]) -> None:
+        self.x = round(var_x, 2)
+        self.y = round(var_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            var_x=self.x + other.x,
+            var_y=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            var_x=self.x - other.x,
+            var_y=self.y - other.y
         )
 
     def __mul__(self, other: Vector | Union[int, float]) -> Vector | float:
 
         if not isinstance(other, Vector):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                var_x=self.x * other,
+                var_y=self.y * other
             )
         elif isinstance(other, Vector):
             mult = self.x * other.x + self.y * other.y
@@ -43,8 +45,8 @@ class Vector:
         ]
 
         return Vector(
-            x=result[0],
-            y=result[1]
+            var_x=result[0],
+            var_y=result[1]
         )
 
     def get_length(self) -> float:
@@ -55,8 +57,8 @@ class Vector:
         invr = 1 / self.get_length()
 
         return Vector(
-            x=self.x * invr,
-            y=self.y * invr
+            var_x=self.x * invr,
+            var_y=self.y * invr
         )
 
     def angle_between(self, other: Vector) -> int:
@@ -77,6 +79,6 @@ class Vector:
         rotated_y = self.x * math.sin(ang) + self.y * math.cos(ang)
 
         return Vector(
-            x=rotated_x,
-            y=rotated_y
+            var_x=rotated_x,
+            var_y=rotated_y
         )
