@@ -23,3 +23,6 @@ class Vector:
             x=end_point[0] - start_point[0],
             y=end_point[1] - start_point[1],
         )
+    
+    def get_length(self) -> float:
+        return (self.x ** 2 + self.y ** 2) ** 0.5
