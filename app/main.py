@@ -41,3 +41,7 @@ class Vector:
                 / (self.get_length()
                 * other_vector.get_length())))
         return round(degrees(acos(cos_a)))
+
+    def get_angle(self) -> int:
+        return self.angle_between(Vector(0, abs(self.y)))
+        
