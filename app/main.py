@@ -16,3 +16,10 @@ class Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(self.x * other, self.y * other)
+    
+    @classmethod
+    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+        return cls(
+            x=end_point[0] - start_point[0],
+            y=end_point[1] - start_point[1],
+        )
