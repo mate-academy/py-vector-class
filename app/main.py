@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: int | float, y_coord: int | float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -35,7 +35,7 @@ class Vector:
 
     def angle_between(self, other: Vector) -> Vector | int | float:
         return round(math.degrees(math.acos(
-            ((self.x * other.x) + (self.y * other.y))/(
+            ((self.x * other.x) + (self.y * other.y)) / (
                 (math.sqrt((self.x ** 2) + (self.y ** 2))) * (
                     math.sqrt((other.x ** 2) + (other.y ** 2)))
             )
