@@ -51,4 +51,3 @@ class Vector:
         return Vector(
             self.x * c - self.y * s, self.x * s + self.y * c
         )
-
