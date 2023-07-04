@@ -4,10 +4,10 @@ from math import sqrt, acos, degrees, radians, sin, cos
 
 
 class Vector:
-    def __init__(self, x: int | float,
-                 y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, pos_x: int | float,
+                 pos_y: int | float) -> None:
+        self.x = round(pos_x, 2)
+        self.y = round(pos_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x,
