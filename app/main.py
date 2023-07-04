@@ -5,15 +5,15 @@ from math import sqrt, acos, degrees, radians, sin, cos
 
 class Vector:
     def __init__(self, x: int | float,
-                 y: int | float):
+                 y: int | float) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, other) -> Vector:
+    def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x,
                       self.y + other.y)
 
-    def __sub__(self, other) -> Vector:
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x,
                       self.y - other.y)
 
@@ -26,18 +26,18 @@ class Vector:
     @staticmethod
     def create_vector_by_two_points(start_point: tuple,
                                     end_point: tuple) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return Vector(x, y)
+        position_x = end_point[0] - start_point[0]
+        position_y = end_point[1] - start_point[1]
+        return Vector(position_x, position_y)
 
     def get_length(self) -> float:
         return sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        x = self.x / length
-        y = self.y / length
-        return Vector(x, y)
+        position_x = self.x / length
+        position_y = self.y / length
+        return Vector(position_x, position_y)
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self.__mul__(other)
@@ -51,6 +51,6 @@ class Vector:
 
     def rotate(self, angle_deg: int) -> Vector:
         angle_rad = radians(angle_deg)
-        x = self.x * cos(angle_rad) - self.y * sin(angle_rad)
-        y = self.x * sin(angle_rad) + self.y * cos(angle_rad)
-        return Vector(x, y)
+        position_x = self.x * cos(angle_rad) - self.y * sin(angle_rad)
+        position_y = self.x * sin(angle_rad) + self.y * cos(angle_rad)
+        return Vector(position_x, position_y)
