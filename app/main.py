@@ -12,7 +12,9 @@ class Vector:
         cls, start_point: tuple, end_point: tuple
     ) -> Vector:
         # P2 - P1 = (x2 - x1, y2 - y1)
-        return Vector(end_point[0] - start_point[0], end_point[1] - start_point[1])
+        return Vector(
+            end_point[0] - start_point[0], end_point[1] - start_point[1]
+        )
 
     def __add__(self, other: Vector) -> Vector:
         # V3 = (x1 + x2, y1 + y2)
