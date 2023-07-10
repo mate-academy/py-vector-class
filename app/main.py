@@ -51,3 +51,4 @@ class Vector:
         rotate_x = self.x * cos_angle - self.y * sin_angle
         rotate_y = self.x * sin_angle + self.y * cos_angle
         return Vector(rotate_x, rotate_y)
+
