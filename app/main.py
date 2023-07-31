@@ -3,27 +3,27 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_axis: float, y_axis: float) -> None:
+        self.x = round(x_axis, 2)
+        self.y = round(y_axis, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            x_axis=self.x + other.x,
+            y_axis=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            x_axis=self.x - other.x,
+            y_axis=self.y - other.y
         )
 
     def __mul__(self, other: float) -> float | Vector:
         if not isinstance(other, Vector):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                x_axis=self.x * other,
+                y_axis=self.y * other
             )
         return (self.x * other.x) + (self.y * other.y)
 
@@ -34,8 +34,8 @@ class Vector:
         end_point: tuple
     ) -> Vector:
         return Vector(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            x_axis=end_point[0] - start_point[0],
+            y_axis=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float:
@@ -43,8 +43,8 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return Vector(
-            x=self.x / self.get_length(),
-            y=self.y / self.get_length()
+            x_axis=self.x / self.get_length(),
+            y_axis=self.y / self.get_length()
         )
 
     def angle_between(self, vector: Vector) -> int:
@@ -59,6 +59,6 @@ class Vector:
     def rotate(self, degrees: int) -> Vector:
         degrees = math.radians(degrees)
         return Vector(
-            x=(math.cos(degrees) * self.x) - (math.sin(degrees) * self.y),
-            y=(math.sin(degrees) * self.x) + (math.cos(degrees) * self.y)
+            x_axis=(math.cos(degrees) * self.x) - (math.sin(degrees) * self.y),
+            y_axis=(math.sin(degrees) * self.x) + (math.cos(degrees) * self.y)
         )
