@@ -34,7 +34,8 @@ class Vector:
         return Vector(coefficient * self.x, coefficient * self.y)
 
     def angle_between(self, other: Vector) -> int:
-        cos_angle = self.__mul__(other) / (self.get_length() * other.get_length())
+        cos_angle = self.__mul__(other)
+        cos_angle /= (self.get_length() * other.get_length())
         angle = math.degrees(math.acos(cos_angle))
         return round(angle)
 
@@ -51,4 +52,3 @@ class Vector:
         sin_a = math.sin(radians)
         return Vector(self.x * cos_a - self.y * sin_a,
                       self.x * sin_a + self.y * cos_a)
-
