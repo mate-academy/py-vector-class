@@ -1,3 +1,4 @@
+# flake8: noqa: E203
 from __future__ import annotations
 from typing import Union, Any
 import math
