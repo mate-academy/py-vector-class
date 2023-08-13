@@ -1,3 +1,5 @@
+# flake8: noqa: E203
+
 from __future__ import annotations
 import math
 
