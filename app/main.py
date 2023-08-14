@@ -23,7 +23,7 @@ class Vector:
             cls,
             start_point: tuple,
             end_point: tuple
-    ) -> "Vector":
+    ) -> object:
         return cls(end_point[0] - start_point[0],
                    end_point[1] - start_point[1])
 
