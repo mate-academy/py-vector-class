@@ -53,11 +53,8 @@ class Vector:
 
     def rotate(self, degrees: int) -> Vector:
         diff = math.radians(degrees)
-        print(diff)
-        cos = math.cos(diff)
-        print(cos)
-        sin = math.sin(diff)
-        print(sin)
-        rotated_x = (self.x * cos) - (self.y * sin)
-        rotated_y = (sin * self.x) + (cos * self.y)
+        cos_diff = math.cos(diff)
+        sin_diff = math.sin(diff)
+        rotated_x = (self.x * cos_diff) - (self.y * sin_diff)
+        rotated_y = (self.x * sin_diff) + (cos_diff * self.y)
         return Vector(rotated_x, rotated_y)
