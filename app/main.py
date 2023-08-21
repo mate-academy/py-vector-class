@@ -20,7 +20,8 @@ class Vector:
             return Vector(self.x * object, self.y * object)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(cls, start_point: tuple, 
+                                    end_point: tuple) -> Vector:
         vec1 = Vector(start_point[0], start_point[1])
         vec2 = Vector(end_point[0], end_point[1])
         return vec2 - vec1
