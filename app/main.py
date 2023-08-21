@@ -3,9 +3,9 @@ import math as m
 
 
 class Vector:
-    def __init__(self, x: int, y: int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: int, y_coord: int) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, vector: Vector) -> Vector:
         return Vector(self.x + vector.x, self.y + vector.y)
@@ -13,11 +13,11 @@ class Vector:
     def __sub__(self, vector: Vector) -> Vector:
         return Vector(self.x - vector.x, self.y - vector.y)
 
-    def __mul__(self, object: Vector | int | float) -> Vector | int| float:
+    def __mul__(self, object: Vector | int | float) -> Vector | int | float:
         if isinstance(object, Vector):
             return self.x * object.x + self.y * object.y
         else:
-            return Vector(self.x * object, self.y * object) 
+            return Vector(self.x * object, self.y * object)
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
@@ -45,7 +45,7 @@ class Vector:
         angle_deg = m.degrees(m.acos(cos_angle))
         return round(angle_deg)
 
-    def get_angle(self):
+    def get_angle(self) -> int:
         vec = Vector(0, 1)
         return self.angle_between(vec)
 
