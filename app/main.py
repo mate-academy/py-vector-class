@@ -5,9 +5,13 @@ import math
 
 class Vector:
 
-    def __init__(self, x: Union[int, float], y: Union[int, float]) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(
+            self,
+            x_coordinate: Union[int, float],
+            y_coordinate: Union[int, float]
+    ) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
@@ -25,7 +29,6 @@ class Vector:
             self,
             other: Union[Vector, int, float]
     ) -> Union[Vector, int, float]:
-
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
@@ -39,7 +42,6 @@ class Vector:
             start_point: tuple,
             end_point: tuple
     ) -> Vector:
-
         vector_x = end_point[0] - start_point[0]
         vector_y = end_point[1] - start_point[1]
         return cls(vector_x, vector_y)
