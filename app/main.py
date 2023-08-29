@@ -3,21 +3,21 @@ import math
 
 
 class Vector:
-    def __init__(self, x_pt: float, y_pt: float) -> None:
-        self.x_pt = round(x_pt, 2)
-        self.y_pt = round(y_pt, 2)
+    def __init__(self, x: float, y: float) -> None:
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.x_pt + other.x_pt, self.y_pt + other.y_pt)
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.x_pt - other.x_pt, self.y_pt - other.y_pt)
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, (int, float)):
-            return Vector(self.x_pt * other, self.y_pt * other)
+            return Vector(self.x * other, self.y * other)
         else:
-            return self.x_pt * other.x_pt + self.y_pt * other.y_pt
+            return self.x * other.x + self.y * other.y
 
     @classmethod
     def create_vector_by_two_points(
@@ -31,22 +31,22 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return (self.x_pt ** 2 + self.y_pt ** 2) ** 0.5
+        return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(self.x_pt / length, self.y_pt / length)
+        return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: Vector) -> float:
         angle = self * other / (self.get_length() * other.get_length())
         return round(math.degrees(math.acos(angle)))
 
     def get_angle(self) -> float:
-        other = Vector(0, abs(self.y_pt))
+        other = Vector(0, abs(self.y))
         return self.angle_between(other)
 
     def rotate(self, degrees: float) -> Vector:
         angle = math.radians(degrees)
-        x_pt = self.x_pt * math.cos(angle) - self.y_pt * math.sin(angle)
-        y_pt = self.x_pt * math.sin(angle) + self.y_pt * math.cos(angle)
+        x_pt = self.x * math.cos(angle) - self.y * math.sin(angle)
+        y_pt = self.x * math.sin(angle) + self.y * math.cos(angle)
         return Vector(x_pt, y_pt)
