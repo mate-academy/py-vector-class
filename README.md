@@ -21,6 +21,7 @@ starts in (0, 0) and ends in coordinates (x, y).
 Implement Vector class, its `__init__` method takes and stores two 
 coordinates: x, y - coordinates of end of the vector, **rounded 
 to two decimals**.
+
 ```python
 vector = Vector(-2.343, 8.008)
 vector.x == -2.34
@@ -31,6 +32,7 @@ Vector class should have such magic methods:
 - `__add__`
 
 Addition of two Vectors should return Vector.
+
 ```python
 vector1 = Vector(2, 4)
 vector2 = Vector(-1, 3)
@@ -43,6 +45,7 @@ vector3.y == 7
 - `__sub__`
 
 Subtraction of two Vectors should return Vector.
+
 ```python
 vector1 = Vector(2, 4)
 vector2 = Vector(-1, 3)
@@ -75,6 +78,7 @@ Also, Vector class should have such methods:
 Takes `start_point` - tuple of point coordinates, start of the vector,
 `end_point` - tuple of point coordinates, end of the vector. It returns
 Vector.
+
 ```python
 start_point = (5.2, 2.6)
 end_point = (10.7, 6)
@@ -96,6 +100,7 @@ vector.get_length() == 4.47213595499958
 - `get_normalized`
 
 Returns normalized copy of vector.
+
 ```python
 vector1 = Vector(13, -4)
 vector1.get_length() == 13.6
@@ -132,6 +137,7 @@ vector.get_angle() == 76
 
 Takes `degrees` that is integer rotation degrees.
 It returns rotated Vector by `degrees`.
+
 ```python
 vector = Vector(33, 8)
 vector2 = vector.rotate(45)
