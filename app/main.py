@@ -69,6 +69,6 @@ class Vector:
         current_length = self.get_length()
         current_angle = math.degrees(math.atan2(self.y, self.x))
         new_angle = current_angle + angle
-        x = round(current_length * math.cos(math.radians(new_angle)), 2)
-        y = round(current_length * math.sin(math.radians(new_angle)), 2)
-        return Vector(x, y)
+        coord_x = round(current_length * math.cos(math.radians(new_angle)), 2)
+        coord_y = round(current_length * math.sin(math.radians(new_angle)), 2)
+        return Vector(coord_x, coord_y)
