@@ -79,7 +79,7 @@ Vector.
 start_point = (5.2, 2.6)
 end_point = (10.7, 6)
 
-vector = Vector.create_vector_by_two_points(start_point, end_point)e
+vector = Vector.create_vector_by_two_points(start_point, end_point)
 isinstance(vector, Vector) is True
 vector.x == 5.5
 vector.y == 3.4
