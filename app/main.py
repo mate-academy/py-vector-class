@@ -28,8 +28,8 @@ class Vector:
             end_point: tuple
     ) -> __init__:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            x_coord=end_point[0] - start_point[0],
+            y_coord=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float:
@@ -37,8 +37,8 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return Vector(
-            x=self.x * (1 / Vector.get_length(self)),
-            y=self.y * (1 / Vector.get_length(self))
+            x_coord=self.x * (1 / Vector.get_length(self)),
+            y_coord=self.y * (1 / Vector.get_length(self))
         )
 
     def angle_between(self, other: Vector) -> int:
@@ -53,6 +53,6 @@ class Vector:
         cos = math.cos(radians)
         sin = math.sin(radians)
         return Vector(
-            x=self.x * cos - self.y * sin,
-            y=self.x * sin + self.y * cos
+            x_coord=self.x * cos - self.y * sin,
+            y_coord=self.x * sin + self.y * cos
         )
