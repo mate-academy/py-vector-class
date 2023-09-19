@@ -6,13 +6,13 @@ class Vector:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, vector) -> object:
+    def __add__(self, vector: object) -> object:
         return Vector(
             self.x + vector.x,
             self.y + vector.y
         )
 
-    def __sub__(self, vector) -> object:
+    def __sub__(self, vector: object) -> object:
         return Vector(
             self.x - vector.x,
             self.y - vector.y
