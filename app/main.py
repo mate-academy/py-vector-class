@@ -61,3 +61,4 @@ class Vector:
             self.x * cos - self.y * sin,
             self.x * sin + self.y * cos
         )
+
