@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float | int, y: float | int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_value: float | int, y_value: float | int) -> None:
+        self.x = round(x_value, 2)
+        self.y = round(y_value, 2)
 
     def __add__(self, vector: object) -> object:
         return Vector(
@@ -61,4 +61,3 @@ class Vector:
             self.x * cos - self.y * sin,
             self.x * sin + self.y * cos
         )
-
