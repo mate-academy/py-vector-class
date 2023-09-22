@@ -4,10 +4,10 @@ from typing import Union
 
 class Vector:
     def __init__(
-            self, x: float = 0, y: float = 0
+            self, x_coordinate: float = 0, y_coordinate: float = 0
     ) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
