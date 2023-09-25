@@ -2,7 +2,7 @@ from __future__ import annotations
 import math
 
 
-class Vector:  # chanched branche to develop
+class Vector:
     def __init__(self, x: float, y: float) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
