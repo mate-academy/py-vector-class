@@ -1,10 +1,11 @@
+from __future__ import annotations
 import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -12,7 +13,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: float) -> "Vector":
+    def __mul__(self, other: float) -> float | "Vector":
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
@@ -22,9 +23,9 @@ class Vector:
     def create_vector_by_two_points(
             cls, start_point: tuple, end_point: tuple
     ) -> "Vector":
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        x_point = end_point[0] - start_point[0]
+        y_point = end_point[1] - start_point[1]
+        return cls(x_point, y_point)
 
     def get_length(self) -> float:
         return math.sqrt(self.x**2 + self.y**2)
@@ -35,7 +36,7 @@ class Vector:
             return Vector(0, 0)
         return Vector(self.x / length, self.y / length)
 
-    def angle_between(self, other: "Vector") -> int:
+    def angle_between(self, other: "Vector" | float) -> int:
         cos_angle = (self * other) / (self.get_length() * other.get_length())
         angle = round(math.degrees(math.acos(cos_angle)))
         return angle
@@ -45,6 +46,6 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        y = self.x * math.sin(radians) + self.y * math.cos(radians)
-        return Vector(x, y)
+        x_point = self.x * math.cos(radians) - self.y * math.sin(radians)
+        y_point = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(x_point, y_point)
