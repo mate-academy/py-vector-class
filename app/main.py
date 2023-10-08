@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 import math
-from math import sqrt, degrees, acos, atan2, cos, sin
 
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coord_x: float, coord_y: float) -> None:
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
 
@@ -49,7 +48,7 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
         return Vector(
@@ -65,19 +64,19 @@ class Vector:
 
         cos_a = mult / (one_length * two_length)
 
-        degree = degrees(acos(cos_a))
+        degree = math.degrees(math.acos(cos_a))
 
-        return round(degree, 0)
+        return int(math.ceil(degree))
 
     def get_angle(self) -> int:
-        angle_radians = atan2(self.x, self.y)
-        angle_degrees = degrees(angle_radians)
+        angle_radians = math.atan2(self.x, self.y)
+        angle_degrees = math.degrees(angle_radians)
         return int(angle_degrees) * (-1)
 
     def rotate(self, degree: int | float) -> Vector:
         radians = math.radians(degree)
 
-        new_x = self.x * cos(radians) - self.y * sin(radians)
-        new_y = self.x * sin(radians) + self.y * cos(radians)
+        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
 
         return Vector(new_x, new_y)
