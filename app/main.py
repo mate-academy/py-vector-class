@@ -19,8 +19,10 @@ class Vector:
         return Vector(self.x * other, self.y * other)
 
     @staticmethod
-    def create_vector_by_two_points(start_point: tuple[int | float], end_point: tuple[int | float]) -> Vector:
-        return Vector(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(
+            start: tuple,
+            end: tuple) -> Vector:
+        return Vector(end[0] - start[0], end[1] - start[1])
 
     def get_length(self) -> int | float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
@@ -31,7 +33,9 @@ class Vector:
 
     def angle_between(self, other: Vector) -> int | float:
         vec = Vector(self.x * other.x, self.y * other.y)
-        return round(math.degrees(math.acos((vec.x + vec.y) / (self.get_length() * other.get_length()))))
+        return round(math.degrees(math.acos((vec.x + vec.y)
+                                            /
+                                            (self.get_length() * other.get_length()))))
 
     def get_angle(self) -> int | float:
         return self.angle_between(Vector(0, 1))
