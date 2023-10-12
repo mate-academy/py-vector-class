@@ -10,14 +10,14 @@ class Vector:
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            x_cords=self.x + other.x,
+            y_cords=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            x_cords=self.x - other.x,
+            y_cords=self.y - other.y
         )
 
     def __mul__(self, other: Vector | int | float) -> Vector | float:
@@ -25,8 +25,8 @@ class Vector:
             return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                x_cords=self.x * other,
+                y_cords=self.y * other
             )
         else:
             raise TypeError("Unsupported operand type for multiplication")
@@ -36,7 +36,7 @@ class Vector:
                                     end_point: tuple) -> Vector:
         start_x, start_y = start_point
         end_x, end_y = end_point
-        return cls(x=end_x - start_x, y=end_y - start_y)
+        return cls(x_cords=end_x - start_x, y_cords=end_y - start_y)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
