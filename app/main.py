@@ -36,3 +36,12 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return Vector(self.x / self.get_length(), self.y / self.get_length())
+
+    def angle_between(self, other: Vector) -> int:
+        return round(
+            math.degrees(
+                math.acos(
+                    (self * other) / (self.get_length() * other.get_length())
+                )
+            )
+        )
