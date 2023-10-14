@@ -30,3 +30,6 @@ class Vector:
             end_point[0] - start_point[0],
             end_point[1] - start_point[1]
         )
+
+    def get_length(self) -> float:
+        return math.sqrt(self.x ** 2 + self.y ** 2)
