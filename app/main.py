@@ -45,3 +45,7 @@ class Vector:
                 )
             )
         )
+
+    def get_angle(self) -> int:
+        angle = math.degrees(math.atan2(self.x, self.y))
+        return abs(round(angle))
