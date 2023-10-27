@@ -25,9 +25,9 @@ class Vector:
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
-        x = round(end_point[0] - start_point[0], 2)
-        y = round(end_point[1] - start_point[1], 2)
-        return cls(x, y)
+        x_coord = round(end_point[0] - start_point[0], 2)
+        y_coord = round(end_point[1] - start_point[1], 2)
+        return cls(x_coord, y_coord)
 
     def get_length(self) -> float:
         return round(math.sqrt(self.x ** 2 + self.y ** 2), 15)
