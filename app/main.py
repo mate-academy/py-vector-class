@@ -3,9 +3,14 @@ import math
 
 
 class Vector:
+    x_coord = None
+    y_coord = None
+
     def __init__(self, x: float = 0, y: float = 0) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
+        Vector.y_coord = self.x
+        Vector.x_coord = self.y
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
