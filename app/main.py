@@ -25,24 +25,24 @@ class Vector:
         yaxis = end_point[1] - start_point[1]
         return cls(xaxis, yaxis)
 
-    def get_length(self) -> None:
+    def get_length(self) -> float:
         return math.sqrt(self.xaxis ** 2 + self.yaxis ** 2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
         return Vector(self.xaxis / length, self.yaxis / length)
 
-    def angle_between(self, other):
+    def angle_between(self, other: "Vector") -> int:
         cos_a = (self * other) / (self.get_length() * other.get_length())
         return round(math.degrees(math.acos(cos_a)))
 
-    def get_angle(self):
+    def get_angle(self) -> int:
         cos_a = self.yaxis / self.get_length()
         return round(math.degrees(math.acos(cos_a)))
 
-    def rotate(self, degrees):
+    def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         new_x = self.xaxis * math.cos(radians) - self.yaxis * math.sin(radians)
         new_y = self.xaxis * math.sin(radians) + self.yaxis * math.cos(radians)
