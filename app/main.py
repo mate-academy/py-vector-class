@@ -1,4 +1,6 @@
 from __future__ import annotations
+import math
+
 
 class Vector:
 
@@ -6,6 +8,7 @@ class Vector:
 
         self._X = round(x_coordinate, 2)
         self._Y = round(y_coordinate, 2)
+        self.length = Vector.get_length(self)
 
     def __add__(self, other: Vector) -> Vector:
 
@@ -45,4 +48,37 @@ class Vector:
 
         return Vector(new_x, new_y)
 
-    def get_length(self) -> :
+    def get_length(self) -> float:
+
+        vector_len = (self._X ** 2 + self._Y ** 2) ** (1 / 2)
+
+        return vector_len
+
+    def get_normalized(self) -> Vector:
+
+        norm_x = round(self._X / self.length, 2)
+        norm_y = round(self._Y / self.length, 2)
+
+        return Vector(norm_x, norm_y)
+
+    def angle_between(self, other: Vector) -> (int, float):
+
+        cos_a = (self * other) / (self.length * other.length)
+        angle = math.degrees(math.acos(cos_a))
+
+        return round(angle)
+
+    def get_angle(self) -> (int, float):
+
+        cos_a = self._Y / self.length
+        angle = math.degrees(math.acos(cos_a))
+
+        return round(angle)
+
+    def rotate(self, degrees: int):
+
+        degrees = math.radians(degrees)
+        rotated_x = self._X * math.cos(degrees) - self._Y * math.sin(degrees)
+        rotated_y = self._Y * math.cos(degrees) + self._X * math.sin(degrees)
+
+        return Vector(rotated_x, rotated_y)
