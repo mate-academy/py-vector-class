@@ -37,10 +37,9 @@ class Vector:
         return Vector(new_x, new_y)
 
     @classmethod
-    def create_vector_by_two_points(cls, 
-                                    start_point: tuple, 
-                                    end_point: tuple
-                                   ) -> Vector:
+    def create_vector_by_two_points(cls,
+                                    start_point: tuple,
+                                    end_point: tuple) -> Vector:
 
         new_x = end_point[0] - start_point[0]
         new_y = end_point[1] - start_point[1]
