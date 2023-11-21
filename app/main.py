@@ -4,21 +4,21 @@ import math
 
 class Vector:
     # write your code here
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: int | float, y_coord: int | float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(x=(self.x + other.x), y=(self.y + other.y))
+        return Vector(x_coord=(self.x + other.x), y_coord=(self.y + other.y))
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(x=(self.x - other.x), y=(self.y - other.y))
+        return Vector(x_coord=(self.x - other.x), y_coord=(self.y - other.y))
 
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if isinstance(other, (int, float)):
             return Vector(
-                x=round((self.x * other), 2),
-                y=round((self.y * other), 2)
+                x_coord=round((self.x * other), 2),
+                y_coord=round((self.y * other), 2)
             )
         if isinstance(other, Vector):
             return (self.x * other.x) + (self.y * other.y)
@@ -30,8 +30,8 @@ class Vector:
             end_point: tuple
     ) -> Vector:
         return cls(
-            x=(end_point[0] - start_point[0]),
-            y=(end_point[1] - start_point[1])
+            x_coord=(end_point[0] - start_point[0]),
+            y_coord=(end_point[1] - start_point[1])
         )
 
     def get_length(self) -> float:
@@ -41,7 +41,7 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(x=self.x / length, y=self.y / length)
+        return Vector(x_coord=self.x / length, y_coord=self.y / length)
 
     def angle_between(self, other: Vector) -> int:
         dot_product = (self.x * other.x) + (self.y * other.y)
@@ -59,6 +59,6 @@ class Vector:
     def rotate(self, degrees: int) -> Vector:
         degrees = math.radians(degrees)
         return Vector(
-            x=(self.x * math.cos(degrees) - self.y * math.sin(degrees)),
-            y=(self.x * math.sin(degrees) + self.y * math.cos(degrees))
+            x_coord=(self.x * math.cos(degrees) - self.y * math.sin(degrees)),
+            y_coord=(self.x * math.sin(degrees) + self.y * math.cos(degrees))
         )
