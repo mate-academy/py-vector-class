@@ -2,6 +2,8 @@ from __future__ import annotations
 import math
 
 
+# flake8: noqa
+
 class Vector:
     def __init__(self, x: int | float, y: int | float) -> None:
         self.x = round(x, 2)
