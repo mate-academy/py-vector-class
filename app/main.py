@@ -5,20 +5,20 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, ax: float, bx: float) -> None:
+        self.x = round(ax, 2)
+        self.y = round(bx, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            self.x + other.x,
+            self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            self.x - other.x,
+            self.y - other.y
         )
 
     def __mul__(self, other: Vector | float) -> Vector | float:
@@ -26,8 +26,8 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
         return Vector(
-            x=self.x * other,
-            y=self.y * other
+            self.x * other,
+            self.y * other
         )
 
     def get_length(self) -> float:
@@ -36,8 +36,8 @@ class Vector:
     def get_normalized(self) -> Vector:
         # a = 1 / self.get_length()
         return Vector(
-            x=self.x / self.get_length(),
-            y=self.y / self.get_length()
+            self.x / self.get_length(),
+            self.y / self.get_length()
         )
 
     def angle_between(self, other: Vector) -> float:
@@ -49,11 +49,11 @@ class Vector:
         return self.angle_between(Vector(0, 1))
 
     def rotate(self, angle: float) -> Vector:
-        cosin = math.cos(math.radians(angle))
-        sinus = math.sin(math.radians(angle))
+        cosi = math.cos(math.radians(angle))
+        sinu = math.sin(math.radians(angle))
         return Vector(
-            x=cosin * self.x - sinus * self.y,
-            y=sinus * self.x + cosin * self.y,
+            cosi * self.x - sinu * self.y,
+            sinu * self.x + cosi * self.y,
         )
 
     @classmethod
