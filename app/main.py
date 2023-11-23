@@ -5,9 +5,9 @@ import math
 class Vector:
     vector_list = []
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordanate_x: float, coordanate_y: float) -> None:
+        self.x = round(coordanate_x, 2)
+        self.y = round(coordanate_y, 2)
         Vector.vector_list.append(self)
 
     @classmethod
@@ -45,11 +45,13 @@ class Vector:
                      / (self.get_length() * other.get_length()))
         return round(math.degrees(math.acos(cos_angle)), 0)
 
-    def get_angle(self) -> int:
+    def get_angle(self) -> float:
         other = Vector(0, 1)
         return self.angle_between(other)
 
     def rotate(self, angle: int) -> "Vector":
-        angl = math.radians(angle)
-        return Vector(self.x * math.cos(angl) - self.y * math.sin(angl),
-                      self.x * math.sin(angl) + self.y * math.cos(angl))
+        angel_degrees = math.radians(angle)
+        return Vector(self.x * math.cos(angel_degrees)
+                      - self.y * math.sin(angel_degrees),
+                      self.x * math.sin(angel_degrees)
+                      + self.y * math.cos(angel_degrees))
