@@ -3,9 +3,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: int | float, y: int | float) -> object:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_cord: int | float, y_cord: int | float) -> object:
+        self.x = round(x_cord, 2)
+        self.y = round(y_cord, 2)
 
     def __add__(self, other: object) -> object:
         return Vector((self.x + other.x), (self.y + other.y))
@@ -49,8 +49,7 @@ class Vector:
         cos = math.cos(radians)
         sin = math.sin(radians)
 
-        x = self.x * cos - self.y * sin
-        y = self.x * sin + self.y * cos
+        x_cord = self.x * cos - self.y * sin
+        y_cord = self.x * sin + self.y * cos
 
-        return Vector(x, y)
-
+        return Vector(x_cord, y_cord)
