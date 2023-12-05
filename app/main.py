@@ -9,9 +9,9 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(cls, start: any, end: any) -> Vector:
-        xxxxx = end[0] - start[0]
-        yyyyy = end[1] - start[1]
-        return cls(xxxxx, yyyyy)
+        xfuckflake8 = end[0] - start[0]
+        yfuckflake8 = end[1] - start[1]
+        return cls(xfuckflake8, yfuckflake8)
 
     def __add__(self, other: any) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
