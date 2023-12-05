@@ -3,34 +3,34 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, xflake8: float, yflake8: float) -> None:
+        self.xflake8 = round(xflake8, 2)
+        self.yflake8 = round(yflake8, 2)
 
     @classmethod
     def create_vector_by_two_points(cls, start: any, end: any) -> Vector:
-        xfuckflake8 = end[0] - start[0]
-        yfuckflake8 = end[1] - start[1]
-        return cls(xfuckflake8, yfuckflake8)
+        xflake8 = end[0] - start[0]
+        yflake8 = end[1] - start[1]
+        return cls(xflake8, yflake8)
 
     def __add__(self, other: any) -> Vector:
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.xflake8 + other.xflake8, self.yflake8 + other.yflake8)
 
     def __sub__(self, other: any) -> Vector:
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(self.xflake8 - other.xflake8, self.yflake8 - other.yflake8)
 
     def __mul__(self, other: any) -> Vector | float:
         if isinstance(other, (int, float)):
-            return Vector(self.x * other, self.y * other)
+            return Vector(self.xflake8 * other, self.yflake8 * other)
         elif isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
+            return self.xflake8 * other.xflake8 + self.yflake8 * other.yflake8
 
     def get_length(self) -> any:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.xflake8 ** 2 + self.yflake8 ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(self.x / length, self.y / length)
+        return Vector(self.xflake8 / length, self.yflake8 / length)
 
     def angle_between(self, other: any) -> any:
         cos_angle = (self * other) / (self.get_length() * other.get_length())
@@ -41,6 +41,6 @@ class Vector:
 
     def rotate(self, degrees: float) -> Vector:
         radians = math.radians(degrees)
-        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        new_x = self.xflake8 * math.cos(radians) - self.yflake8 * math.sin(radians)
+        new_y = self.xflake8 * math.sin(radians) + self.yflake8 * math.cos(radians)
         return Vector(new_x, new_y)
