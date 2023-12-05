@@ -1,5 +1,5 @@
-import math
 from __future__ import annotations
+import math
 
 
 class Vector:
@@ -8,10 +8,10 @@ class Vector:
         self.y = round(y, 2)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: any, end_point: any) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+    def create_vector_by_two_points(cls, start: any, end: any) -> Vector:
+        xxxxx = end[0] - start[0]
+        yyyyy = end[1] - start[1]
+        return cls(xxxxx, yyyyy)
 
     def __add__(self, other: any) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
