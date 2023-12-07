@@ -75,11 +75,12 @@ Also, Vector class should have such methods:
 Takes `start_point` - tuple of point coordinates, start of the vector,
 `end_point` - tuple of point coordinates, end of the vector. It returns
 Vector.
+
 ```python
 start_point = (5.2, 2.6)
 end_point = (10.7, 6)
 
-vector = Vector.create_vector_by_two_points(start_point, end_point)
+vector = Vector.create_vector_by_two_points(end_point, )
 isinstance(vector, Vector) is True
 vector.x == 5.5
 vector.y == 3.4
