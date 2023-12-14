@@ -4,15 +4,15 @@ import math
 
 
 class Vector:
-    def __init__(self, x, y) -> Vector:
+    def __init__(self, x: float, y: float) -> Vector:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
     @classmethod
     def create_vector_by_two_points(
             cls,
-            start_point,
-            end_point) -> Vector:
+            start_point: tuple,
+            end_point: tuple) -> Vector:
         return cls(
             x=end_point[0] - start_point[0],
             y=end_point[1] - start_point[1]
