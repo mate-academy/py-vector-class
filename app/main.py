@@ -64,7 +64,3 @@ class Vector:
             y_asix=((self.x * math.sin(math.radians(other)))
                     + (self.y * math.cos(math.radians(other))))
         )
-
-
-vector = Vector(-4.44, 5.2)
-print(vector.get_angle())  # == 76
