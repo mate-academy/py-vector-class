@@ -1,57 +1,49 @@
-from __future__ import annotations
 import math
 
 
 class Vector:
-    x_coord = None
-    y_coord = None
+    def __init__(self, x_coords, y_coords):
+        self.x = round(x_coords, 2)
+        self.y = round(y_coords, 2)
 
-    def __init__(self, x: float = 0, y: float = 0) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
-        Vector.y_coord = self.x
-        Vector.x_coord = self.y
-
-    def __add__(self, other: Vector) -> Vector:
+    def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: Vector) -> Vector:
+    def __sub__(self, other):
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: float | Vector) -> Vector | float:
+    def __mul__(self, other):
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
-        return Vector(x=self.x * other,
-                      y=self.y * other)
+        return Vector(x_coords=self.x * other, y_coords=self.y * other)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.x}, {self.y}"
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple,
-                                    end_point: tuple) -> Vector:
-        x_coord = round(end_point[0] - start_point[0], 2)
-        y_coord = round(end_point[1] - start_point[1], 2)
-        return cls(x_coord, y_coord)
+    def create_vector_by_two_points(cls, start_point, end_point):
+        x = round(end_point[0] - start_point[0], 2)
+        y = round(end_point[1] - start_point[1], 2)
+        return cls(x, y)
 
-    def get_length(self) -> float:
+    def get_length(self):
         return round(math.sqrt(self.x ** 2 + self.y ** 2), 15)
 
-    def get_normalized(self) -> float | Vector:
+    def get_normalized(self):
         length = self.get_length()
         return Vector(self.x / length, self.y / length)
 
-    def angle_between(self, other_vector: Vector) -> float:
+    def angle_between(self, other_vector):
         dot_product = self.x * other_vector.x + self.y * other_vector.y
         cos_a = dot_product / (self.get_length() * other_vector.get_length())
         return round(math.degrees(math.acos(cos_a)))
 
-    def get_angle(self) -> float:
+    def get_angle(self):
         angle_radians = math.atan2(self.x, self.y)
         angle_degrees = math.degrees(angle_radians)
         return abs(round(angle_degrees))
 
-    def rotate(self, degrees: float) -> Vector:
+    def rotate(self, degrees):
         radians = math.radians(degrees)
         new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
