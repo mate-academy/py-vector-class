@@ -24,7 +24,7 @@ class Vector:
     @classmethod
     def create_vector_by_two_points(cls, start_point, end_point):
         x = round(end_point[0] - start_point[0], 2)
-        y = round(end_point[1] - start_point[1], 2)git push origin develop
+        y = round(end_point[1] - start_point[1], 2)
         return cls(x, y)
 
     def get_length(self):
