@@ -1,18 +1,19 @@
+from __future__ import annotations
 import math
 
 
 class Vector:
-    def __init__(self, x_coords, y_coords):
+    def __init__(self, x_coords: float, y_coords: float) -> None:
         self.x = round(x_coords, 2)
         self.y = round(y_coords, 2)
 
-    def __add__(self, other):
+    def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other):
+    def __mul__(self, other: float | Vector) -> float | Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(x_coords=self.x * other, y_coords=self.y * other)
