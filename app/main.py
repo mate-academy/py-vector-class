@@ -1,4 +1,5 @@
 import math
+from typing import Union
 
 
 class Vector:
@@ -12,7 +13,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other):
+    def __mul__(self, other: Union["Vector", float]) -> Union["Vector", float]:
         if isinstance(other, Vector):
             return (self.x * other.x) + (self.y * other.y)
 
@@ -24,7 +25,10 @@ class Vector:
             start_point: tuple,
             end_point: tuple
     ) -> "Vector":
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+        return (
+            cls(end_point[0] - start_point[0],
+                end_point[1] - start_point[1])
+        )
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -49,7 +53,12 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         angle_in_radians = math.radians(degrees)
-        new_x = self.x * math.cos(angle_in_radians) - self.y * math.sin(angle_in_radians)
-        new_y = self.x * math.sin(angle_in_radians) + self.y * math.cos(angle_in_radians)
-
+        new_x = (
+            self.x * math.cos(angle_in_radians) -
+            self.y * math.sin(angle_in_radians)
+        )
+        new_y = (
+            self.x * math.sin(angle_in_radians) +
+            self.y * math.cos(angle_in_radians)
+        )
         return Vector(new_x, new_y)
