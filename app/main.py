@@ -3,9 +3,9 @@ from typing import Union
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate_x: float, coordinat_y: float) -> None:
+        self.x = round(coordinate_x, 2)
+        self.y = round(coordinat_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -54,11 +54,11 @@ class Vector:
     def rotate(self, degrees: int) -> "Vector":
         angle_in_radians = math.radians(degrees)
         new_x = (
-            self.x * math.cos(angle_in_radians) -
-            self.y * math.sin(angle_in_radians)
+            self.x * math.cos(angle_in_radians)
+            - self.y * math.sin(angle_in_radians)
         )
         new_y = (
-            self.x * math.sin(angle_in_radians) +
-            self.y * math.cos(angle_in_radians)
+            self.x * math.sin(angle_in_radians)
+            + self.y * math.cos(angle_in_radians)
         )
         return Vector(new_x, new_y)
