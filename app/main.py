@@ -1,10 +1,11 @@
 from __future__ import annotations
 from math import sqrt, degrees, acos, radians, cos, sin
 
+
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, dot_x: float, dot_y: float) -> None:
+        self.x = round(dot_x, 2)
+        self.y = round(dot_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
