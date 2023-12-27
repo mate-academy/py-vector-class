@@ -20,10 +20,13 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: list, end_point: list) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+    def create_vector_by_two_points(
+            cls,
+            start_point: list,
+            end_point: list) -> Vector:
+        x_coord = end_point[0] - start_point[0]
+        y_coord = end_point[1] - start_point[1]
+        return cls(x_coord, y_coord)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
