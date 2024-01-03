@@ -4,10 +4,10 @@ import math
 
 class Vector:
     def __init__(self,
-                 x: int | float,
-                 y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+                 coordinate_x: int | float,
+                 coordinate_y: int | float) -> None:
+        self.x = round(coordinate_x, 2)
+        self.y = round(coordinate_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -26,14 +26,14 @@ class Vector:
                                     start_point: tuple,
                                     end_point: tuple
                                     ) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        coordinate_x = end_point[0] - start_point[0]
+        coordinate_y = end_point[1] - start_point[1]
+        return cls(coordinate_x, coordinate_y)
 
-    def get_length(self):
+    def get_length(self) -> float:
         return math.sqrt(self.x**2 + self.y**2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> Vector:
         length = self.get_length()
         return Vector(self.x / length, self.y / length)
 
@@ -52,4 +52,3 @@ class Vector:
         new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
         return Vector(new_x, new_y)
-
