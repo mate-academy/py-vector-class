@@ -18,8 +18,8 @@ class Vector:
 
     def __mul__(self, number: int | Vector) -> Vector | float:
         if isinstance(number, Vector):
-            return (self.x * number.x +
-                    self.y * number.y)
+            return (self.x * number.x
+                    + self.y * number.y)
         return Vector(self.x * number, self.y * number)
 
     @classmethod
