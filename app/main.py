@@ -4,19 +4,22 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_val: float, y_val: float) -> None:
+        self.x = round(x_val, 2)
+        self.y = round(y_val, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.x + other.x,
+                      self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(self.x - other.x,
+                      self.y - other.y)
 
     def __mul__(self, number: int | Vector) -> Vector | float:
         if isinstance(number, Vector):
-            return self.x * number.x + self.y * number.y
+            return (self.x * number.x +
+                    self.y * number.y)
         return Vector(self.x * number, self.y * number)
 
     @classmethod
@@ -31,10 +34,12 @@ class Vector:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
-        return Vector(self.x / self.get_length(), self.y / self.get_length())
+        return Vector(self.x / self.get_length(),
+                      self.y / self.get_length())
 
     def angle_between(self, other: Vector) -> float:
-        dot_product = self.x * other.x + self.y * other.y
+        dot_product = (self.x * other.x +
+                       self.y * other.y)
         length_product = self.get_length() * other.get_length()
         cos_a = dot_product / length_product
         return round(math.degrees(math.acos(cos_a)))
