@@ -47,17 +47,3 @@ class Vector:
             return Vector(self.x * value, self.y * value)
         elif isinstance(value, Vector):
             return self.x * value.x + self.y * value.y
-
-
-# # Examples of usage:
-# vector1 = Vector(2, 4)
-# vector2 = Vector(-1, 3)
-# vector3 = vector1 + vector2
-# print(isinstance(vector3, Vector))  # True
-# print(vector3.x, vector3.y)  # 1 7
-
-# vector1 = Vector(2, 4)
-# vector2 = Vector(-1, 3)
-# vector3 = vector1 - vector2
-# print(isinstance(vector3, Vector))  # True
-# print(vector3.x, vector3.y)  # 3 1
