@@ -62,7 +62,7 @@ class Vector:
 
     def rotate(self, degr: int | float) -> Vector:
         theta = radians(degr)
-        x = self.x * cos(theta) - self.y * sin(theta)
-        y = self.x * sin(theta) + self.y * cos(theta)
+        x_cord = self.x * cos(theta) - self.y * sin(theta)
+        y_cord = self.x * sin(theta) + self.y * cos(theta)
 
-        return Vector(x, y)
+        return Vector(x_cord, y_cord)
