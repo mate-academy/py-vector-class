@@ -51,7 +51,16 @@ class Vector:
         mag_self = self.get_length()
         mag_other = other.get_length()
 
+        if mag_self == 0 or mag_other == 0:
+            raise ValueError("Can't calculate  = zero ")
         
+        cos_angle = dot_prod / (mag_self * mag_other)
+        cos_angle = min(1, max(cos_angle, -1))
+        angle_res = math.degrees(math.acos(cos_angle))
+        return round(angle_res)
+
+
+
 
 # %%
 vector = Vector(2, 4)
