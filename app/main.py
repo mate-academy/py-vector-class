@@ -1,4 +1,8 @@
+#%%
 from __future__ import annotations
+import math
+
+
 #%%
 class Vector:
     def __init__(self, x: float, y: float) -> None:
@@ -30,26 +34,16 @@ class Vector:
         y_diff = end_point[1] - start_point[1]
         return cls(round(x_diff,2), round(y_diff,2))
 
+    def get_length(self) -> float:
+        return math.sqrt(self.x **2 + self.y **2)
+    
+    def get_normalized(self) -> 'Vector':
+        length = self.get_length()
+        if length == 0:
+            raise ValueError("Can't norm because of zero")
+        return Vector(self.x / length, self.y / length)
 
-#%%
-
-
 # %%
-vector1 = Vector(2, 4)
-vector2 = Vector(-1, 3)
-vector3 = vector1 + vector2
-#%%
-isinstance(vector3, Vector)
-#vector3.x
-vector3.y
+vector = Vector(2, 4)
+vector.get_length()
 # %%
-vector1 = Vector(2, 4)
-vector2 = vector1 * 3.743
-# %%
-start_point = (5.2, 2.6)
-end_point = (10.7, 6)
-vector = Vector.create_vector_by_two_points(start_point, end_point)
-# %%
-isinstance(vector, Vector)
-vector.x
-vector.y
