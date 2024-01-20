@@ -77,6 +77,14 @@ class Vector:
         
         # Return the positive angle less than 360 degrees
         return angle_from_y if angle_from_y >= 0 else angle_from_y + 360
+    
+    def rotate(self, degrees: int) -> "Vector":
+        radians = math.radians(degrees)
+
+        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+
+        return Vector(new_x, new_y)
 # %%
 vector = Vector(2, 4)
 vector.get_length()
