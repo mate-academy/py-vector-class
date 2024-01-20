@@ -60,15 +60,23 @@ class Vector:
         return round(angle_res)
 
     def get_angle(self) -> float:
+       
+        # Calculate the angle in radians between the positive X-axis and the vector
         angle_radians = math.atan2(self.y, self.x)
+        
+        # Convert the angle to degrees
         angle_degrees = math.degrees(angle_radians)
-        angle = angle_degrees % 360
-        angle_from_y_axis = (90 - angle) % 360
-
-        return round(angle_from_y_axis)
-
-
-
+        
+        # Adjust the angle to measure it from the positive Y-axis, clockwise
+        if self.x >= 0:
+            # First or fourth quadrant
+            angle_from_y = (90 - angle_degrees) % 360
+        else:
+            # Second or third quadrant
+            angle_from_y = (90 - angle_degrees) % 360
+        
+        # Return the positive angle less than 360 degrees
+        return angle_from_y if angle_from_y >= 0 else angle_from_y + 360
 # %%
 vector = Vector(2, 4)
 vector.get_length()
