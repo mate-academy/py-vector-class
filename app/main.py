@@ -24,9 +24,12 @@ class Vector:
             raise TypeError("Something with numbers")
 
 
+    @classmethod
+    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> 'Vector':
+        x_diff = end_point[0] - start_point[0]
+        y_diff = end_point[1] - start_point[1]
+        return cls(round(x_diff,2), round(y_diff,2))
 
-    def create_vector_by_two_points(start_point: tuple, end_point: tuple) -> None:
-        pass
 
 #%%
 
@@ -43,6 +46,10 @@ vector3.y
 vector1 = Vector(2, 4)
 vector2 = vector1 * 3.743
 # %%
-isinstance(vector2, Vector)
-vector2.x
-vector2.y
+start_point = (5.2, 2.6)
+end_point = (10.7, 6)
+vector = Vector.create_vector_by_two_points(start_point, end_point)
+# %%
+isinstance(vector, Vector)
+vector.x
+vector.y
