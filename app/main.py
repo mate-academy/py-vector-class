@@ -46,19 +46,26 @@ class Vector:
     def angle_between (self, other: Vector) -> float:
         if not isinstance(other, Vector):
             raise ValueError("something wrong, drink coffee")
-        
+
         dot_prod = self.x * other.x + self.y * other.y
         mag_self = self.get_length()
         mag_other = other.get_length()
 
         if mag_self == 0 or mag_other == 0:
             raise ValueError("Can't calculate  = zero ")
-        
+
         cos_angle = dot_prod / (mag_self * mag_other)
         cos_angle = min(1, max(cos_angle, -1))
         angle_res = math.degrees(math.acos(cos_angle))
         return round(angle_res)
 
+    def get_angle(self) -> float:
+        angle_radians = math.atan2(self.y, self.x)
+        angle_degrees = math.degrees(angle_radians)
+        angle = angle_degrees % 360
+        angle_from_y_axis = (90 - angle) % 360
+
+        return round(angle_from_y_axis)
 
 
 
