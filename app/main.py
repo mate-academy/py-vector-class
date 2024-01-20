@@ -42,6 +42,16 @@ class Vector:
         if length == 0:
             raise ValueError("Can't norm because of zero")
         return Vector(self.x / length, self.y / length)
+    
+    def angle_between (self, other: Vector) -> float:
+        if not isinstance(other, Vector):
+            raise ValueError("something wrong, drink coffee")
+        
+        dot_prod = self.x * other.x + self.y * other.y
+        mag_self = self.get_length()
+        mag_other = other.get_length()
+
+        
 
 # %%
 vector = Vector(2, 4)
