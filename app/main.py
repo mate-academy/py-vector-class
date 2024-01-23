@@ -6,8 +6,8 @@ import math
 #%%
 class Vector:
     def __init__(self, x: float, y: float) -> None:
-        self.x = round(x,2)
-        self.y = round(y,2)
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: "Vector"):
         if not isinstance(other, Vector):
@@ -60,24 +60,30 @@ class Vector:
         return round(angle_res)
 
     def get_angle(self) -> float:
-       
-        # Calculate the angle in radians between the positive X-axis and the vector
-        angle_radians = math.atan2(self.y, self.x)
         
-        # Convert the angle to degrees
-        angle_degrees = math.degrees(angle_radians)
-        
-        # Adjust the angle to measure it from the positive Y-axis, clockwise
-        if self.x >= 0:
-            # First or fourth quadrant
-            angle_from_y = (90 - angle_degrees) % 360
-        else:
-            # Second or third quadrant
-            angle_from_y = (90 - angle_degrees) % 360
-        
-        # Return the positive angle less than 360 degrees
-        return angle_from_y if angle_from_y >= 0 else angle_from_y + 360
     
+        if self.x == 0:
+            if self.y > 0:
+                return 0  # Straight up
+            elif self.y < 0:
+                return 180  # Straight down
+            else:
+                return 0  # Zero vector, default to 0 degrees
+
+  
+        angle_radians = math.atan2(self.y, self.x)
+
+       
+        angle_degrees = math.degrees(angle_radians)
+
+        
+        angle_from_y = angle_degrees - 90
+
+ 
+        angle_from_y = round(angle_from_y % 360)
+
+        return angle_from_y
+
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
 
