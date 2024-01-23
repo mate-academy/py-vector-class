@@ -4,8 +4,12 @@ import math
 
 class Vector:
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(
+        cls, start_point: tuple, end_point: tuple
+    ) -> Vector:
+        return cls(
+            end_point[0] - start_point[0], end_point[1] - start_point[1]
+        )
 
     def __init__(self, x: int | float, y: int | float) -> None:
         self.x = round(x, 2)
@@ -28,9 +32,29 @@ class Vector:
     def get_normalized(self) -> Vector:
         return Vector(self.x / self.get_length(), self.y / self.get_length())
 
-    # def angle_between(self):
+    def angle_between(self, other: Vector) -> int | float:
+        return round(
+            math.degrees(
+                math.acos(
+                    (self * other) / (self.get_length() * other.get_length())
+                )
+            )
+        )
 
-    # def get_angle(self):
+    def get_angle(self) -> int | float:
+        return self.angle_between(Vector(0, 1))
 
-    # def rotate(self):
+    def rotate(self, angle: int | float) -> Vector:
+        return Vector(
+            self.x * math.cos(math.radians(angle))
+            - self.y * math.sin(math.radians(angle)),
+            self.x * math.sin(math.radians(angle))
+            + self.y * math.cos(math.radians(angle)),
+        )
 
+
+vector = Vector(33, 8)
+vector2 = vector.rotate(45)
+
+print(vector2.x)
+print(vector2.y)
