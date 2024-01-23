@@ -11,9 +11,9 @@ class Vector:
             end_point[0] - start_point[0], end_point[1] - start_point[1]
         )
 
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, point_x: int | float, point_y: int | float) -> None:
+        self.x = round(point_x, 2)
+        self.y = round(point_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
