@@ -3,20 +3,20 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coord_x: float, coord_y: float) -> None:
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            coord_x=self.x + other.x,
+            coord_y=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            coord_x=self.x - other.x,
+            coord_y=self.y - other.y
         )
 
     def __mul__(self, other: Vector | int | float) -> Vector | float:
@@ -24,8 +24,8 @@ class Vector:
             return self.x * other.x + self.y * other.y
         if isinstance(other, int | float):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                coord_x=self.x * other,
+                coord_y=self.y * other
             )
 
     @classmethod
@@ -33,8 +33,8 @@ class Vector:
             cls, start_point: tuple, end_point: tuple
     ) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            coord_x=end_point[0] - start_point[0],
+            coord_y=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float:
@@ -43,8 +43,8 @@ class Vector:
     def get_normalized(self) -> Vector:
         len_vector = self.get_length()
         return Vector(
-            x=self.x / len_vector,
-            y=self.y / len_vector
+            coord_x=self.x / len_vector,
+            coord_y=self.y / len_vector
         )
 
     def angle_between(self, other: Vector) -> int:
