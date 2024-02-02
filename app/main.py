@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: (int, float), y: (int, float)) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_v: (int, float), y_v: (int, float)) -> None:
+        self.x = round(x_v, 2)
+        self.y = round(y_v, 2)
 
     def __add__(self, other: ("Vector", int, float)) -> "Vector":
         if isinstance(other, Vector):
@@ -34,10 +34,10 @@ class Vector:
         length = self.get_length()
         return Vector(self.x / length, self.y / length)
 
-    def angle_between(self, other_vector) -> int:
-        dot_product = self.x * other_vector.x + self.y * other_vector.y
+    def angle_between(self, other: "Vector") -> int:
+        dot_product = self.x * other.x + self.y * other.y
         cosine_angle = dot_product / (
-            self.get_length() * other_vector.get_length())
+            self.get_length() * other.get_length())
         angle_in_radians = math.acos(cosine_angle)
         angle_in_degrees = math.degrees(angle_in_radians)
         return round(angle_in_degrees)
@@ -46,7 +46,7 @@ class Vector:
         angle_to_y_axis = self.angle_between(Vector(0, 1))
         return angle_to_y_axis
 
-    def rotate(self, degrees) -> "Vector":
+    def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         rotated_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         rotated_y = self.x * math.sin(radians) + self.y * math.cos(radians)
