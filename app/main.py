@@ -18,7 +18,6 @@ class Vector:
         y_difference = end_point[1] - start_point[1]
         return cls(x_difference, y_difference)
 
-
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
@@ -42,7 +41,6 @@ class Vector:
         x_new = self.x * math.cos(radians) - self.y * math.sin(radians)
         y_new = self.x * math.sin(radians) + self.y * math.cos(radians)
         return Vector(x_new, y_new)
-
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
