@@ -3,6 +3,7 @@ from math import sqrt, acos, degrees, cos, sin, radians
 
 
 class Vector:
+    # flake8: noqa VNE001
     def __init__(self, x: float | int, y: float | int) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
