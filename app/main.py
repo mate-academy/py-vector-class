@@ -4,9 +4,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, point_x: float, point_y: float) -> None:
+        self.x = round(point_x, 2)
+        self.y = round(point_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -33,9 +33,9 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        x = self.x / length
-        y = self.y / length
-        return Vector(x, y)
+        new_x = self.x / length
+        new_y = self.y / length
+        return Vector(new_x, new_y)
 
     def angle_between(self, other: Vector) -> int:
         arc_cosine_value = math.acos(
