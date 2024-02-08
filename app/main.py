@@ -3,9 +3,10 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate_x: int | float,
+                 coordinate_y: int | float) -> None:
+        self.x = round(coordinate_x, 2)
+        self.y = round(coordinate_y, 2)
 
     def __add__(self, other: Vector | int | float) -> Vector:
         if isinstance(other, Vector):
