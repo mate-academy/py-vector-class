@@ -65,7 +65,7 @@ class Vector:
         return round(math.degrees(math.acos(result)))
 
     def get_angle(self) -> int | float:
-        axis = Vector(0, 1)  # axis y
+        axis = Vector(0, 1)
         scalar = self.x * axis.x + self.y * axis.y
         multiplication = (math.sqrt(self.x ** 2 + self.y ** 2)) * (math.sqrt(axis.x ** 2 + axis.y ** 2))
         result = scalar / multiplication
