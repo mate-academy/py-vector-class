@@ -8,11 +8,9 @@ class Vector:
         self.y = round(y, 2)
 
     def __add__(self, other: Vector | int | float) -> Vector:
-
         if isinstance(other, Vector):
             self.x += other.x
             self.y += other.y
-
         else:
             self.x += other
             self.y += other
