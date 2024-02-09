@@ -4,9 +4,12 @@ from math import sqrt, acos, degrees, ceil, radians, cos, sin
 
 class Vector:
 
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self,
+                 x_coordinate: int | float,
+                 y_coordinate: int | float
+                 ) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
@@ -34,8 +37,8 @@ class Vector:
             end_point: tuple,
     ) -> Vector:
         return Vector(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1],
+            x_coordinate=end_point[0] - start_point[0],
+            y_coordinate=end_point[1] - start_point[1],
         )
 
     def get_length(self) -> int | float:
@@ -44,8 +47,8 @@ class Vector:
     def get_normalized(self) -> None:
         length_of_vector = self.get_length()
         return Vector(
-            x=self.x / length_of_vector,
-            y=self.y / length_of_vector
+            x_coordinate=self.x / length_of_vector,
+            y_coordinate=self.y / length_of_vector
         )
 
     def angle_between(self, other: Vector) -> int:
@@ -68,4 +71,4 @@ class Vector:
         sin_theta = sin(angle_radians)
         rotated_x = self.x * cos_theta - self.y * sin_theta
         rotated_y = self.x * sin_theta + self.y * cos_theta
-        return Vector(x=rotated_x, y=rotated_y)
+        return Vector(x_coordinate=rotated_x, y_coordinate=rotated_y)
