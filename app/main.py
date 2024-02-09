@@ -4,31 +4,27 @@ import math
 
 class Vector:
 
-    def __init__(self, x_vec: int | float, y_vec: int | float) -> None:
-        if isinstance(x_vec, int):
-            self.x = x_vec
+    def __init__(self, x_vec: float, y_vec: float) -> None:
         self.x = round(x_vec, 2)
-        if isinstance(y_vec, int):
-            self.y = y_vec
         self.y = round(y_vec, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y,
+            x_vec=self.x + other.x,
+            y_vec=self.y + other.y,
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y,
+            x_vec=self.x - other.x,
+            y_vec=self.y - other.y,
         )
 
     def __mul__(self, other: int | float | Vector) -> Vector:
         if isinstance(other, (int | float)):
             return Vector(
-                x=self.x * other,
-                y=self.y * other,
+                x_vec=self.x * other,
+                y_vec=self.y * other,
             )
         return (
             self.x * other.x + self.y * other.y
@@ -38,8 +34,8 @@ class Vector:
     def create_vector_by_two_points(
             cls, start_point: tuple, end_point: tuple) -> Vector:
         return cls(
-            x=float(end_point[0]) - float(start_point[0]),
-            y=float(end_point[1]) - float(start_point[1]),
+            x_vec=float(end_point[0]) - float(start_point[0]),
+            y_vec=float(end_point[1]) - float(start_point[1]),
         )
 
     def get_length(self) -> float:
