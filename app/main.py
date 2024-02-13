@@ -8,15 +8,15 @@ class Vector:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, other) -> Vector:
+    def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
     pass
 
-    def __sub__(self, other) -> Vector:
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other) -> [float, Vector]:
+    def __mul__(self, other: [Vector, float]) -> [float, Vector]:
         if isinstance(other, Vector) is True:
             return self.x * other.x + self.y * other.y
         return Vector(self.x * other, self.y * other)
@@ -34,7 +34,7 @@ class Vector:
     def get_normalized(self) -> Vector:
         return Vector(self.x / self.get_length(), self.y / self.get_length())
 
-    def angle_between(self, other) -> int:
+    def angle_between(self, other: Vector) -> int:
         return round(math.degrees(
             math.acos((self * other) / (self.get_length() * other.get_length()
                                         ))))
