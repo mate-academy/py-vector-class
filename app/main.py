@@ -2,7 +2,7 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
+    def __init__(self, x: int | float, y: int | float) -> None:  # noqa
         self.x = round(x, 2)
         self.y = round(y, 2)
 
@@ -28,7 +28,9 @@ class Vector:
         )
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple):
+    def create_vector_by_two_points(
+            cls, start_point: tuple, end_point: tuple
+    ) -> object:
         return cls(
             end_point[0] - start_point[0],
             end_point[1] - start_point[1]
