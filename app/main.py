@@ -18,15 +18,16 @@ class Vector:
         elif isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
+    @classmethod
     def create_vector_by_two_points(
-        self, start_point: tuple, end_point: tuple
+        cls, start_point: tuple, end_point: tuple
     ) -> "Vector":
         x_diff = end_point[0] - start_point[0]
         y_diff = end_point[1] - start_point[1]
-        return self.__class__(x_diff, y_diff)
+        return cls(x_diff, y_diff)
 
     def get_length(self) -> float:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.x**2 + self.y**2)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
