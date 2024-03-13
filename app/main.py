@@ -5,8 +5,8 @@ from math import degrees, sin, cos, acos, radians
 
 class Vector:
     def __init__(self, xx: float, yy: float) -> None:
-        self.xx = round(xx, 2)
-        self.yy = round(yy, 2)
+        self.x = round(xx, 2)
+        self.y = round(yy, 2)
 
     @classmethod
     def create_vector_by_two_points(
@@ -16,22 +16,22 @@ class Vector:
         )
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.xx + other.xx, self.yy + other.yy)
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.xx - other.xx, self.yy - other.yy)
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: float | Vector) -> Any:
         if isinstance(other, (int, float)):
-            return Vector(self.xx * other, self.yy * other)
-        return self.xx * other.xx + self.yy * other.yy
+            return Vector(self.x * other, self.y * other)
+        return self.x * other.x + self.y * other.y
 
     def get_length(self) -> float:
-        return (self.xx ** 2 + self.yy ** 2) ** 0.5
+        return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(self.xx / length, self.yy / length)
+        return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: Vector) -> int:
         return round(degrees(acos(
@@ -46,6 +46,6 @@ class Vector:
 
     def rotate(self, degree: int) -> Vector:
         return Vector(
-            self.xx * cos(radians(degree)) - self.yy * sin(radians(degree)),
-            self.xx * sin(radians(degree)) + self.yy * cos(radians(degree))
+            self.x * cos(radians(degree)) - self.y * sin(radians(degree)),
+            self.x * sin(radians(degree)) + self.y * cos(radians(degree))
         )
