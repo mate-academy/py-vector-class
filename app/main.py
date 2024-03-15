@@ -4,20 +4,20 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float = 0, y: float = 0) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, xx: float = 0, yy: float = 0) -> None:
+        self.x = round(xx, 2)
+        self.y = round(yy, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=round(self.x + other.x, 2),
-            y=round(self.y + other.y, 2)
+            xx=round(self.x + other.x, 2),
+            yy=round(self.y + other.y, 2)
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=round(self.x - other.x, 2),
-            y=round(self.y - other.y, 2)
+            xx=round(self.x - other.x, 2),
+            yy=round(self.y - other.y, 2)
         )
 
     def __mul__(self, other: Vector | int | float) -> Vector | int | float:
@@ -25,8 +25,8 @@ class Vector:
             return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                xx=self.x * other,
+                yy=self.y * other
             )
         else:
             raise TypeError("Unsupported operand type for +=")
@@ -43,8 +43,8 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return Vector(
-            x=round(self.x * (1 / self.get_length()), 2),
-            y=round(self.y * (1 / self.get_length()), 2)
+            xx=round(self.x * (1 / self.get_length()), 2),
+            yy=round(self.y * (1 / self.get_length()), 2)
         )
 
     def angle_between(self, other: Vector) -> int:
