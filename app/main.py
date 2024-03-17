@@ -4,9 +4,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, vector_plus: Vector) -> Vector:
         return Vector(self.x + vector_plus.x, self.y + vector_plus.y)
@@ -36,7 +36,7 @@ class Vector:
     def get_normalized(self) -> Vector:
         return Vector(self.x / self.get_length(), self.y / self.get_length())
 
-    def angle_between(self, vect) -> int:
+    def angle_between(self, vect: Vector) -> int:
         return round(math.degrees(math.acos(
             (self.x * vect.x + self.y * vect.y)
             / (self.get_length() * vect.get_length())
