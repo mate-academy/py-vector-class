@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_dot: int | float, y_dot: int | float) -> None:
+        self.x = round(x_dot, 2)
+        self.y = round(y_dot, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
