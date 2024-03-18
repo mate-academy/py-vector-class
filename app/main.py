@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_: float, y_: float) -> None:
+        self.x = round(x_, 2)
+        self.y = round(y_, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -23,9 +23,9 @@ class Vector:
             cls, start_point: tuple,
             end_point: tuple
     ) -> "Vector":
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        x_ = end_point[0] - start_point[0]
+        y_ = end_point[1] - start_point[1]
+        return cls(x_, y_)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
