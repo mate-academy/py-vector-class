@@ -7,6 +7,7 @@ class Vector:
     def __init__(self, x_vector: float | int, y_vector: float | int) -> object:
         self.x = round(x_vector, 2)
         self.y = round(y_vector, 2)
+# coment
 
     def __add__(self, other: Vector | float) -> Vector:
         if isinstance(other, Vector):
