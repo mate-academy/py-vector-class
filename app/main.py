@@ -21,9 +21,9 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> "Vector":
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
+    def create_vector_by_two_points(cls, start: tuple, end: tuple) -> "Vector":
+        x = end[0] - start[0]
+        y = end[1] - start[1]
         return cls(x, y)
 
     def get_length(self) -> float:
@@ -34,7 +34,7 @@ class Vector:
         if length != 0:
             return Vector(self.x / length, self.y / length)
 
-    def angle_between(self, other: 'Vector') -> int:
+    def angle_between(self, other: "Vector") -> int:
         cos_angle = (self * other) / (self.get_length() * other.get_length())
         angle_in_radians = math.acos(cos_angle)
         angle_in_degrees = math.degrees(angle_in_radians)
@@ -45,7 +45,7 @@ class Vector:
         angle_in_degrees = math.degrees(angle_in_radians)
         return round(math.fabs(angle_in_degrees))
 
-    def rotate(self, degrees: int) -> 'Vector':
+    def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         cos_theta = math.cos(radians)
         sin_theta = math.sin(radians)
