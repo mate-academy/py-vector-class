@@ -4,7 +4,7 @@ import math
 class Vector:
     def __init__(self, x1: float, y1: float) -> None:
         self.x = round(x1, 2)
-        self.y= round(y1, 2)
+        self.y = round(y1, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         if isinstance(other, Vector):
