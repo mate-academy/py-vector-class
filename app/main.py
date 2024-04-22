@@ -9,14 +9,10 @@ class Vector:
     def __add__(self, other: "Vector") -> "Vector":
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
-        else:
-            raise TypeError("Unsupported operand type for +: {} and {}".format(type(self), type(other)))
 
     def __sub__(self, other: "Vector") -> "Vector":
         if isinstance(other, Vector):
             return Vector(self.x - other.x, self.y - other.y)
-        else:
-            raise TypeError("Unsupported operand type for -: {} and {}".format(type(self), type(other)))
 
     def __mul__(self, other):
         if isinstance(other, (int, float)):
