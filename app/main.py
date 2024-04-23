@@ -48,8 +48,8 @@ class Vector:
         return round(math.degrees(math.acos(cosine)))
 
     def get_angle(self) -> int:
-        a = self.get_length()
-        arcos = math.acos(self.y / a)
+        acer = self.get_length()
+        arcos = math.acos(self.y / acer)
         return round(math.degrees(arcos))
 
     def rotate(self, degrees: int) -> "Vector":
