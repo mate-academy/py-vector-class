@@ -2,7 +2,7 @@ import math
 
 
 class Vector:
-    def __init__(self, x_coordinate: float, y_coordinate: float):
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
         self.x = round(x_coordinate, 2)
         self.y = round(y_coordinate, 2)
 
