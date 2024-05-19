@@ -79,3 +79,4 @@ class Vector:
             self.x * math.sin(math.radians(degrees))
             + self.y * math.cos(math.radians(degrees))
         )
+
