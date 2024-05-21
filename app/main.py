@@ -43,9 +43,9 @@ class Vector:
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self * other
-        angle_rad = math.acos(dot_product / (
-                self.get_length() * other.get_length()
-        ))
+        angle_rad = math.acos(
+            dot_product / (self.get_length() * other.get_length())
+        )
         return round(math.degrees(angle_rad))
 
     def get_angle(self) -> int:
