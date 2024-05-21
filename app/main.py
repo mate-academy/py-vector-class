@@ -6,7 +6,7 @@ from typing import Union
 class Vector:
     Number = Union[float, int]
 
-    def __init__(self, coordinate_x: Number, coordinate_y: Number) -> None:
+    def __init__(self, coordinate_x: Number, coordinate_y: Number):
         self.x = round(coordinate_x, 2)
         self.y = round(coordinate_y, 2)
 
