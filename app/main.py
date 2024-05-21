@@ -6,7 +6,11 @@ from typing import Union
 class Vector:
     Number = Union[float, int]
 
-    def __init__(self, coordinate_x: Number, coordinate_y: Number):
+    def __init__(
+            self,
+            coordinate_x: Number,
+            coordinate_y: Number
+    ) -> None:
         self.x = round(coordinate_x, 2)
         self.y = round(coordinate_y, 2)
 
@@ -23,8 +27,12 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(
+            cls, start_point: tuple, end_point: tuple
+    ) -> Vector:
+        return cls(
+            end_point[0] - start_point[0], end_point[1] - start_point[1]
+        )
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -35,7 +43,9 @@ class Vector:
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self * other
-        angle_rad = math.acos(dot_product / (self.get_length() * other.get_length()))
+        angle_rad = math.acos(dot_product / (
+                self.get_length() * other.get_length()
+        ))
         return round(math.degrees(angle_rad))
 
     def get_angle(self) -> int:
