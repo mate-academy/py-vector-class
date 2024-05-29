@@ -3,7 +3,7 @@ import math
 
 
 class Vector:
-    
+
     def __init__(self, vector_x: float, vector_y: float) -> None:
         self.x = round(vector_x, 2)
         self.y = round(vector_y, 2)
