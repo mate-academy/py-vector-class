@@ -123,18 +123,18 @@ def test_create_vector_by_two_points(start_point, end_point, vector_coords):
 
 
 @pytest.mark.parametrize(
-    'coords,length',
+    'coords,lenght',
     [
         ((0, 10.44), 10.44),
         ((-4.44, 5.2), 6.837660418593483),
         ((-3.88, -4.98), 6.313065816225901),
     ]
 )
-def test_get_length(coords, length):
+def test_get_lenght(coords, lenght):
     vector = Vector(*coords)
-    assert vector.get_length() == length, (
+    assert vector.get_lenght() == lenght, (
         f"When 'vector' coords equals to {coords}, "
-        f"'vector.get_length()' should return {length}"
+        f"'vector.get_length()' should return {lenght}"
     )
 
 
