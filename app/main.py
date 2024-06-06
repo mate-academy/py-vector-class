@@ -3,24 +3,24 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_cord: float, y_cord: float) -> None:
+        self.x_cord = round(x_cord, 2)
+        self.y_cord = round(y_cord, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        x = self.x + other.x
-        y = self.y + other.y
-        return Vector(x, y)
+        x_cord = self.x_cord + other.x_cord
+        y_cord = self.y_cord + other.y_cord
+        return Vector(x_cord, y_cord)
 
     def __sub__(self, other: Vector) -> Vector:
-        x = self.x - other.x
-        y = self.y - other.y
-        return Vector(x, y)
+        x_cord = self.x_cord - other.x_cord
+        y_cord = self.y_cord - other.y_cord
+        return Vector(x_cord, y_cord)
 
     def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector) is True:
-            return self.x * other.x + self.y * other.y
-        return Vector(self.x * other, self.y * other)
+            return self.x_cord * other.x_cord + self.y_cord * other.y_cord
+        return Vector(self.x_cord * other, self.y_cord * other)
 
     @classmethod
     def create_vector_by_two_points(cls,
@@ -35,13 +35,13 @@ class Vector:
         return end_vector - start_vector
 
     def get_length(self) -> float:
-        return (self.x ** 2 + self.y ** 2) ** 0.5
+        return (self.x_cord ** 2 + self.y_cord ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        x = self.x / length
-        y = self.y / length
-        return Vector(x, y)
+        x_cord = self.x_cord / length
+        y_cord = self.y_cord / length
+        return Vector(x_cord, y_cord)
 
     def angle_between(self, other: Vector) -> int:
         cos_a = self * other / (self.get_length() * other.get_length())
@@ -55,6 +55,8 @@ class Vector:
     def rotate(self, degrees: int) -> Vector:
         """rx = x cos α - y sin α  ry = y cos α + x sin α"""
         radians = math.radians(degrees)
-        x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        y = self.y * math.cos(radians) + self.x * math.sin(radians)
-        return Vector(x, y)
+        x_cord = (self.x_cord * math.cos(radians)
+                  - self.y_cord * math.sin(radians))
+        y_cord = (self.y_cord * math.cos(radians)
+                  + self.x_cord * math.sin(radians))
+        return Vector(x_cord, y_cord)

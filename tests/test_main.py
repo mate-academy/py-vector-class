@@ -15,7 +15,7 @@ def test_vector_instance():
 
 def test_vector_decimals():
     vector = Vector(-2.343, 8.008)
-    assert (vector.x, vector.y) == (-2.34, 8.01), (
+    assert (vector.x_cord, vector.y_cord) == (-2.34, 8.01), (
         "Attributes 'x', 'y' should be rounded to two decimals."
     )
 
@@ -35,7 +35,7 @@ def test_vector_add(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
     assert isinstance(vector3, Vector), (
         "Result of addiction of Vectors should be Vector"
     )
-    assert (vector3.x, vector3.y) == (point3_x, point3_y), (
+    assert (vector3.x_cord, vector3.y_cord) == (point3_x, point3_y), (
         f"If coordinates of vector1 is {point1_x, point1_y}, "
         f"and coordinates of vector2 is {point2_x, point2_y},"
         f"addition of this vectors should be a vector with coordinates equal to {point3_x, point3_y}"
@@ -57,7 +57,7 @@ def test_vector_sub(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
     assert isinstance(vector3, Vector), (
         "Result of subtraction of Vectors should be Vector"
     )
-    assert (vector3.x, vector3.y) == (point3_x, point3_y), (
+    assert (vector3.x_cord, vector3.y_cord) == (point3_x, point3_y), (
         f"If coordinates of vector1 is {point1_x}, {point1_y}, "
         f"and coordinates of vector2 is {point2_x}, {point2_y},"
         f"subtraction of this vectors should be a vector with coordinates equal to {point3_x}, {point3_y}"
@@ -78,7 +78,7 @@ def test_vector_mul_number(vector1_x, vector1_y, number, vector2_x, vector2_y):
     assert isinstance(vector2, Vector), (
         "Result of multiplying Vector by number should be Vector"
     )
-    assert (vector2.x, vector2.y) == (vector2_x, vector2_y), (
+    assert (vector2.x_cord, vector2.y_cord) == (vector2_x, vector2_y), (
         f"If coordinates of vector1 is {vector1_x}, {vector1_y}, "
         f"result of multiplying vector1 by {number} should equal to {vector2_x}, {vector2_y}"
     )
@@ -115,7 +115,7 @@ def test_create_vector_by_two_points(start_point, end_point, vector_coords):
     assert isinstance(vector, Vector), (
         "Result of 'create_vector_by_two_points' should be Vector"
     )
-    assert (vector.x, vector.y) == vector_coords, (
+    assert (vector.x_cord, vector.y_cord) == vector_coords, (
         f"When 'start_point' equals to {start_point}, "
         f"and 'end_point' equals to {end_point}, "
         f"coordinates of result vector should equal to {vector_coords}"
@@ -149,7 +149,7 @@ def test_get_length(coords, length):
 def test_get_normalized(coords, normalized_coords):
     vector = Vector(*coords)
     normalized_vector = vector.get_normalized()
-    assert (normalized_vector.x, normalized_vector.y) == normalized_coords, (
+    assert (normalized_vector.x_cord, normalized_vector.y_cord) == normalized_coords, (
         f"When 'vector' coords equals to {coords}, "
         f"'vector.get_normalized()' should return vector "
         f"with coordinates {normalized_coords}"
@@ -204,7 +204,7 @@ def test_rotate(coords_1, degrees, coords_2):
     assert isinstance(vector2, Vector), (
         "Result of 'vector.rotate(degrees)' should be Vector"
     )
-    assert (vector2.x, vector2.y) == coords_2, (
+    assert (vector2.x_cord, vector2.y_cord) == coords_2, (
         f"When 'vector' coordinates equal to {coords_1}, "
         f"and 'vector2' is 'vector.rotate({degrees})',"
         f"'vector2' coordinates should equal to {coords_2}"
