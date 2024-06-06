@@ -24,8 +24,8 @@ to two decimals**.
 
 ```python
 vector = Vector(-2.343, 8.008)
-vector.x_cord == -2.34
-vector.y_cord == 8.0
+vector.x == -2.34
+vector.y == 8.0
 ```
 
 Vector class should have such magic methods:
@@ -39,8 +39,8 @@ vector2 = Vector(-1, 3)
 vector3 = vector1 + vector2
 
 isinstance(vector3, Vector) is True
-vector3.x_cord == 1
-vector3.y_cord == 7
+vector3.x == 1
+vector3.y == 7
 ```
 - `__sub__`
 
@@ -52,8 +52,8 @@ vector2 = Vector(-1, 3)
 vector3 = vector1 - vector2
 
 isinstance(vector3, Vector) is True
-vector3.x_cord == 3
-vector3.y_cord == 1
+vector3.x == 3
+vector3.y == 1
 ```
 - `__mul__`
 
@@ -85,8 +85,8 @@ end_point = (10.7, 6)
 
 vector = Vector.create_vector_by_two_points(start_point, end_point)
 isinstance(vector, Vector) is True
-vector.x_cord == 5.5
-vector.y_cord == 3.4
+vector.x == 5.5
+vector.y == 3.4
 ```
 **NOTE**: `create_vector_by_two_points` should be a `classmethod`
 
@@ -107,8 +107,8 @@ vector1.get_length() == 13.6
 
 vector2 = vector1.get_normalized()
 
-vector2.x_cord == 0.96
-vector2.y_cord == -0.29
+vector2.x == 0.96
+vector2.y == -0.29
 vector2.get_length() == 1.0
 ```
 - `angle_between`
@@ -142,8 +142,8 @@ It returns rotated Vector by `degrees`.
 vector = Vector(33, 8)
 vector2 = vector.rotate(45)
 
-vector2.x_cord == 17.68
-vector2.y_cord == 28.99
+vector2.x == 17.68
+vector2.y == 28.99
 ```
 You may use `math.cos`, `math.sin` here, but they use **radians**.
 In order to convert degrees to radians use `math.radians`.
