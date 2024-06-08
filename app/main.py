@@ -3,9 +3,9 @@ from math import sqrt, acos, degrees, cos, sin, radians
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, cord_x: float, cord_y: float) -> None:
+        self.x = round(cord_x, 2)
+        self.y = round(cord_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
