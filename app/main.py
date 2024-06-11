@@ -43,7 +43,7 @@ class Vector:
     def get_length(self) -> float:
         return math.sqrt(self.x * self.x + self.y * self.y)
 
-    def get_normalized(self):
+    def get_normalized(self) -> Vector:
         length = self.get_length()
         if length == 1:
             return self
@@ -62,13 +62,10 @@ class Vector:
         angle = math.degrees(math.acos(cos_a))
         return round(angle)
 
-    def rotate(self, degree: int):
+    def rotate(self, degree: int) -> Vector:
         radians = math.radians(degree)
         cos_theta = math.cos(radians)
         sin_theta = math.sin(radians)
         x_new = self.x * cos_theta - self.y * sin_theta
         y_new = self.x * sin_theta + self.y * cos_theta
         return Vector(round(x_new, 2), round(y_new, 2))
-
-
-
