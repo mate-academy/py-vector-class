@@ -5,100 +5,100 @@ from app.main import Vector
 
 def test_vector_instance():
     vector = Vector(3, 4)
-    assert hasattr(vector, 'x'), (
-        "Vector instance should have attribute 'x'"
+    assert hasattr(vector, 'coord_x'), (
+        "Vector instance should have attribute 'coord_x'"
     )
-    assert hasattr(vector, 'y'), (
-        "Vector instance should have attribute 'y'"
+    assert hasattr(vector, 'coord_y'), (
+        "Vector instance should have attribute 'coord_y'"
     )
 
 
 def test_vector_decimals():
     vector = Vector(-2.343, 8.008)
-    assert (vector.x, vector.y) == (-2.34, 8.01), (
-        "Attributes 'x', 'y' should be rounded to two decimals."
+    assert (vector.coord_x, vector.coord_y) == (-2.34, 8.01), (
+        "Attributes 'coord_x', 'coord_y' should be rounded to two decimals."
     )
 
 
 @pytest.mark.parametrize(
-    'point1_x,point1_y,point2_x,point2_y,point3_x,point3_y',
+    'point1_coord_x,point1_coord_y,point2_coord_x,point2_coord_y,point3_coord_x,point3_coord_y',
     [
         (0, 0, 1, -2, 1, -2),
         (3.11, 5.56, 4.5, -10.2, 7.61, -4.64),
         (2, -2, -2, 2, 0, 0)
     ]
 )
-def test_vector_add(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
-    vector1 = Vector(point1_x, point1_y)
-    vector2 = Vector(point2_x, point2_y)
+def test_vector_add(point1_coord_x, point1_coord_y, point2_coord_x, point2_coord_y, point3_coord_x, point3_coord_y):
+    vector1 = Vector(point1_coord_x, point1_coord_y)
+    vector2 = Vector(point2_coord_x, point2_coord_y)
     vector3 = vector1 + vector2
     assert isinstance(vector3, Vector), (
         "Result of addiction of Vectors should be Vector"
     )
-    assert (vector3.x, vector3.y) == (point3_x, point3_y), (
-        f"If coordinates of vector1 is {point1_x, point1_y}, "
-        f"and coordinates of vector2 is {point2_x, point2_y},"
-        f"addition of this vectors should be a vector with coordinates equal to {point3_x, point3_y}"
+    assert (vector3.coord_x, vector3.coord_y) == (point3_coord_x, point3_coord_y), (
+        f"If coordinates of vector1 is {point1_coord_x, point1_coord_y}, "
+        f"and coordinates of vector2 is {point2_coord_x, point2_coord_y},"
+        f"addition of this vectors should be a vector with coordinates equal to {point3_coord_x, point3_coord_y}"
     )
 
 
 @pytest.mark.parametrize(
-    'point1_x,point1_y,point2_x,point2_y,point3_x,point3_y',
+    'point1_coord_x,point1_coord_y,point2_coord_x,point2_coord_y,point3_coord_x,point3_coord_y',
     [
         (0, 0, 1, -2, -1, 2),
         (3.11, 5.56, 4.5, -10.2, -1.39, 15.76),
         (2, -2, -2, 2, 4, -4)
     ]
 )
-def test_vector_sub(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
-    vector1 = Vector(point1_x, point1_y)
-    vector2 = Vector(point2_x, point2_y)
+def test_vector_sub(point1_coord_x, point1_coord_y, point2_coord_x, point2_coord_y, point3_coord_x, point3_coord_y):
+    vector1 = Vector(point1_coord_x, point1_coord_y)
+    vector2 = Vector(point2_coord_x, point2_coord_y)
     vector3 = vector1 - vector2
     assert isinstance(vector3, Vector), (
         "Result of subtraction of Vectors should be Vector"
     )
-    assert (vector3.x, vector3.y) == (point3_x, point3_y), (
-        f"If coordinates of vector1 is {point1_x}, {point1_y}, "
-        f"and coordinates of vector2 is {point2_x}, {point2_y},"
-        f"subtraction of this vectors should be a vector with coordinates equal to {point3_x}, {point3_y}"
+    assert (vector3.coord_x, vector3.coord_y) == (point3_coord_x, point3_coord_y), (
+        f"If coordinates of vector1 is {point1_coord_x}, {point1_coord_y}, "
+        f"and coordinates of vector2 is {point2_coord_x}, {point2_coord_y},"
+        f"subtraction of this vectors should be a vector with coordinates equal to {point3_coord_x}, {point3_coord_y}"
     )
 
 
 @pytest.mark.parametrize(
-    'vector1_x,vector1_y,number,vector2_x,vector2_y',
+    'vector1_coord_x,vector1_coord_y,number,vector2_coord_x,vector2_coord_y',
     [
         (3.44, -4.19, 0, 0, 0),
         (2, 4, 3.743, 7.49, 14.97),
         (-20, -11.6, 7.989, -159.78, -92.67)
     ]
 )
-def test_vector_mul_number(vector1_x, vector1_y, number, vector2_x, vector2_y):
-    vector1 = Vector(vector1_x, vector1_y)
+def test_vector_mul_number(vector1_coord_x, vector1_coord_y, number, vector2_coord_x, vector2_coord_y):
+    vector1 = Vector(vector1_coord_x, vector1_coord_y)
     vector2 = vector1 * number
     assert isinstance(vector2, Vector), (
         "Result of multiplying Vector by number should be Vector"
     )
-    assert (vector2.x, vector2.y) == (vector2_x, vector2_y), (
-        f"If coordinates of vector1 is {vector1_x}, {vector1_y}, "
-        f"result of multiplying vector1 by {number} should equal to {vector2_x}, {vector2_y}"
+    assert (vector2.coord_x, vector2.coord_y) == (vector2_coord_x, vector2_coord_y), (
+        f"If coordinates of vector1 is {vector1_coord_x}, {vector1_coord_y}, "
+        f"result of multiplying vector1 by {number} should equal to {vector2_coord_x}, {vector2_coord_y}"
     )
 
 
 @pytest.mark.parametrize(
-    'vector1_x,vector1_y,vector2_x,vector2_y,result',
+    'vector1_coord_x,vector1_coord_y,vector2_coord_x,vector2_coord_y,result',
     [
         (0, 0, 1, -2, 0),
         (3.11, 5.56, 4.5, -10.2, -42.71699999999999),
         (2, 2, -2, 2, 0)
     ]
 )
-def test_vector_mul_vector(vector1_x, vector1_y, vector2_x, vector2_y, result):
-    vector1 = Vector(vector1_x, vector1_y)
-    vector2 = Vector(vector2_x, vector2_y)
+def test_vector_mul_vector(vector1_coord_x, vector1_coord_y, vector2_coord_x, vector2_coord_y, result):
+    vector1 = Vector(vector1_coord_x, vector1_coord_y)
+    vector2 = Vector(vector2_coord_x, vector2_coord_y)
     dot_product = vector1 * vector2
     assert dot_product == result, (
-        f"Dot product of vector1 with coordinates {vector1_x}, {vector1_y}, "
-        f"and vector2 with coordinates {vector2_x}, {vector2_y} should equal to {result}"
+        f"Dot product of vector1 with coordinates {vector1_coord_x}, {vector1_coord_y}, "
+        f"and vector2 with coordinates {vector2_coord_x}, {vector2_coord_y} should equal to {result}"
     )
 
 
@@ -115,7 +115,7 @@ def test_create_vector_by_two_points(start_point, end_point, vector_coords):
     assert isinstance(vector, Vector), (
         "Result of 'create_vector_by_two_points' should be Vector"
     )
-    assert (vector.x, vector.y) == vector_coords, (
+    assert (vector.coord_x, vector.coord_y) == vector_coords, (
         f"When 'start_point' equals to {start_point}, "
         f"and 'end_point' equals to {end_point}, "
         f"coordinates of result vector should equal to {vector_coords}"
@@ -149,7 +149,7 @@ def test_get_length(coords, length):
 def test_get_normalized(coords, normalized_coords):
     vector = Vector(*coords)
     normalized_vector = vector.get_normalized()
-    assert (normalized_vector.x, normalized_vector.y) == normalized_coords, (
+    assert (normalized_vector.coord_x, normalized_vector.coord_y) == normalized_coords, (
         f"When 'vector' coords equals to {coords}, "
         f"'vector.get_normalized()' should return vector "
         f"with coordinates {normalized_coords}"
@@ -204,7 +204,7 @@ def test_rotate(coords_1, degrees, coords_2):
     assert isinstance(vector2, Vector), (
         "Result of 'vector.rotate(degrees)' should be Vector"
     )
-    assert (vector2.x, vector2.y) == coords_2, (
+    assert (vector2.coord_x, vector2.coord_y) == coords_2, (
         f"When 'vector' coordinates equal to {coords_1}, "
         f"and 'vector2' is 'vector.rotate({degrees})',"
         f"'vector2' coordinates should equal to {coords_2}"
