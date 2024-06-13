@@ -97,7 +97,7 @@ def test_vector_mul_vector(vector1_x, vector1_y, vector2_x, vector2_y, result):
     vector2 = Vector(vector2_x, vector2_y)
     dot_product = vector1 * vector2
     assert dot_product == result, (
-        f"Dot product of vector1 with coordinates {vector1_x}, {vector2_x}, "
+        f"Dot product of vector1 with coordinates {vector1_x}, {vector1_y}, "
         f"and vector2 with coordinates {vector2_x}, {vector2_y} should equal to {result}"
     )
 
