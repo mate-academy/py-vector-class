@@ -3,13 +3,14 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
+    def __init__(self, x: float | int, y: float | int) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if not isinstance(other, Vector):
-            raise TypeError(f"unsupported operand type(s) for +: 'Vector' and {type(other)}")
+            raise TypeError(f"unsupported operand type(s)"
+                            f" for +: 'Vector' and {type(other)}")
 
         return Vector(
             x=self.x + other.x,
@@ -18,7 +19,8 @@ class Vector:
 
     def __sub__(self, other: Vector) -> Vector:
         if not isinstance(other, Vector):
-            raise TypeError(f"unsupported operand type(s) for +: 'Vector' and {type(other)}")
+            raise TypeError(f"unsupported operand type(s)"
+                            f" for +: 'Vector' and {type(other)}")
 
         return Vector(
             x=self.x - other.x,
@@ -27,7 +29,9 @@ class Vector:
 
     def __mul__(self, other: Vector | float | int) -> Vector | float | int:
         if not isinstance(other, (Vector, float, int)):
-            raise TypeError(f"unsupported operand type(s) for +: 'Vector'|'float'|'int' and {type(other)}")
+            raise TypeError(f"unsupported operand type(s)"
+                            f" for +: 'Vector'|'float'|'int'"
+                            f" and {type(other)}")
 
         if isinstance(other, (float, int)):
             return Vector(
@@ -38,7 +42,9 @@ class Vector:
         return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(cls,
+                                    start_point: tuple,
+                                    end_point: tuple) -> Vector:
         return cls(
             x=end_point[0] - start_point[0],
             y=end_point[1] - start_point[1]
@@ -55,7 +61,8 @@ class Vector:
 
     def angle_between(self, other: Vector) -> int:
         if not isinstance(other, Vector):
-            raise TypeError(f"unsupported operand type(s) for +: 'Vector' and {type(other)}")
+            raise TypeError(f"unsupported operand type(s)"
+                            f" for +: 'Vector' and {type(other)}")
 
         cos_a = self * other / (self.get_length() * other.get_length())
         return round(math.degrees(math.acos(cos_a)))
