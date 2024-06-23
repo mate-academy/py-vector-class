@@ -8,22 +8,27 @@ class Vector:
         self.second_cord = round(second_cord, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.first_cord + other.first_cord, self.second_cord + other.second_cord)
+        return Vector(self.first_cord + other.first_cord,
+                      self.second_cord + other.second_cord)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.first_cord - other.first_cord, self.second_cord - other.second_cord)
+        return Vector(self.first_cord - other.first_cord,
+                      self.second_cord - other.second_cord)
 
     def __mul__(self, other: int | float | Vector) -> Vector | float:
         if isinstance(other, float) or isinstance(other, int):
-            return Vector(round(self.first_cord * other, 2), round(self.second_cord * other, 2))
-        return (self.first_cord * other.first_cord) + (self.second_cord * other.second_cord)
+            return Vector(round(self.first_cord * other, 2),
+                          round(self.second_cord * other, 2))
+
+        return ((self.first_cord * other.first_cord)
+                + (self.second_cord * other.second_cord))
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        x_new = end_point[0] - start_point[0]
+        y_new = end_point[1] - start_point[1]
+        return cls(x_new, y_new)
 
     def get_length(self) -> float:
         return math.sqrt(self.first_cord ** 2 + self.second_cord ** 2)
@@ -32,7 +37,8 @@ class Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(round(self.first_cord / length, 2), round(self.second_cord / length, 2))
+        return Vector(round(self.first_cord / length, 2),
+                      round(self.second_cord / length, 2))
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self * other
