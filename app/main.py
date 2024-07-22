@@ -3,22 +3,22 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate1: float, coordinate2: float) -> None:
+        self.x = round(coordinate1, 2)
+        self.y = round(coordinate2, 2)
 
-    def __add__(self, other) -> Vector:
+    def __add__(self, other: Vector) -> Vector:
         if isinstance(self, Vector):
             return Vector(
-                x=self.x + other.x,
-                y=self.y + other.y
+                coordinate1=self.x + other.x,
+                coordinate2=self.y + other.y
             )
 
-    def __sub__(self, other) -> Vector:
+    def __sub__(self, other: Vector) -> Vector:
         if isinstance(self, Vector):
             return Vector(
-                x=self.x - other.x,
-                y=self.y - other.y
+                coordinate1=self.x - other.x,
+                coordinate2=self.y - other.y
             )
 
     def __mul__(self, other: Vector or float) -> Vector or float:
@@ -33,9 +33,9 @@ class Vector:
                                     end_point: tuple[float, float]) -> Vector:
         start_x, start_y = start_point
         end_x, end_y = end_point
-        x = end_x - start_x
-        y = end_y - start_y
-        return cls(x, y)
+        coordinate1 = end_x - start_x
+        coordinate2 = end_y - start_y
+        return cls(coordinate1, coordinate2)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
