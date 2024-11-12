@@ -38,7 +38,8 @@ def test_vector_add(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
     assert (vector3.x, vector3.y) == (point3_x, point3_y), (
         f"If coordinates of vector1 is {point1_x, point1_y}, "
         f"and coordinates of vector2 is {point2_x, point2_y},"
-        f"addition of this vectors should be a vector with coordinates equal to {point3_x, point3_y}"
+        f"addition of this vectors "
+        f"should be a vector with coordinates equal to {point3_x, point3_y}"
     )
 
 
