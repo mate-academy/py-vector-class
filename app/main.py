@@ -48,7 +48,7 @@ class Vector:
         lengths_product = self.get_length() * other.get_length()
         if lengths_product == 0:
             raise ValueError("Cannot calculate angle with a "
-                             "zero-length vector.")
+                             "0 length vector.")
         cos_angle = max(min(dot_product / lengths_product, 1), -1)
         return round(math.degrees(math.acos(cos_angle)))
 
