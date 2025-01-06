@@ -3,27 +3,27 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int or float, y: int or float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_cord: int or float, y_cord: int or float) -> None:
+        self.x = round(x_cord, 2)
+        self.y = round(y_cord, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x + other.x,
-            y=self.y + other.y
+            x_cord=self.x + other.x,
+            y_cord=self.y + other.y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
-            x=self.x - other.x,
-            y=self.y - other.y
+            x_cord=self.x - other.x,
+            y_cord=self.y - other.y
         )
 
     def __mul__(self, other: int or float or Vector) -> Vector:
         if isinstance(other, (int, float)):
             return Vector(
-                x=self.x * other,
-                y=self.y * other
+                x_cord=self.x * other,
+                y_cord=self.y * other
             )
 
         elif isinstance(other, Vector):
@@ -34,8 +34,8 @@ class Vector:
                                     start_point: tuple,
                                     end_point: tuple) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            x_cord=end_point[0] - start_point[0],
+            y_cord=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> int or float:
@@ -43,8 +43,8 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return Vector(
-            x=self.x / self.get_length(),
-            y=self.y / self.get_length()
+            x_cord=self.x / self.get_length(),
+            y_cord=self.y / self.get_length()
         )
 
     def angle_between(self, vector: Vector) -> int or float:
@@ -58,11 +58,11 @@ class Vector:
 
     def rotate(self, degrees: int or float) -> Vector:
         return Vector(
-            x=(
+            x_cord=(
                 self.x * math.cos(math.radians(degrees))
                 - self.y * math.sin(math.radians(degrees))
             ),
-            y=(self.x * math.sin(math.radians(degrees))
-                    + self.y * math.cos(math.radians(degrees))
-            )
+            y_cord=(
+                self.x * math.sin(math.radians(degrees))
+                + self.y * math.cos(math.radians(degrees)))
         )
