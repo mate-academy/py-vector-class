@@ -1,4 +1,5 @@
 import math
+from typing import Union
 
 
 class Vector:
@@ -11,12 +12,10 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.coord_x - other.coord_x, self.coord_y - other.coord_y)
 
-    def __mul__(self, other: float | "Vector") -> float | "Vector":
-        return (
-            Vector(self.coord_x * other, self.coord_y * other)
-            if isinstance(other, (int, float))
-            else round(self.coord_x * other.coord_x + self.coord_y * other.coord_y, 4)
-        )
+    def __mul__(self, other: Union[float, "Vector"]) -> Union[float, "Vector"]:
+        if isinstance(other, (int, float)):
+            return Vector(self.coord_x * other, self.coord_y * other)
+        return round(self.coord_x * other.coord_x + self.coord_y * other.coord_y, 4)
 
     @classmethod
     def create_vector_by_two_points(
@@ -50,5 +49,3 @@ class Vector:
             self.coord_x * cos_angle - self.coord_y * sin_angle,
             self.coord_x * sin_angle + self.coord_y * cos_angle,
         )
-
-
