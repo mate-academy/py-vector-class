@@ -22,7 +22,8 @@ class Vector:
             return Vector(self.coord_x * other, self.coord_y * other)
 
         dot_product = (
-                self.coord_x * other.coord_x + self.coord_y * other.coord_y
+                self.coord_x * other.coord_x +
+                self.coord_y * other.coord_y
         )
         return round(dot_product, 4)
 
@@ -52,7 +53,10 @@ class Vector:
     def angle_between(self, other: "Vector") -> int:
         cos_angle = max(
             -1.0,
-            min(1.0, (self * other) / (self.get_length() * other.get_length())),
+            min(
+                1.0,
+                (self * other) / (self.get_length() * other.get_length())
+            ),
         )
         return round(math.degrees(math.acos(cos_angle)))
 
@@ -65,11 +69,12 @@ class Vector:
         sin_angle = math.sin(radians)
 
         coord_x_rotated = (
-                self.coord_x * cos_angle - self.coord_y * sin_angle
+                self.coord_x * cos_angle -
+                self.coord_y * sin_angle
         )
         coord_y_rotated = (
-                self.coord_x * sin_angle + self.coord_y * cos_angle
+                self.coord_x * sin_angle +
+                self.coord_y * cos_angle
         )
 
         return Vector(coord_x_rotated, coord_y_rotated)
-
