@@ -1,76 +1,55 @@
-import math
-from typing import Union
+from math import acos, degrees, radians, cos, sin, sqrt
 
 
 class Vector:
-    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
-        self.x_coordinate = round(x_coordinate, 2)
-        self.y_coordinate = round(y_coordinate, 2)
+    def __init__(self, coord_x, coord_y):
+        self.coord_x = round(coord_x, 2)
+        self.coord_y = round(coord_y, 2)
 
-    def __add__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coordinate + other.x_coordinate,
-            self.y_coordinate + other.y_coordinate,
-        )
+    def __add__(self, other):
+        return Vector(self.coord_x + other.coord_x, self.coord_y + other.coord_y)
 
-    def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coordinate - other.x_coordinate,
-            self.y_coordinate - other.y_coordinate,
-        )
+    def __sub__(self, other):
+        return Vector(self.coord_x - other.coord_x, self.coord_y - other.coord_y)
 
-    def __mul__(self, other: Union[float, "Vector"]) -> Union[float, "Vector"]:
-        if isinstance(other, Vector):
-            return round(
-                self.x_coordinate * other.x_coordinate
-                + self.y_coordinate * other.y_coordinate,
-                4,
-            )
-        return Vector(
-            round(self.x_coordinate * other, 2),
-            round(self.y_coordinate * other, 2),
-        )
+    def __mul__(self, value):
+        if isinstance(value, (int, float)):
+            return Vector(self.coord_x * value, self.coord_y * value)
+        if isinstance(value, Vector):
+            return round(self.coord_x * value.coord_x + self.coord_y * value.coord_y, 4)
+        raise ValueError("Multiplication with type not supported")
 
     @classmethod
-    def create_vector_by_two_points(
-        cls, start_point: tuple[float, float], end_point: tuple[float, float]
-    ) -> "Vector":
-        return cls(
-            end_point[0] - start_point[0],
-            end_point[1] - start_point[1],
-        )
+    def create_vector_by_two_points(cls, start_point, end_point):
+        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
 
-    def get_length(self) -> float:
-        return math.sqrt(self.x_coordinate**2 + self.y_coordinate**2)
+    def get_length(self):
+        return sqrt(self.coord_x ** 2 + self.coord_y ** 2)
 
-    def get_normalized(self) -> "Vector":
+    def get_normalized(self):
         length = self.get_length()
         if length == 0:
-            return Vector(0, 0)
-        return Vector(
-            round(self.x_coordinate / length, 2),
-            round(self.y_coordinate / length, 2),
-        )
+            raise ValueError("Cannot normalize a zero-length vector")
+        return Vector(self.coord_x / length, self.coord_y / length)
 
-    def angle_between(self, other: "Vector") -> int:
+    def angle_between(self, other):
         dot_product = self * other
         lengths_product = self.get_length() * other.get_length()
         if lengths_product == 0:
-            return 0
-        cos_angle = max(-1.0, min(1.0, dot_product / lengths_product))
-        return round(math.degrees(math.acos(cos_angle)))
+            raise ValueError("Cannot calculate angle with zero-length vector")
+        cos_angle = max(-1, min(1, dot_product / lengths_product))
+        return round(degrees(acos(cos_angle)))
 
-    def get_angle(self) -> int:
+    def get_angle(self):
         reference_vector = Vector(0, 1)
         return self.angle_between(reference_vector)
 
-    def rotate(self, degrees: int) -> "Vector":
-        radians = math.radians(degrees)
-        cos_angle = math.cos(radians)
-        sin_angle = math.sin(radians)
-        new_x_coordinate = self.x_coordinate * cos_angle - self.y_coordinate * sin_angle
-        new_y_coordinate = self.x_coordinate * sin_angle + self.y_coordinate * cos_angle
-        return Vector(
-            round(new_x_coordinate, 2),
-            round(new_y_coordinate, 2),
-        )
+    def rotate(self, degrees_to_rotate):
+        angle_radians = radians(degrees_to_rotate)
+        rotated_x = (self.coord_x * cos(angle_radians) -
+                     self.coord_y * sin(angle_radians))
+        rotated_y = (self.coord_x * sin(angle_radians) +
+                     self.coord_y * cos(angle_radians))
+        return Vector(rotated_x, rotated_y)
+
+
