@@ -8,38 +8,41 @@ class Vector:
         self.coord_y = round(coord_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        x = self.coord_x + other.coord_x
-        y = self.coord_y + other.coord_y
-        return Vector(x, y)
+        coord_x_sum = self.coord_x + other.coord_x
+        coord_y_sum = self.coord_y + other.coord_y
+        return Vector(coord_x_sum, coord_y_sum)
 
     def __sub__(self, other: "Vector") -> "Vector":
-        x = self.coord_x - other.coord_x
-        y = self.coord_y - other.coord_y
-        return Vector(x, y)
+        coord_x_diff = self.coord_x - other.coord_x
+        coord_y_diff = self.coord_y - other.coord_y
+        return Vector(coord_x_diff, coord_y_diff)
 
     def __mul__(self, other: Union[float, "Vector"]) -> Union[float, "Vector"]:
         if isinstance(other, (int, float)):
             return Vector(self.coord_x * other, self.coord_y * other)
-        return round(
-            self.coord_x * other.coord_x + self.coord_y * other.coord_y, 4
-        )
+        dot_product = self.coord_x * other.coord_x + self.coord_y * other.coord_y
+        return round(dot_product, 4)
 
     @classmethod
     def create_vector_by_two_points(
         cls, start: tuple[float, float], end: tuple[float, float]
     ) -> "Vector":
-        return cls(end[0] - start[0], end[1] - start[1])
+        coord_x_diff = end[0] - start[0]
+        coord_y_diff = end[1] - start[1]
+        return cls(coord_x_diff, coord_y_diff)
 
     def get_length(self) -> float:
-        x_sq = self.coord_x ** 2
-        y_sq = self.coord_y ** 2
-        return math.sqrt(x_sq + y_sq)
+        coord_x_squared = self.coord_x ** 2
+        coord_y_squared = self.coord_y ** 2
+        return math.sqrt(coord_x_squared + coord_y_squared)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
             raise ValueError("Cannot normalize a zero-length vector.")
-        return Vector(self.coord_x / length, self.coord_y / length)
+        coord_x_normalized = self.coord_x / length
+        coord_y_normalized = self.coord_y / length
+        return Vector(coord_x_normalized, coord_y_normalized)
 
     def angle_between(self, other: "Vector") -> int:
         cos_angle = max(
@@ -53,8 +56,8 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        cos_angle, sin_angle = math.cos(radians), math.sin(radians)
-        return Vector(
-            self.coord_x * cos_angle - self.coord_y * sin_angle,
-            self.coord_x * sin_angle + self.coord_y * cos_angle,
-        )
+        cos_angle = math.cos(radians)
+        sin_angle = math.sin(radians)
+        coord_x_rotated = self.coord_x * cos_angle - self.coord_y * sin_angle
+        coord_y_rotated = self.coord_x * sin_angle + self.coord_y * cos_angle
+        return Vector(coord_x_rotated, coord_y_rotated)
