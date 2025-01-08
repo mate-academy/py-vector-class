@@ -1,4 +1,5 @@
 import math
+from typing import Union
 
 
 class Vector:
@@ -7,18 +8,27 @@ class Vector:
         self.y_coordinate = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(self.x_coordinate + other.x_coordinate, self.y_coordinate + other.y_coordinate)
+        return Vector(
+            self.x_coordinate + other.x_coordinate,
+            self.y_coordinate + other.y_coordinate,
+        )
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(self.x_coordinate - other.x_coordinate, self.y_coordinate - other.y_coordinate)
+        return Vector(
+            self.x_coordinate - other.x_coordinate,
+            self.y_coordinate - other.y_coordinate,
+        )
 
-    def __mul__(self, other: float | "Vector") -> float | "Vector":
+    def __mul__(self, other: Union[float, "Vector"]) -> Union[float, "Vector"]:
         if isinstance(other, Vector):
             return round(
-                self.x_coordinate * other.x_coordinate + self.y_coordinate * other.y_coordinate, 4
+                self.x_coordinate * other.x_coordinate
+                + self.y_coordinate * other.y_coordinate,
+                4,
             )
         return Vector(
-            round(self.x_coordinate * other, 2), round(self.y_coordinate * other, 2)
+            round(self.x_coordinate * other, 2),
+            round(self.y_coordinate * other, 2),
         )
 
     @classmethod
@@ -37,7 +47,10 @@ class Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(self.x_coordinate / length, self.y_coordinate / length)
+        return Vector(
+            round(self.x_coordinate / length, 2),
+            round(self.y_coordinate / length, 2),
+        )
 
     def angle_between(self, other: "Vector") -> int:
         dot_product = self * other
@@ -57,4 +70,7 @@ class Vector:
         sin_angle = math.sin(radians)
         new_x_coordinate = self.x_coordinate * cos_angle - self.y_coordinate * sin_angle
         new_y_coordinate = self.x_coordinate * sin_angle + self.y_coordinate * cos_angle
-        return Vector(round(new_x_coordinate, 2), round(new_y_coordinate, 2))
+        return Vector(
+            round(new_x_coordinate, 2),
+            round(new_y_coordinate, 2),
+        )
