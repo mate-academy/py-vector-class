@@ -4,18 +4,25 @@ from typing import Union
 
 class Vector:
     def __init__(self, coord_x: float, coord_y: float) -> None:
-        self.coord_x, self.coord_y = round(coord_x, 2), round(coord_y, 2)
+        self.coord_x = round(coord_x, 2)
+        self.coord_y = round(coord_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(self.coord_x + other.coord_x, self.coord_y + other.coord_y)
+        x = self.coord_x + other.coord_x
+        y = self.coord_y + other.coord_y
+        return Vector(x, y)
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(self.coord_x - other.coord_x, self.coord_y - other.coord_y)
+        x = self.coord_x - other.coord_x
+        y = self.coord_y - other.coord_y
+        return Vector(x, y)
 
     def __mul__(self, other: Union[float, "Vector"]) -> Union[float, "Vector"]:
         if isinstance(other, (int, float)):
             return Vector(self.coord_x * other, self.coord_y * other)
-        return round(self.coord_x * other.coord_x + self.coord_y * other.coord_y, 4)
+        return round(
+            self.coord_x * other.coord_x + self.coord_y * other.coord_y, 4
+        )
 
     @classmethod
     def create_vector_by_two_points(
@@ -24,7 +31,9 @@ class Vector:
         return cls(end[0] - start[0], end[1] - start[1])
 
     def get_length(self) -> float:
-        return math.sqrt(self.coord_x**2 + self.coord_y**2)
+        x_sq = self.coord_x ** 2
+        y_sq = self.coord_y ** 2
+        return math.sqrt(x_sq + y_sq)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
