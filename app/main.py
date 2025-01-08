@@ -74,5 +74,3 @@ class Vector:
             round(new_x_coordinate, 2),
             round(new_y_coordinate, 2),
         )
-
-    pass
