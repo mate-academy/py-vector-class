@@ -23,9 +23,9 @@ class Vector:
         raise TypeError
 
     @classmethod
-    def create_vector_by_two_points(cls, p1: tuple[float],
+    def create_vector_by_two_points(cls, point: tuple[float],
                                     p2: tuple[float]) -> Vector:
-        return cls(p2[0] - p1[0], p2[1] - p1[1])
+        return cls(p2[0] - point[0], p2[1] - point[1])
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
