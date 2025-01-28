@@ -7,9 +7,6 @@ class Vector:
         self.x = round(var1, 2)
         self.y = round(var2, 2)
 
-    def __str__(self):
-        return f"{self.x},{self.y}"
-
     def __add__(self, other: float) -> "Vector":
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
@@ -20,7 +17,7 @@ class Vector:
 
     def __mul__(self, other: float) -> "Vector":
         if isinstance(other, Vector):
-            return Vector(round((self.x * other.x) + (self.y * other.y), 2))
+            return (self.x * other.x) + (self.y * other.y)
         if isinstance(other, (int, float)):
             return Vector(round(self.x * other, 2), round(self.y * other, 2))
 
