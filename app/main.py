@@ -48,7 +48,7 @@ class Vector:
         return round(degrees(acos(cos_a)))
 
     def get_angle(self) -> float:
-        if not self.x or self.y:
+        if not self.x or not self.y:
             return 0
         vec = Vector(0, 1)
         return self.angle_between(vec)
