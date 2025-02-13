@@ -34,8 +34,9 @@ class Vector:
         return cls(x_coord, y_coord)
 
     def get_length(self) -> float:
-        return math.sqrt(self.x**2 +
-                         self.y**2)  # Corrected: self.x2 and self.y2
+        return math.sqrt(
+            self.x**2 + self.y**2
+        )  # Corrected: self.x2 and self.y2
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
