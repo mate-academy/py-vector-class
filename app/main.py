@@ -56,7 +56,7 @@ class Vector:
     def rotate(self, degrees: float) -> "Vector":
 
         rds = radians(degrees)
-        point_x = self.x * cos(rds) - self.y * sin(rds)
-        point_y = self.x * sin(rds) + self.y * cos(rds)
+        pointe_x = self.x * cos(rds) - self.y * sin(rds)
+        pointe_y = self.x * sin(rds) + self.y * cos(rds)
 
-        return Vector(point_x, point_y)
+        return Vector(pointe_x, pointe_y)
