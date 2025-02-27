@@ -9,14 +9,23 @@ class Vector:
         self.y = round(y_coordinate, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(x=self.x + other.x, y=self.y + other.y)
+        return Vector(
+            x_coordinate=self.x + other.x,
+            y_coordinate=self.y + other.y
+        )
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(x=self.x - other.x, y=self.y - other.y)
+        return Vector(
+            x_coordinate=self.x - other.x,
+            y_coordinate=self.y - other.y
+        )
 
     def __mul__(self, other: int | float | Vector) -> Vector | float | int:
         if isinstance(other, (int, float)):
-            return Vector(x=self.x * other, y=self.y * other)
+            return Vector(
+                x_coordinate=self.x * other,
+                y_coordinate=self.y * other
+            )
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
@@ -27,8 +36,8 @@ class Vector:
             end_point: tuple[int, int]
     ) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            x_coordinate=end_point[0] - start_point[0],
+            y_coordinate=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float | int:
@@ -36,7 +45,10 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(x=self.x / length, y=self.y / length)
+        return Vector(
+            x_coordinate=self.x / length,
+            y_coordinate=self.y / length
+        )
 
     def angle_between(self, other: Vector) -> int:
         return round(math.degrees(math.acos(
@@ -44,11 +56,14 @@ class Vector:
         )))
 
     def get_angle(self) -> int:
-        return self.angle_between(Vector(x=0, y=1))
+        return self.angle_between(Vector(
+            x_coordinate=0,
+            y_coordinate=1
+        ))
 
     def rotate(self, degrees: int) -> Vector:
         radian = math.radians(degrees)
         return Vector(
-            x=self.x * math.cos(radian) - self.y * math.sin(radian),
-            y=self.x * math.sin(radian) + self.y * math.cos(radian)
+            x_coordinate=self.x * math.cos(radian) - self.y * math.sin(radian),
+            y_coordinate=self.x * math.sin(radian) + self.y * math.cos(radian)
         )
