@@ -2,41 +2,49 @@ import math
 
 
 class Vector:
-
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: int | float, y_coord: int | float) -> None:
+        self.x_coord = round(x_coord, 2)
+        self.y_coord = round(y_coord, 2)
 
     def __add__(self, other: "Vector | int | float") -> "Vector | int | float":
         if isinstance(other, Vector):
-            return Vector(self.x + other.x, self.y + other.y)
-        return Vector(self.x + other, self.y + other)
+            return Vector(
+                self.x_coord + other.x_coord,
+                self.y_coord + other.y_coord,
+            )
+        return Vector(self.x_coord + other, self.y_coord + other)
 
     def __sub__(self, other: "Vector | int | float") -> "Vector | int | float":
         if isinstance(other, Vector):
-            return Vector(self.x - other.x, self.y - other.y)
-        return Vector(self.x - other, self.y - other)
+            return Vector(
+                self.x_coord - other.x_coord,
+                self.y_coord - other.y_coord,
+            )
+        return Vector(self.x_coord - other, self.y_coord - other)
 
-    def __mul__(self, other: "Vector | int | float") -> "Vector | int|  float":
+    def __mul__(self, other: "Vector | float") -> "Vector | int | float":
         if isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
-        return Vector(self.x * other, self.y * other)
+            return (
+                self.x_coord * other.x_coord + self.y_coord * other.y_coord
+            )
+        return Vector(self.x_coord * other, self.y_coord * other)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple)\
-            -> "Vector":
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+    def create_vector_by_two_points(
+        cls, start_point: tuple, end_point: tuple
+    ) -> "Vector":
+        delta_x = end_point[0] - start_point[0]
+        delta_y = end_point[1] - start_point[1]
+        return cls(delta_x, delta_y)
 
     def get_length(self) -> float:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.x_coord**2 + self.y_coord**2)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(self.x / length, self.y / length)
+        return Vector(self.x_coord / length, self.y_coord / length)
 
     def angle_between(self, vector: "Vector") -> int:
         dot_product = self * vector
@@ -51,22 +59,26 @@ class Vector:
         return round(angle)
 
     def get_angle(self) -> int:
-        if self.x == 0 and self.y == 0:
+        if self.x_coord == 0 and self.y_coord == 0:
             return 0
 
-        angle = math.degrees(math.atan2(-self.x, self.y))
+        angle = math.degrees(math.atan2(-self.x_coord, self.y_coord))
 
-        if angle < 0:
-            angle += 360
-        return round(angle)
+        return round(angle + 360 if angle < 0 else angle)
 
     def rotate(self, degrees: float) -> "Vector":
         radians = math.radians(degrees)
-        x_new = round(self.x * math.cos(radians) /
-                      - self.y * math.sin(radians), 2)
-        y_new = round(self.x * math.sin(radians) /
-                      + self.y * math.cos(radians), 2)
+        x_new = round(
+            self.x_coord * math.cos(radians)
+            - self.y_coord * math.sin(radians),
+            2,
+        )
+        y_new = round(
+            self.x_coord * math.sin(radians)
+            + self.y_coord * math.cos(radians),
+            2,
+        )
         return Vector(x_new, y_new)
 
     def __repr__(self) -> str:
-        return f"Vector({self.x}, {self.y})"
+        return f"Vector({self.x_coord}, {self.y_coord})"
