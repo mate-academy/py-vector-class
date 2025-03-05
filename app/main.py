@@ -17,9 +17,10 @@ class Vector:
             return Vector(self.x - other.x, self.y - other.y)
         return Vector(self.x - other, self.y - other)
 
-    def __mul__(self, other: Vector | int | float) -> Vector:
+    def __mul__(self, other: Vector | int | float) -> int | float | Vector:
         if isinstance(other, Vector):
-            return Vector(self.x * other.x, self.y * other.y)
+            dot_product = self.x * other.x + self.y * other.y
+            return dot_product
         return Vector(self.x * other, self.y * other)
 
     @classmethod
@@ -37,9 +38,8 @@ class Vector:
         return Vector(self.x / self.get_length(), self.y / self.get_length())
 
     def angle_between(self, other: Vector) -> int | float:
-        cos_a = ((self.x * other.x + self.y * other.y)
-                 / (self.get_length() * other.get_length()))
-        return math.degrees(math.acos(cos_a))
+        cos_a = (self * other) / (self.get_length() * other.get_length())
+        return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int | float:
         return round(math.degrees(math.acos(self.y / self.get_length())))
