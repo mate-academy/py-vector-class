@@ -3,7 +3,7 @@
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
 
 In order to get information about vectors follow this:
-- [Vectors on coordinate plane](https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Book%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/02%3A_Vectors/2.04%3A__Coordinate_Systems_and_Components_of_a_Vector_(Part_1))
+- [Vectors on coordinate plane](https://phys.libretecoordinate_xts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Book%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/02%3A_Vectors/2.04%3A__Coordinate_Systems_and_Components_of_a_Vector_(Part_1))
 - [Vector by two points](https://www.varsitytutors.com/precalculus-help/find-a-direction-vector-when-given-two-points)
 - [Adding vectors](https://www.dummies.com/article/academics-the-arts/science/physics/how-to-add-vectors-together-148601)
 - [Normalized vector](https://mathworld.wolfram.com/NormalizedVector.html)
