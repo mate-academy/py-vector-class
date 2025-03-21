@@ -36,7 +36,7 @@ class Vector:
 
     def get_length(self) -> float:
         length = math.sqrt(self.x ** 2 + self.y ** 2)
-        return round(length, 2)
+        return round(length, 15)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
@@ -52,9 +52,11 @@ class Vector:
         return round(math.degrees(math.acos(cos_a)))
 
     def get_angle(self) -> int:
+        if self.x == 0 and self.y == 0:
+            return 0
         angle_rad = math.atan2(self.x, self.y)
         angle_deg = math.degrees(angle_rad)
-        angle_deg = (angle_deg + 360) % 360
+        angle_deg = (- angle_deg + 360) % 360
         return round(angle_deg)
 
     def rotate(self, degrees: int) -> "Vector":
@@ -63,4 +65,4 @@ class Vector:
             radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(
             radians) + self.y * math.cos(radians)
-        return Vector(new_x, new_y)
+        return Vector(round(new_x, 2), round(new_y, 2))
