@@ -1,5 +1,6 @@
 import math
 
+
 class Vector:
     def __init__(self, x: float, y: float) -> None:
         self.x = round(x, 2)
@@ -14,13 +15,14 @@ class Vector:
     def __mul__(self, other):
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
-        elif isinstance(other, Vector):
+        if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
-        else:
-            raise TypeError("Unsupported operand type for *")
+        raise TypeError("Unsupported operand type for *")
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple[float, float], end_point: tuple[float, float]) -> "Vector":
+    def create_vector_by_two_points(
+        cls, start_point: tuple[float, float], end_point: tuple[float, float]
+    ) -> "Vector":
         return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
 
     def get_length(self) -> float:
@@ -41,20 +43,19 @@ class Vector:
         cosine_angle = dot_product / (length1 * length2)
         return round(math.degrees(math.acos(cosine_angle)))
 
-    import math
-
     def get_angle(self) -> int:
-        angle_radians = math.atan2(self.y, self.x)  # Отримуємо кут відносно осі OX
-        angle_degrees = round(math.degrees(angle_radians))  # Переводимо у градуси
+        angle_radians = math.atan2(self.y, self.x)  # Кут відносно осі OX
+        angle_degrees = round(math.degrees(angle_radians))  # В градуси
 
         # Коригуємо так, щоб 0° був на осі OY вгору
         corrected_angle = (90 - angle_degrees) % 360
 
-        # **Головна зміна:** повертаємо лише додатні кути у діапазоні [0, 180]
+        # Повертаємо лише додатні кути у діапазоні [0, 180]
         if corrected_angle > 180:
             corrected_angle = 360 - corrected_angle
 
         return corrected_angle
+
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         cos_val = math.cos(radians)
