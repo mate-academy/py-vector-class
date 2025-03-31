@@ -1,9 +1,10 @@
 import math
 
+# Додано порожній рядок тут
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x: float = round(x, 2)
-        self.y: float = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x: float = round(x_coordinate, 2)
+        self.y: float = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -20,7 +21,9 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-        cls, start_point: tuple[float, float], end_point: tuple[float, float]
+        cls,
+        start_point: tuple[float, float],
+        end_point: tuple[float, float],  # Рядок розбито на кілька
     ) -> "Vector":
         return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
 
@@ -57,3 +60,4 @@ class Vector:
         new_x: float = self.x * cos_val - self.y * sin_val
         new_y: float = self.x * sin_val + self.y * cos_val
         return Vector(new_x, new_y)
+
