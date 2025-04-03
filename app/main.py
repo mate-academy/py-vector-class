@@ -3,9 +3,9 @@ from typing import Union, Tuple
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x: float, y: float) -> None:  # noqa: VNE001
+        self.x = round(x, 2)  # noqa: VNE001
+        self.y = round(y, 2)  # noqa: VNE001
 
     def __add__(self, other: "Vector") -> "Vector":
         if not isinstance(other, Vector):
