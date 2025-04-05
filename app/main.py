@@ -18,7 +18,7 @@ class Vector:
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
-            return Vector(self.x * other.x + self.y * other.y)
+            return Vector(self.x * other.x + self.y * other.y, 4)
         else:
             raise TypeError("Unsupported type for multiplication")
 
