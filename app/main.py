@@ -33,7 +33,7 @@ class Vector:
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
             raise ValueError("cant normalized zero :(")
