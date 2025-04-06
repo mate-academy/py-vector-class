@@ -2,21 +2,21 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, vector_x: float, vector_y: float) -> None:
+        self.x = round(vector_x, 2)
+        self.y = round(vector_y, 2)
 
-    def __add__(self, other):
+    def __add__(self, other: "Vector") -> "Vector":
         if not isinstance(other, Vector):
             return NotImplemented
-        return Vector(round(self.x + other.x, 2), round(self.y + other.y, 2))
+        return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self, other: "Vector") -> "Vector":
         if not isinstance(other, Vector):
             return NotImplemented
-        return Vector(round(self.x - other.x, 2), round(self.y - other.y, 2))
+        return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other):
+    def __mul__(self, other: "Vector | int | float") -> "Vector | float":
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
@@ -29,7 +29,7 @@ class Vector:
         y = round(end_point[1] - start_point[1], 2)
         return cls(x, y)
 
-    def get_length(self):
+    def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self):
@@ -38,12 +38,12 @@ class Vector:
             raise ValueError("cant normalized zero :(")
         return Vector(round(self.x / length, 2), round(self.y / length, 2))
 
-    def angle_between(self, other):
-        scalar = self * other
-        length_multiple = self.get_length() * other.get_length()
+    def angle_between(self, other: "Vector") -> float:
+        scalar = float(self * other)
+        length_multiple = float(self.get_length() * other.get_length())
         if length_multiple == 0:
-            return 0
-        cos_theta = max(-1, min(scalar / length_multiple, 1))
+            return 0.0
+        cos_theta = float(scalar / length_multiple)
         angle = math.degrees(math.acos(cos_theta))
         return round(angle)
 
