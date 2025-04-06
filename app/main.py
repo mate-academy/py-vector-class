@@ -24,10 +24,11 @@ class Vector:
         return NotImplemented
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple):
-        x = round(end_point[0] - start_point[0], 2)
-        y = round(end_point[1] - start_point[1], 2)
-        return cls(x, y)
+    def create_vector_by_two_points(cls, start_point: tuple,
+                                    end_point: tuple) -> "Vector":
+        vector_x = round(end_point[0] - start_point[0], 2)
+        vector_y = round(end_point[1] - start_point[1], 2)
+        return cls(vector_x, vector_y)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -47,14 +48,14 @@ class Vector:
         angle = math.degrees(math.acos(cos_theta))
         return round(angle)
 
-    def get_angle(self):
+    def get_angle(self) -> float:
         length = self.get_length()
         if length == 0:
             raise ValueError("Cannot determine for zero vector")
         angle = math.degrees(math.acos(self.y / length))
         return round(angle)
 
-    def rotate(self, degrees):
+    def rotate(self, degrees: float) -> "Vector":
         radians = math.radians(degrees)
         x1 = self.x * math.cos(radians) - self.y * math.sin(radians)
         y1 = self.x * math.sin(radians) + self.y * math.cos(radians)
