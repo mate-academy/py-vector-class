@@ -16,18 +16,22 @@ class Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         if isinstance(other, (int, float)):
-            return Vector(round((self.x * other), 2), round((self.y * other), 2))
+            return Vector(round((self.x * other), 2),
+                          round((self.y * other), 2))
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point, end_point):
+    def create_vector_by_two_points(cls,
+                                    start_point: float,
+                                    end_point: float) -> object:
+
         x = end_point[0] - start_point[0]
         y = end_point[1] - start_point[1]
         return Vector(x, y)
 
-    def get_length(self):
+    def get_length(self) -> float:
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
-    def get_normalized(self):
+    def get_normalized(self) -> float:
         lenght = self.get_length()
         if lenght == 0:
             raise ValueError("Невозможно вычислить нулевой вектор")
@@ -35,9 +39,9 @@ class Vector:
         normalize_y = self.y / lenght
         return Vector(normalize_x, normalize_y)
 
-    def angle_between(self, other):
+    def angle_between(self, other: float) -> any:
         if not isinstance(other, Vector):
-            raise ValueError("Угол может быть вычеслен только между обектами Vector")
+            raise ValueError("Угол вычесляется только между обектами Vector")
         dot_product = self.x * other.x + self.y * other.y
         length_self = self.get_length()
         length_other = other.get_length()
@@ -50,17 +54,22 @@ class Vector:
         angle_radians = math.acos(cos_theta)
         angle_degrees = round(math.degrees(angle_radians))
         return angle_degrees
-        
-    def get_angle(self):
+
+    def get_angle(self) -> int:
         angle_radian = math.atan2(self.y, self.x)
         angle_degrees = math.degrees(angle_radian) % 360
         angle_from_y = (90 - angle_degrees) % 360
         return round((360 - angle_from_y) % 360)
 
-    def rotate(self, degrees):
+    def rotate(self, degrees: float) -> object:
         new_radians = math.radians(degrees)
 
-        new_x = round(self.x * math.cos(new_radians) - self.y * math.sin(new_radians), 2)
-        new_y = round(self.x * math.sin(new_radians) + self.y * math.cos(new_radians), 2)
+        new_x = round(
+            self.x * math.cos(new_radians) - self.y * math.sin(new_radians), 2
+        )
+
+        new_y = round(
+            self.x * math.sin(new_radians) + self.y * math.cos(new_radians), 2
+        )
 
         return Vector(new_x, new_y)
