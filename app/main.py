@@ -13,11 +13,11 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: "Vector") -> "Vector":
+    def __mul__(self, other: "Vector") -> float:
         if isinstance(other, (int, float)):
             return Vector(round(self.x * other, 2), round(self.y * other, 2))
         elif isinstance(other, Vector):
-            return round(self.x * other.x + self.y * other.y, 4)
+            return self.x * other.x + self.y * other.y
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
@@ -43,12 +43,12 @@ class Vector:
         angle_rad = math.acos(cos_a)
         return round(math.degrees(angle_rad))
 
-    def get_angle(self) -> float:
+    def get_angle(self) -> int:
         angle_rad = math.atan2(self.y, self.x)
         angle_deg = math.degrees(angle_rad)
         if angle_deg < 0:
             angle_deg += 360
-        return round(angle_deg, 2)
+        return round(angle_deg)
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
