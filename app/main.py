@@ -44,7 +44,7 @@ class Vector:
         return round(math.degrees(angle_rad))
 
     def get_angle(self) -> int:
-        angle_rad = math.atan2(self.x, self.y)
+        angle_rad = math.atan2(self.y, self.x)
         return round(math.degrees(angle_rad))
 
     def rotate(self, degrees: int) -> "Vector":
