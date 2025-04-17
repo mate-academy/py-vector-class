@@ -43,9 +43,12 @@ class Vector:
         angle_rad = math.acos(cos_a)
         return round(math.degrees(angle_rad))
 
-    def get_angle(self) -> int:
+    def get_angle(self) -> float:
         angle_rad = math.atan2(self.y, self.x)
-        return round(math.degrees(angle_rad))
+        angle_deg = math.degrees(angle_rad)
+        if angle_deg < 0:
+            angle_deg += 360
+        return round(angle_deg, 2)
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
