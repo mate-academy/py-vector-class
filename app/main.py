@@ -48,7 +48,7 @@ class Vector:
         angle_deg = math.degrees(angle_rad)
         if angle_deg < 0:
             angle_deg += 360
-        return round(angle_deg)
+        return round(angle_deg) % 360
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
