@@ -1,3 +1,4 @@
+from __future__ import annotations
 import math
 
 
@@ -6,19 +7,27 @@ class Vector:
         self.x_coord = round(x_coord, 2)
         self.y_coord = round(y_coord, 2)
 
-    def __add__(self, other: "Vector") -> "Vector":
+    @property
+    def x(self) -> float:
+        return self.x_coord
+
+    @property
+    def y(self) -> float:
+        return self.y_coord
+
+    def __add__(self, other: Vector) -> Vector:
         return Vector(
             self.x_coord + other.x_coord,
             self.y_coord + other.y_coord,
         )
 
-    def __sub__(self, other: "Vector") -> "Vector":
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(
             self.x_coord - other.x_coord,
             self.y_coord - other.y_coord,
         )
 
-    def __mul__(self, other: "Vector | float") -> "Vector | float":
+    def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector):
             return self.x_coord * other.x_coord + self.y_coord * other.y_coord
         return Vector(
@@ -31,7 +40,7 @@ class Vector:
         cls,
         start_point: tuple[float, float],
         end_point: tuple[float, float],
-    ) -> "Vector":
+    ) -> Vector:
         x_coord = round(end_point[0] - start_point[0], 2)
         y_coord = round(end_point[1] - start_point[1], 2)
         return cls(x_coord, y_coord)
@@ -39,7 +48,7 @@ class Vector:
     def get_length(self) -> float:
         return (self.x_coord ** 2 + self.y_coord ** 2) ** 0.5
 
-    def get_normalized(self) -> "Vector":
+    def get_normalized(self) -> Vector:
         length = self.get_length()
         if length > 0:
             x_coord = self.x_coord / length
@@ -47,7 +56,7 @@ class Vector:
             return Vector(x_coord, y_coord)
         return Vector(0, 0)
 
-    def angle_between(self, other: "Vector") -> float:
+    def angle_between(self, other: Vector) -> float:
         dot = self * other
         lengths = self.get_length() * other.get_length()
         if lengths == 0:
@@ -64,7 +73,7 @@ class Vector:
         angle_clockwise = (360 - angle_deg) % 360
         return int(round(angle_clockwise))
 
-    def rotate(self, degrees: float) -> "Vector":
+    def rotate(self, degrees: float) -> Vector:
         radians = math.radians(degrees)
         x_coord = (
             self.x_coord * math.cos(radians) - self.y_coord * math.sin(radians)
