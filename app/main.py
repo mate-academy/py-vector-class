@@ -59,10 +59,12 @@ class Vector:
         raise ValueError(f"Unsupported type of vector: {type(vector)}")
 
     def get_angle(self) -> int:
-        angle = math.degrees(math.atan2(self.x, self.y))
-        if angle < 0:
-            angle += 360
-        return round(angle)
+        if self.x == 0 and self.y == 0:
+            raise ValueError("Zero vector has no defined angle")
+        import math
+        angle = math.degrees(math.atan2(self.y, self.x))
+        angle_from_y = (angle - 90) % 360
+        return round(angle_from_y)
 
     def rotate(self, degrees: int) -> Vector:
         radians = math.radians(degrees)
