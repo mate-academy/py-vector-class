@@ -5,9 +5,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, axis_x: float, axis_y: float) -> None:
+        self.x = round(axis_x, 2)
+        self.y = round(axis_y, 2)
 
     def __str__(self) -> str:
         return f"{self.x, self.y}"
