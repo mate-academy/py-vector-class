@@ -4,7 +4,7 @@ from math import acos, degrees, ceil, cos, sin, radians
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
+    def __init__(self, x: float, y: float) -> None:  # noqa: VNE001
         self.x = round(x, 2)
         self.y = round(y, 2)
 
