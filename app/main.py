@@ -48,4 +48,3 @@ class Vector:
         y2 = magnitude * math.sin(alpha_radians + beta_radians)
 
         return Vector(x2, y2)
-
