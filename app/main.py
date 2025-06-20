@@ -4,9 +4,9 @@ from typing import Tuple, Union
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, vector_x: float, vector_y: float) -> None:
+        self.x = round(vector_x, 2)
+        self.y = round(vector_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if not isinstance(other, Vector):
@@ -31,9 +31,9 @@ class Vector:
             start_point: Tuple[float, float],
             end_point: Tuple[float, float]
     ) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        vector_x = end_point[0] - start_point[0]
+        vector_y = end_point[1] - start_point[1]
+        return cls(vector_x, vector_y)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
