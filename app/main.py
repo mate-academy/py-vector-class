@@ -52,7 +52,7 @@ class Vector:
         y_axis = Vector(0, 1)
         return self.angle_between(y_axis)
 
-    def rotate(self, degrees: int) -> Vector:
+    def rotate(self, degrees: int | float) -> Vector:
         cos_theta = math.cos(math.radians(degrees))
         sin_theta = math.sin(math.radians(degrees))
         new_x = self.x * cos_theta - self.y * sin_theta
