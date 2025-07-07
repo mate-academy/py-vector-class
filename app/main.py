@@ -1,3 +1,4 @@
+from __future__ import annotations
 import math
 
 
@@ -6,19 +7,19 @@ class Vector:
         self.x = round(x_coord, 2)
         self.y = round(y_coord, 2)
 
-    def __add__(self, other: "Vector") -> "Vector":
+    def __add__(self, other: Vector) -> Vector:
         if not isinstance(other, Vector):
             raise TypeError(f"Unsupported operand type(s) for +: 'Vector' "
                             f"and {type(other).__name__}")
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: "Vector") -> "Vector":
+    def __sub__(self, other: Vector) -> Vector:
         if not isinstance(other, Vector):
             raise TypeError(f"Unsupported operand type(s) for -: 'Vector' "
                             f"and {type(other).__name__}")
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: "Vector | int | float") -> "Vector | float":
+    def __mul__(self, other: Vector | int | float) -> Vector | float:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
@@ -29,20 +30,20 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
-                                    end_point: tuple) -> "Vector":
+                                    end_point: tuple) -> Vector:
         return cls(end_point[0] - start_point[0], end_point[1]
                    - start_point[1])
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self) -> "Vector":
+    def get_normalized(self) -> Vector:
         len = self.get_length()
         if len == 0:
             raise ValueError("Cannot normalize a zero-length vector")
         return Vector(self.x / len, self.y / len)
 
-    def angle_between(self, other: "Vector") -> int:
+    def angle_between(self, other: Vector) -> int:
         dot_product = self * other
         len_self = self.get_length()
         len_other = other.get_length()
@@ -62,7 +63,7 @@ class Vector:
         angle = math.acos(cos_a)
         return int(round(math.degrees(angle)))
 
-    def rotate(self, degrees: int) -> "Vector":
+    def rotate(self, degrees: int) -> Vector:
         len_self = self.get_length()
         if len_self == 0:
             raise ValueError("Cannot rotate zero-length vector")
