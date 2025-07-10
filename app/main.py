@@ -36,6 +36,6 @@ class Vector:
 
     def rotate(self, degree: int) -> Vector:
         radian = radians(degree)
-        x = self.x * math.cos(radian) - self.y * math.sin(radian)
-        y = self.x * math.sin(radian) + self.y * math.cos(radian)
-        return Vector(x, y)
+        px = self.x * math.cos(radian) - self.y * math.sin(radian)
+        py = self.x * math.sin(radian) + self.y * math.cos(radian)
+        return Vector(px, py)
