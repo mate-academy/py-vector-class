@@ -7,6 +7,14 @@ class Vector:
         self.coord_x = round(coord_x, 2)
         self.coord_y = round(coord_y, 2)
 
+    @property
+    def x(self) -> float:
+        return self.coord_x
+
+    @property
+    def y(self) -> float:
+        return self.coord_y
+
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
             round(self.coord_x + other.coord_x, 2),
@@ -23,8 +31,7 @@ class Vector:
             -> Union["Vector", float]:
         if isinstance(other, Vector):
             dot_product = (
-                self.coord_x * other.coord_x
-                + self.coord_y * other.coord_y
+                self.coord_x * other.coord_x + self.coord_y * other.coord_y
             )
             return dot_product
         elif isinstance(other, (int, float)):
@@ -37,9 +44,7 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-        cls,
-        start_point: Tuple[float, float],
-        end_point: Tuple[float, float],
+        cls, start_point: Tuple[float, float], end_point: Tuple[float, float]
     ) -> "Vector":
         delta_x = end_point[0] - start_point[0]
         delta_y = end_point[1] - start_point[1]
@@ -64,16 +69,15 @@ class Vector:
         if length_self == 0 or length_other == 0:
             return 0
         cos_angle = dot_product / (length_self * length_other)
-        cos_angle = max(min(cos_angle, 1), -1)  # evitar erros de domínio
+        cos_angle = max(min(cos_angle, 1), -1)
         angle_rad = math.acos(cos_angle)
         angle_deg = round(math.degrees(angle_rad))
         return angle_deg
 
-    def get_angle(self) -> int:
-        # ângulo entre vetor e eixo Y positivo
-        angle_rad = math.atan2(self.coord_x, self.coord_y)
-        angle_deg = round(math.degrees(angle_rad))
-        return angle_deg
+    def get_angle(self) -> float:
+        angle = math.degrees(math.atan2(self.y, self.x))
+        adjusted = (angle - 90) % 360
+        return round(adjusted)
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
