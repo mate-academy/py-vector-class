@@ -1,6 +1,7 @@
 import math
 from typing import Tuple
 
+
 class Vector:
     def __init__(self, coord_x: float, coord_y: float) -> None:
         self.x = round(coord_x, 2)
@@ -49,3 +50,4 @@ class Vector:
         new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
         return Vector(round(new_x, 2), round(new_y, 2))
+        
