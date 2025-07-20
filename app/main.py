@@ -50,4 +50,4 @@ class Vector:
         new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
         return Vector(round(new_x, 2), round(new_y, 2))
-        
+ 
