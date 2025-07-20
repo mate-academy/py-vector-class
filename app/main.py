@@ -24,7 +24,7 @@ class Vector:
             return self.x * other.x + self.y * other.y
         return NotImplemented
 
-    def __rmul__(self, other: int| float) -> Vector:
+    def __rmul__(self, other: int | float) -> Vector:
         return self * other
 
     def dot(self, other: Vector) -> float:
@@ -33,7 +33,11 @@ class Vector:
         return NotImplemented
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple[float, float], end_point:tuple[float, float]) ->Vector:
+    def create_vector_by_two_points(
+            cls,
+            start_point: tuple[float, float],
+            end_point: tuple[float, float]
+    ) -> Vector:
         x1, y1 = start_point
         x2, y2 = end_point
         return Vector(x2 - x1, y2 - y1)
