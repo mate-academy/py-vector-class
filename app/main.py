@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float | int, y: float | int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coord_x: float | int, coord_y: float | int) -> None:
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
@@ -25,7 +25,11 @@ class Vector:
         raise TypeError("Expected a Vector, int or float type")
 
     @classmethod
-    def create_vector_by_two_points(cls, point1: tuple, point2: tuple) -> Vector:
+    def create_vector_by_two_points(
+        cls,
+        point1: tuple,
+        point2: tuple
+    ) -> Vector:
         if isinstance(point1, tuple) and isinstance(point1, tuple):
             return cls((point2[0] - point1[0]), (point2[1] - point1[1]))
         raise TypeError("Expected tuple types")
@@ -39,7 +43,10 @@ class Vector:
     def angle_between(self, other: Vector) -> int:
         if isinstance(other, Vector):
             return round(
-                math.degrees(math.acos(self.__mul__(other) / (self.get_length() * other.get_length())))
+                math.degrees(math.acos(
+                    self.__mul__(other) / (
+                        self.get_length() * other.get_length()))
+                )
             )
         raise TypeError("Expected a Vector type")
 
@@ -49,6 +56,8 @@ class Vector:
     def rotate(self, angle: int) -> Vector:
         if isinstance(angle, int):
             return Vector(
-                (self.x * math.cos(math.radians(angle)) - self.y * math.sin(math.radians(angle))),
-                (self.x * math.sin(math.radians(angle)) + self.y * math.cos(math.radians(angle)))
+                (self.x * math.cos(math.radians(angle)) - self.y * math.sin(
+                    math.radians(angle))),
+                (self.x * math.sin(math.radians(angle)) + self.y * math.cos(
+                    math.radians(angle)))
             )
