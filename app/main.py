@@ -3,35 +3,38 @@ import math
 
 
 class Vector:
-    def __init__(self, x, y):
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_value: int, y_value: int) -> None:
+        self.x = round(x_value, 2)
+        self.y = round(y_value, 2)
 
-    def __add__(self, other):
+    def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: float | Vector):
+    def __mul__(self, other: float | Vector) -> Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(self.x * other, self.y * other)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point, end_point):
-        return Vector(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(cls,
+                                    start_point: tuple,
+                                    end_point: tuple) -> Vector:
+        return Vector(end_point[0] - start_point[0],
+                      end_point[1] - start_point[1])
 
-    def get_length(self):
+    def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
         return Vector(self.x / length, self.y / length)
 
-    def angle_between(self, other):
+    def angle_between(self, other: Vector) -> float:
         dot_product = self.x * other.x + self.y * other.y
         magnitudes_product = self.get_length() * other.get_length()
 
@@ -41,7 +44,7 @@ class Vector:
         angle_rad = math.acos(round(dot_product / magnitudes_product, 10))
         return round(math.degrees(angle_rad), 0)
 
-    def get_angle(self):
+    def get_angle(self) -> int:
         angle_in_rad = math.atan2(self.y, self.x)
         angle_in_degrees = math.degrees(angle_in_rad)
 
