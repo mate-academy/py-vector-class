@@ -37,7 +37,10 @@ class Vector:
         return Vector(self.coord_x / length, self.coord_y / length)
 
     def angle_between(self, other: "Vector") -> Optional[float]:
-        dot_product = self.coord_x * other.coord_x + self.coord_y * other.coord_y
+        dot_product = (self.coord_x
+                       * other.coord_x
+                       + self.coord_y
+                       * other.coord_y)
         len_self = self.get_length()
         len_other = other.get_length()
         if len_self == 0 or len_other == 0:
