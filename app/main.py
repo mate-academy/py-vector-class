@@ -3,9 +3,9 @@ from math import sqrt, hypot, degrees, acos, sin, cos
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_value: float, y_value: float) -> None:
+        self.x = round(x_value, 2)
+        self.y = round(y_value, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -53,8 +53,8 @@ class Vector:
         cos_a = max(-1, min(1, dot_p / (len_other * len_self)))
         return round(degrees(acos(cos_a)))
 
-    def rotate(self, b: float) -> "Vector":
-        rad = b * (3.141592653589793 / 180)
+    def rotate(self, b_value: float) -> "Vector":
+        rad = b_value * (3.141592653589793 / 180)
         cos_b = cos(rad)
         sin_b = sin(rad)
         return Vector(
