@@ -3,7 +3,7 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
+    def __init__(self, x: float, y: float) -> None: # noqa
         self.x = round(x, 2)
         self.y = round(y, 2)
 
