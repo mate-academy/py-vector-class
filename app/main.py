@@ -1,4 +1,5 @@
 from __future__ import annotations
+import math
 
 class Vector:
     def __init__(self, x_coordinate: float, y_coordinate: float):
@@ -41,3 +42,7 @@ class Vector:
             x_coordinate=self.x / self.get_length(),
             y_coordinate=self.y / self.get_length()
         )
+
+    def angle_between(self, other: Vector) -> int:
+        cos_a = (self * other) / (self.get_length() * other.get_length())
+        return round(math.degrees(math.acos(cos_a)))
