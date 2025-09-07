@@ -49,3 +49,10 @@ class Vector:
 
     def get_angle(self) -> int:
         return self.angle_between(Vector(0, abs(self.y)))
+
+    def rotate(self, degrees: int) -> Vector:
+        radians = math.radians(degrees)
+        return Vector(
+            x_coordinate=math.cos(radians) * self.x - math.sin(radians) * self.y,
+            y_coordinate=math.sin(radians) * self.x + math.cos(radians) * self.y
+        )
