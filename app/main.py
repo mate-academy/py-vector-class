@@ -25,3 +25,10 @@ class Vector:
             )
         else:
             return (self.x * other.x) + (self.y * other.y)
+
+    @classmethod
+    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+        return Vector(
+            x_coordinate=end_point[0] - start_point[0],
+            y_coordinate=end_point[1] - start_point[1]
+        )
