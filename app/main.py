@@ -1,8 +1,9 @@
 from __future__ import annotations
 import math
 
+
 class Vector:
-    def __init__(self, x_coordinate: float, y_coordinate: float):
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
         self.x = round(x_coordinate, 2)
         self.y = round(y_coordinate, 2)
 
@@ -28,7 +29,9 @@ class Vector:
             return (self.x * other.x) + (self.y * other.y)
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls, start_point: tuple, end_point: tuple
+    ) -> Vector:
         return Vector(
             x_coordinate=end_point[0] - start_point[0],
             y_coordinate=end_point[1] - start_point[1]
@@ -51,8 +54,8 @@ class Vector:
         return self.angle_between(Vector(0, abs(self.y)))
 
     def rotate(self, degrees: int) -> Vector:
-        radians = math.radians(degrees)
+        rad = math.radians(degrees)
         return Vector(
-            x_coordinate=math.cos(radians) * self.x - math.sin(radians) * self.y,
-            y_coordinate=math.sin(radians) * self.x + math.cos(radians) * self.y
+            x_coordinate=math.cos(rad) * self.x - math.sin(rad) * self.y,
+            y_coordinate=math.sin(rad) * self.x + math.cos(rad) * self.y
         )
