@@ -2,8 +2,8 @@ from __future__ import annotations
 
 class Vector:
     def __init__(self, x_coordinate: float, y_coordinate: float):
-        self.x = x_coordinate
-        self.y = y_coordinate
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
