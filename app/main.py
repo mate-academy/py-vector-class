@@ -67,7 +67,7 @@ class Vector:
         return Vector(round(x_asix, 2), round(y_asix, 2))
 
     def __str__(self) -> str:
-        return f'({self.x_asix}, {self.y_asix})'
+        return f"({self.x_asix}, {self.y_asix})"
 
     def __repr__(self) -> str:
-        return f'Vector({self.x_asix}, {self.y_asix})'
+        return f"Vector({self.x_asix}, {self.y_asix})"
