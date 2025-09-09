@@ -20,8 +20,8 @@ class Vector:
         elif isinstance(other, Vector):
             return self.x_asix * other.x_asix + self.y_asix * other.y_asix
         else:
-            raise TypeError(f'unsupported operand type(s) for *: '
-                            f' {type(self)} and {type(other)}')
+            raise TypeError(f"unsupported operand type(s) for *: "
+                            f" {type(self)} and {type(other)}")
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple
