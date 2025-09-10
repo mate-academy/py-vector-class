@@ -17,7 +17,10 @@ class Vector:
         new_coord_y = self.coord_y - other.coord_y
         return Vector(new_coord_x, new_coord_y)
 
-    def __mul__(self, other: Union[int, float, "Vector"]) -> Union[float, "Vector"]:
+    def __mul__(
+            self,
+            other: Union[int, float, "Vector"]
+    ) -> Union[float, "Vector"]:
         if isinstance(other, (int, float)):
             return Vector(
                 self.coord_x * other,
