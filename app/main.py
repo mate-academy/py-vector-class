@@ -21,7 +21,10 @@ class Vector:
         if isinstance(other, (int, float)):
             return Vector(self.coord_x * other, self.coord_y * other)
         elif isinstance(other, Vector):
-            return self.coord_x * other.coord_x + self.coord_y * other.coord_y
+            return (
+                self.coord_x * other.coord_x
+                + self.coord_y * other.coord_y
+            )
         else:
             raise TypeError(
                 "Multiplication supported only with int, float, or Vector"
@@ -41,7 +44,10 @@ class Vector:
         return (self.coord_x ** 2 + self.coord_y ** 2) ** 0.5
 
     def angle_between(self, other: "Vector") -> int:
-        dot_product = self.coord_x * other.coord_x + self.coord_y * other.coord_y
+        dot_product = (
+            self.coord_x * other.coord_x
+            + self.coord_y * other.coord_y
+        )
         length_self = self.get_length()
         length_other = other.get_length()
 
@@ -59,6 +65,12 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        new_coord_x = self.coord_x * math.cos(radians) - self.coord_y * math.sin(radians)
-        new_coord_y = self.coord_x * math.sin(radians) + self.coord_y * math.cos(radians)
+        new_coord_x = (
+            self.coord_x * math.cos(radians)
+            - self.coord_y * math.sin(radians)
+        )
+        new_coord_y = (
+            self.coord_x * math.sin(radians)
+            + self.coord_y * math.cos(radians)
+        )
         return Vector(new_coord_x, new_coord_y)
