@@ -1,4 +1,5 @@
 from math import sqrt, acos, degrees, radians, cos, sin
+from typing import Union
 
 
 class Vector:
@@ -16,7 +17,9 @@ class Vector:
         new_y = self.coord_y - other_vector.coord_y
         return Vector(new_x, new_y)
 
-    def __mul__(self, value: float | "Vector") -> float | "Vector":
+    def __mul__(
+        self, value: Union[float, "Vector"]
+    ) -> Union[float, "Vector"]:
         if isinstance(value, Vector):
             dot = (
                 self.coord_x * value.coord_x
