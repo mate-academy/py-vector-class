@@ -22,7 +22,8 @@ class Vector:
             return dot_product
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(cls, start_point: tuple,
+                                    end_point: tuple) -> Vector:
         first_x, first_y = start_point
         second_x, second_y = end_point
         x_new = second_x - first_x
