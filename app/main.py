@@ -3,7 +3,12 @@ from typing import Tuple, Union
 
 
 class Vector:
-    def __init__(self, x_coord: float, y_coord: float, precision: int = 2) -> None:
+    def __init__(
+        self,
+        x_coord: float,
+        y_coord: float,
+        precision: int = 2
+    ) -> None:
         self.x_coord = round(x_coord, precision)
         self.y_coord = round(y_coord, precision)
         self._precision = precision
@@ -22,7 +27,10 @@ class Vector:
             self._precision
         )
 
-    def __mul__(self, other: Union["Vector", float, int]) -> Union["Vector", float]:
+    def __mul__(
+        self,
+        other: Union["Vector", float, int]
+    ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
             return Vector(
                 self.x_coord * other,
@@ -31,7 +39,8 @@ class Vector:
             )
         if isinstance(other, Vector):
             return round(
-                self.x_coord * other.x_coord + self.y_coord * other.y_coord,
+                self.x_coord * other.x_coord +
+                self.y_coord * other.y_coord,
                 4
             )
         return NotImplemented
@@ -47,8 +56,7 @@ class Vector:
                 self.x_coord,
                 other.x_coord,
                 abs_tol=10 ** -self._precision
-            )
-            and math.isclose(
+            ) and math.isclose(
                 self.y_coord,
                 other.y_coord,
                 abs_tol=10 ** -self._precision
@@ -69,7 +77,10 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return round(math.hypot(self.x_coord, self.y_coord), self._precision)
+        return round(
+            math.hypot(self.x_coord, self.y_coord),
+            self._precision
+        )
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
@@ -106,14 +117,14 @@ class Vector:
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         new_x = (
-            self.x_coord * math.cos(radians) -
-            self.y_coord * math.sin(radians)
+            self.x_coord * math.cos(radians)
+            - self.y_coord * math.sin(radians)
         )
         new_y = (
-            self.x_coord * math.sin(radians) +
-            self.y_coord * math.cos(radians)
+            self.x_coord * math.sin(radians)
+            + self.y_coord * math.cos(radians)
         )
         return Vector(new_x, new_y, self._precision)
 
     def __repr__(self) -> str:
-        return f"Vector(x={self.x_coord}, y={self.y_coord})"
+        return
