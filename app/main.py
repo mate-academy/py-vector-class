@@ -39,8 +39,8 @@ class Vector:
             )
         if isinstance(other, Vector):
             return round(
-                self.x_coord * other.x_coord +
-                self.y_coord * other.y_coord,
+                self.x_coord * other.x_coord
+                + self.y_coord * other.y_coord,
                 4
             )
         return NotImplemented
@@ -56,7 +56,8 @@ class Vector:
                 self.x_coord,
                 other.x_coord,
                 abs_tol=10 ** -self._precision
-            ) and math.isclose(
+            )
+            and math.isclose(
                 self.y_coord,
                 other.y_coord,
                 abs_tol=10 ** -self._precision
