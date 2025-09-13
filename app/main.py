@@ -1,33 +1,39 @@
 import math
-from typing import Tuple, Union, Optional
+from typing import Union, Optional
 
 
 class Vector:
     def __init__(
         self,
-        x: float,
-        y: float,
-        z: Optional[float] = None,
+        x_coord: float,
+        y_coord: float,
+        z_coord: Optional[float] = None,
         precision: int = 2
     ) -> None:
-        self.x = round(x, precision)
-        self.y = round(y, precision)
-        self.z = round(z, precision) if z is not None else None
+        self.x_coord = round(x_coord, precision)
+        self.y_coord = round(y_coord, precision)
+        self.z_coord = (
+            round(z_coord, precision) if z_coord is not None else None
+        )
         self._precision = precision
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x + other.x,
-            self.y + other.y,
-            self.z + other.z if self.z is not None and other.z is not None else None,
+            self.x_coord + other.x_coord,
+            self.y_coord + other.y_coord,
+            self.z_coord + other.z_coord
+            if self.z_coord is not None and other.z_coord is not None
+            else None,
             self._precision
         )
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x - other.x,
-            self.y - other.y,
-            self.z - other.z if self.z is not None and other.z is not None else None,
+            self.x_coord - other.x_coord,
+            self.y_coord - other.y_coord,
+            self.z_coord - other.z_coord
+            if self.z_coord is not None and other.z_coord is not None
+            else None,
             self._precision
         )
 
@@ -37,16 +43,19 @@ class Vector:
     ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
             return Vector(
-                self.x * other,
-                self.y * other,
-                self.z * other if self.z is not None else None,
+                self.x_coord * other,
+                self.y_coord * other,
+                self.z_coord * other if self.z_coord is not None else None,
                 self._precision
             )
         if isinstance(other, Vector):
-            dot = self.x * other.x + self.y * other.y
-            if self.z is not None and other.z is not None:
-                dot += self.z * other.z
-            return round(dot, 4)
+            dot_product = (
+                self.x_coord * other.x_coord
+                + self.y_coord * other.y_coord
+            )
+            if self.z_coord is not None and other.z_coord is not None:
+                dot_product += self.z_coord * other.z_coord
+            return round(dot_product, 4)
         return NotImplemented
 
     def __rmul__(self, other: Union[float, int]) -> "Vector":
@@ -56,33 +65,56 @@ class Vector:
         if not isinstance(other, Vector):
             return NotImplemented
         return (
-            math.isclose(self.x, other.x, abs_tol=10 ** -self._precision)
-            and math.isclose(self.y, other.y, abs_tol=10 ** -self._precision)
+            math.isclose(
+                self.x_coord,
+                other.x_coord,
+                abs_tol=10 ** -self._precision
+            )
+            and math.isclose(
+                self.y_coord,
+                other.y_coord,
+                abs_tol=10 ** -self._precision
+            )
             and (
-                self.z is None and other.z is None
-                or self.z is not None and other.z is not None
-                and math.isclose(self.z, other.z, abs_tol=10 ** -self._precision)
+                self.z_coord is None and other.z_coord is None
+                or self.z_coord is not None and other.z_coord is not None
+                and math.isclose(
+                    self.z_coord,
+                    other.z_coord,
+                    abs_tol=10 ** -self._precision
+                )
             )
         )
 
     def get_length(self) -> float:
-        components = [self.x, self.y]
-        if self.z is not None:
-            components.append(self.z)
-        return round(math.sqrt(sum(c ** 2 for c in components)), self._precision)
+        components = [self.x_coord, self.y_coord]
+        if self.z_coord is not None:
+            components.append(self.z_coord)
+        return round(
+            math.sqrt(sum(c ** 2 for c in components)),
+            self._precision
+        )
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
-            return Vector(0, 0, 0 if self.z is not None else None, self._precision)
+            return Vector(
+                0,
+                0,
+                0 if self.z_coord is not None else None,
+                self._precision
+            )
         return Vector(
-            self.x / length,
-            self.y / length,
-            self.z / length if self.z is not None else None,
+            self.x_coord / length,
+            self.y_coord / length,
+            self.z_coord / length if self.z_coord is not None else None,
             self._precision
         )
 
     def __repr__(self) -> str:
-        if self.z is not None:
-            return f"Vector(x={self.x}, y={self.y}, z={self.z})"
+        if self.z_coord is not None:
+            return (
+                f"Vector(x={self.x_coord}, "
+                f"y={self.y_coord}, z={self.z_coord})"
+            )
         return
