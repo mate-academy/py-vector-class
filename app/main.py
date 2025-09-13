@@ -1,29 +1,33 @@
 import math
-from typing import Tuple, Union
+from typing import Tuple, Union, Optional
 
 
 class Vector:
     def __init__(
         self,
-        x_coord: float,
-        y_coord: float,
+        x: float,
+        y: float,
+        z: Optional[float] = None,
         precision: int = 2
     ) -> None:
-        self.x_coord = round(x_coord, precision)
-        self.y_coord = round(y_coord, precision)
+        self.x = round(x, precision)
+        self.y = round(y, precision)
+        self.z = round(z, precision) if z is not None else None
         self._precision = precision
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x_coord + other.x_coord,
-            self.y_coord + other.y_coord,
+            self.x + other.x,
+            self.y + other.y,
+            self.z + other.z if self.z is not None and other.z is not None else None,
             self._precision
         )
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x_coord - other.x_coord,
-            self.y_coord - other.y_coord,
+            self.x - other.x,
+            self.y - other.y,
+            self.z - other.z if self.z is not None and other.z is not None else None,
             self._precision
         )
 
@@ -33,16 +37,16 @@ class Vector:
     ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
             return Vector(
-                self.x_coord * other,
-                self.y_coord * other,
+                self.x * other,
+                self.y * other,
+                self.z * other if self.z is not None else None,
                 self._precision
             )
         if isinstance(other, Vector):
-            return round(
-                self.x_coord * other.x_coord
-                + self.y_coord * other.y_coord,
-                4
-            )
+            dot = self.x * other.x + self.y * other.y
+            if self.z is not None and other.z is not None:
+                dot += self.z * other.z
+            return round(dot, 4)
         return NotImplemented
 
     def __rmul__(self, other: Union[float, int]) -> "Vector":
@@ -52,80 +56,33 @@ class Vector:
         if not isinstance(other, Vector):
             return NotImplemented
         return (
-            math.isclose(
-                self.x_coord,
-                other.x_coord,
-                abs_tol=10 ** -self._precision
+            math.isclose(self.x, other.x, abs_tol=10 ** -self._precision)
+            and math.isclose(self.y, other.y, abs_tol=10 ** -self._precision)
+            and (
+                self.z is None and other.z is None
+                or self.z is not None and other.z is not None
+                and math.isclose(self.z, other.z, abs_tol=10 ** -self._precision)
             )
-            and math.isclose(
-                self.y_coord,
-                other.y_coord,
-                abs_tol=10 ** -self._precision
-            )
-        )
-
-    @classmethod
-    def create_vector_by_two_points(
-        cls,
-        start_point: Tuple[float, float],
-        end_point: Tuple[float, float],
-        precision: int = 2
-    ) -> "Vector":
-        return cls(
-            end_point[0] - start_point[0],
-            end_point[1] - start_point[1],
-            precision
         )
 
     def get_length(self) -> float:
-        return round(
-            math.hypot(self.x_coord, self.y_coord),
-            self._precision
-        )
+        components = [self.x, self.y]
+        if self.z is not None:
+            components.append(self.z)
+        return round(math.sqrt(sum(c ** 2 for c in components)), self._precision)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
-            return Vector(0, 0, self._precision)
+            return Vector(0, 0, 0 if self.z is not None else None, self._precision)
         return Vector(
-            self.x_coord / length,
-            self.y_coord / length,
+            self.x / length,
+            self.y / length,
+            self.z / length if self.z is not None else None,
             self._precision
         )
 
-    def angle_between(self, other: "Vector") -> int:
-        dot_product = self * other
-        length_product = self.get_length() * other.get_length()
-        if length_product == 0:
-            return 0
-        cos_angle = dot_product / length_product
-        cos_angle = max(-1, min(1, cos_angle))
-        return round(math.degrees(math.acos(cos_angle)))
-
-    def get_angle(self, axis: str = "y") -> int:
-        length = self.get_length()
-        if length == 0:
-            return 0
-        if axis == "y":
-            cos_angle = self.y_coord / length
-        elif axis == "x":
-            cos_angle = self.x_coord / length
-        else:
-            raise ValueError("Axis must be 'x' or 'y'")
-        cos_angle = max(-1, min(1, cos_angle))
-        return round(math.degrees(math.acos(cos_angle)))
-
-    def rotate(self, degrees: int) -> "Vector":
-        radians = math.radians(degrees)
-        new_x = (
-            self.x_coord * math.cos(radians)
-            - self.y_coord * math.sin(radians)
-        )
-        new_y = (
-            self.x_coord * math.sin(radians)
-            + self.y_coord * math.cos(radians)
-        )
-        return Vector(new_x, new_y, self._precision)
-
     def __repr__(self) -> str:
+        if self.z is not None:
+            return f"Vector(x={self.x}, y={self.y}, z={self.z})"
         return
