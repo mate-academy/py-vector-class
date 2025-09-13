@@ -5,25 +5,25 @@ from typing import Tuple, Union
 class Vector:
     def __init__(
         self,
-        x_coord: float,
-        y_coord: float,
+        x: float,
+        y: float,
         precision: int = 2
     ) -> None:
-        self.x_coord = round(x_coord, precision)
-        self.y_coord = round(y_coord, precision)
+        self.x = round(x, precision)
+        self.y = round(y, precision)
         self._precision = precision
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x_coord + other.x_coord,
-            self.y_coord + other.y_coord,
+            self.x + other.x,
+            self.y + other.y,
             self._precision
         )
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x_coord - other.x_coord,
-            self.y_coord - other.y_coord,
+            self.x - other.x,
+            self.y - other.y,
             self._precision
         )
 
@@ -33,14 +33,14 @@ class Vector:
     ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
             return Vector(
-                self.x_coord * other,
-                self.y_coord * other,
+                self.x * other,
+                self.y * other,
                 self._precision
             )
         if isinstance(other, Vector):
             return round(
-                self.x_coord * other.x_coord
-                + self.y_coord * other.y_coord,
+                self.x * other.x
+                + self.y * other.y,
                 4
             )
         return NotImplemented
@@ -53,13 +53,13 @@ class Vector:
             return NotImplemented
         return (
             math.isclose(
-                self.x_coord,
-                other.x_coord,
+                self.x,
+                other.x,
                 abs_tol=10 ** -self._precision
             )
             and math.isclose(
-                self.y_coord,
-                other.y_coord,
+                self.y,
+                other.y,
                 abs_tol=10 ** -self._precision
             )
         )
@@ -79,7 +79,7 @@ class Vector:
 
     def get_length(self) -> float:
         return round(
-            math.hypot(self.x_coord, self.y_coord),
+            math.hypot(self.x, self.y),
             self._precision
         )
 
@@ -88,8 +88,8 @@ class Vector:
         if length == 0:
             return Vector(0, 0, self._precision)
         return Vector(
-            self.x_coord / length,
-            self.y_coord / length,
+            self.x / length,
+            self.y / length,
             self._precision
         )
 
@@ -107,9 +107,9 @@ class Vector:
         if length == 0:
             return 0
         if axis == "y":
-            cos_angle = self.y_coord / length
+            cos_angle = self.y / length
         elif axis == "x":
-            cos_angle = self.x_coord / length
+            cos_angle = self.x / length
         else:
             raise ValueError("Axis must be 'x' or 'y'")
         cos_angle = max(-1, min(1, cos_angle))
@@ -118,12 +118,12 @@ class Vector:
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         new_x = (
-            self.x_coord * math.cos(radians)
-            - self.y_coord * math.sin(radians)
+            self.x * math.cos(radians)
+            - self.y * math.sin(radians)
         )
         new_y = (
-            self.x_coord * math.sin(radians)
-            + self.y_coord * math.cos(radians)
+            self.x * math.sin(radians)
+            + self.y * math.cos(radians)
         )
         return Vector(new_x, new_y, self._precision)
 
