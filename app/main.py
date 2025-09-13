@@ -111,6 +111,28 @@ class Vector:
             self._precision
         )
 
+    def rotate(self, degrees: float) -> "Vector":
+        if self.z_coord is not None:
+            raise NotImplementedError(
+                "Rotation for 3D vectors is not supported."
+            )
+        radians = math.radians(degrees)
+        cos_angle = math.cos(radians)
+        sin_angle = math.sin(radians)
+        x_rotated = (
+            self.x_coord * cos_angle
+            - self.y_coord * sin_angle
+        )
+        y_rotated = (
+            self.x_coord * sin_angle
+            + self.y_coord * cos_angle
+        )
+        return Vector(
+            round(x_rotated, self._precision),
+            round(y_rotated, self._precision),
+            precision=self._precision
+        )
+
     def __repr__(self) -> str:
         if self.z_coord is not None:
             return (
