@@ -1,142 +1,69 @@
 import math
-from typing import Union, Optional
 
 
 class Vector:
-    def __init__(
-        self,
-        x_coord: float,
-        y_coord: float,
-        z_coord: Optional[float] = None,
-        precision: int = 2
-    ) -> None:
-        self.x_coord = round(x_coord, precision)
-        self.y_coord = round(y_coord, precision)
-        self.z_coord = (
-            round(z_coord, precision) if z_coord is not None else None
-        )
-        self._precision = precision
+    def __init__(self, x, y):
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
-    def __add__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coord + other.x_coord,
-            self.y_coord + other.y_coord,
-            self.z_coord + other.z_coord
-            if self.z_coord is not None and other.z_coord is not None
-            else None,
-            self._precision
-        )
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coord - other.x_coord,
-            self.y_coord - other.y_coord,
-            self.z_coord - other.z_coord
-            if self.z_coord is not None and other.z_coord is not None
-            else None,
-            self._precision
-        )
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(
-        self,
-        other: Union["Vector", float, int]
-    ) -> Union["Vector", float]:
+    def __mul__(self, other):
         if isinstance(other, (int, float)):
-            return Vector(
-                self.x_coord * other,
-                self.y_coord * other,
-                self.z_coord * other if self.z_coord is not None else None,
-                self._precision
-            )
-        if isinstance(other, Vector):
-            dot_product = (
-                self.x_coord * other.x_coord
-                + self.y_coord * other.y_coord
-            )
-            if self.z_coord is not None and other.z_coord is not None:
-                dot_product += self.z_coord * other.z_coord
-            return round(dot_product, 4)
-        return NotImplemented
+            return Vector(self.x * other, self.y * other)
+        elif isinstance(other, Vector):
+            return round(self.x * other.x + self.y * other.y, 4)
+        else:
+            raise TypeError("Unsupported operand type(s) for *: 'Vector' and '{}'".format(type(other).__name__))
 
-    def __rmul__(self, other: Union[float, int]) -> "Vector":
-        return self.__mul__(other)
+    @classmethod
+    def create_vector_by_two_points(cls, start_point, end_point):
+        x = end_point[0] - start_point[0]
+        y = end_point[1] - start_point[1]
+        return cls(x, y)
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Vector):
-            return NotImplemented
-        return (
-            math.isclose(
-                self.x_coord,
-                other.x_coord,
-                abs_tol=10 ** -self._precision
-            )
-            and math.isclose(
-                self.y_coord,
-                other.y_coord,
-                abs_tol=10 ** -self._precision
-            )
-            and (
-                self.z_coord is None and other.z_coord is None
-                or self.z_coord is not None and other.z_coord is not None
-                and math.isclose(
-                    self.z_coord,
-                    other.z_coord,
-                    abs_tol=10 ** -self._precision
-                )
-            )
-        )
+    def get_length(self):
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_length(self) -> float:
-        components = [self.x_coord, self.y_coord]
-        if self.z_coord is not None:
-            components.append(self.z_coord)
-        return round(
-            math.sqrt(sum(c ** 2 for c in components)),
-            self._precision
-        )
-
-    def get_normalized(self) -> "Vector":
+    def get_normalized(self):
         length = self.get_length()
         if length == 0:
-            return Vector(
-                0,
-                0,
-                0 if self.z_coord is not None else None,
-                self._precision
-            )
-        return Vector(
-            self.x_coord / length,
-            self.y_coord / length,
-            self.z_coord / length if self.z_coord is not None else None,
-            self._precision
-        )
+            return Vector(0, 0)
+        return Vector(self.x / length, self.y / length)
 
-    def rotate(self, degrees: float) -> "Vector":
-        if self.z_coord is not None:
-            raise NotImplementedError(
-                "Rotation for 3D vectors is not supported."
-            )
-        radians = math.radians(degrees)
-        cos_angle = math.cos(radians)
-        sin_angle = math.sin(radians)
-        x_rotated = (
-            self.x_coord * cos_angle
-            - self.y_coord * sin_angle
-        )
-        y_rotated = (
-            self.x_coord * sin_angle
-            + self.y_coord * cos_angle
-        )
-        return Vector(
-            round(x_rotated, self._precision),
-            round(y_rotated, self._precision),
-            precision=self._precision
-        )
+    def angle_between(self, other):
+        dot_product = self * other
+        cos_a = dot_product / (self.get_length() * other.get_length())
+        cos_a = max(-1.0, min(1.0, cos_a))
+        return int(math.degrees(math.acos(cos_a)))
 
-    def __repr__(self) -> str:
-        if self.z_coord is not None:
-            return (
-                f"Vector(x={self.x_coord}, "
-                f"y={self.y_coord}, z={self.z_coord})"
-            )
+    def get_angle(self):
+        y_axis = Vector(0, 1)
+        dot_product = self * y_axis
+
+        self_length = self.get_length()
+        if self_length == 0:
+            return 0
+
+        cos_a = dot_product / (self_length * y_axis.get_length())
+        cos_a = max(-1.0, min(1.0, cos_a))
+
+        angle_rad = math.acos(cos_a)
+        angle_deg = math.degrees(angle_rad)
+
+        if self.x < 0:
+            return int(360 - angle_deg)
+        else:
+            return int(angle_deg)
+
+    def rotate(self, degrees):
+        rad = math.radians(degrees)
+        cos_a = math.cos(rad)
+        sin_a = math.sin(rad)
+        new_x = self.x * cos_a - self.y * sin_a
+        new_y = self.x * sin_a + self.y * cos_a
         return
