@@ -3,39 +3,26 @@ from typing import Tuple, Union
 
 
 class Vector:
-    def __init__(self, x_coord: float, y_coord: float) -> None:
-        # store rounded to 2 decimals
-        self.x_coord = round(x_coord, 2)
-        self.y_coord = round(y_coord, 2)
+    def __init__(self, x: float, y: float) -> None:
+        # зберігаємо округлені координати
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coord + other.x_coord,
-            self.y_coord + other.y_coord,
-        )
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(
-            self.x_coord - other.x_coord,
-            self.y_coord - other.y_coord,
-        )
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(
         self,
         other: Union["Vector", float, int],
     ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
-            return Vector(
-                self.x_coord * other,
-                self.y_coord * other,
-            )
+            return Vector(self.x * other, self.y * other)
         if isinstance(other, Vector):
             # dot product
-            return round(
-                self.x_coord * other.x_coord
-                + self.y_coord * other.y_coord,
-                4,
-            )
+            return round(self.x * other.x + self.y * other.y, 4)
         return NotImplemented
 
     @classmethod
@@ -50,22 +37,16 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return math.sqrt(self.x_coord**2 + self.y_coord**2)
+        return math.sqrt(self.x**2 + self.y**2)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(
-            self.x_coord / length,
-            self.y_coord / length,
-        )
+        return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: "Vector") -> int:
-        dot_product = (
-            self.x_coord * other.x_coord
-            + self.y_coord * other.y_coord
-        )
+        dot_product = self.x * other.x + self.y * other.y
         length_product = self.get_length() * other.get_length()
         if length_product == 0:
             return 0
@@ -77,24 +58,15 @@ class Vector:
         length = self.get_length()
         if length == 0:
             return 0
-        cos_a = self.y_coord / length
+        cos_a = self.y / length
         cos_a = max(-1, min(1, cos_a))
         return round(math.degrees(math.acos(cos_a)))
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        new_x_coord = (
-            self.x_coord * math.cos(radians)
-            - self.y_coord * math.sin(radians)
-        )
-        new_y_coord = (
-            self.x_coord * math.sin(radians)
-            + self.y_coord * math.cos(radians)
-        )
-        return Vector(new_x_coord, new_y_coord)
+        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(new_x, new_y)
 
     def __repr__(self) -> str:
-        return (
-            f"Vector(x_coord={self.x_coord}, "
-            f"y_coord={self.y_coord})"
-        )
+        return f"Vector(x={self.x}, y={self.y})"
