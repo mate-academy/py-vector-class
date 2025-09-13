@@ -9,20 +9,32 @@ class Vector:
         self.y_coord = round(y_coord, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(self.x_coord + other.x_coord, self.y_coord + other.y_coord)
+        return Vector(
+            self.x_coord + other.x_coord,
+            self.y_coord + other.y_coord,
+        )
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(self.x_coord - other.x_coord, self.y_coord - other.y_coord)
+        return Vector(
+            self.x_coord - other.x_coord,
+            self.y_coord - other.y_coord,
+        )
 
     def __mul__(
-        self, other: Union["Vector", float, int]
+        self,
+        other: Union["Vector", float, int],
     ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
-            return Vector(self.x_coord * other, self.y_coord * other)
+            return Vector(
+                self.x_coord * other,
+                self.y_coord * other,
+            )
         if isinstance(other, Vector):
             # dot product
             return round(
-                self.x_coord * other.x_coord + self.y_coord * other.y_coord, 4
+                self.x_coord * other.x_coord
+                + self.y_coord * other.y_coord,
+                4,
             )
         return NotImplemented
 
@@ -44,11 +56,15 @@ class Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(self.x_coord / length, self.y_coord / length)
+        return Vector(
+            self.x_coord / length,
+            self.y_coord / length,
+        )
 
     def angle_between(self, other: "Vector") -> int:
         dot_product = (
-            self.x_coord * other.x_coord + self.y_coord * other.y_coord
+            self.x_coord * other.x_coord
+            + self.y_coord * other.y_coord
         )
         length_product = self.get_length() * other.get_length()
         if length_product == 0:
@@ -68,12 +84,17 @@ class Vector:
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         new_x_coord = (
-            self.x_coord * math.cos(radians) - self.y_coord * math.sin(radians)
+            self.x_coord * math.cos(radians)
+            - self.y_coord * math.sin(radians)
         )
         new_y_coord = (
-            self.x_coord * math.sin(radians) + self.y_coord * math.cos(radians)
+            self.x_coord * math.sin(radians)
+            + self.y_coord * math.cos(radians)
         )
         return Vector(new_x_coord, new_y_coord)
 
     def __repr__(self) -> str:
-        return f"Vector(x_coord={self.x_coord}, y_coord={self.y_coord})"
+        return (
+            f"Vector(x_coord={self.x_coord}, "
+            f"y_coord={self.y_coord})"
+        )
