@@ -6,6 +6,14 @@ class Vector:
         self.end_x: float = round(end_x, 2)
         self.end_y: float = round(end_y, 2)
 
+    @property
+    def x(self) -> float:
+        return self.end_x
+
+    @property
+    def y(self) -> float:
+        return self.end_y
+
     def __add__(self, other: "Vector") -> "Vector":
         result_x: float = self.end_x + other.end_x
         result_y: float = self.end_y + other.end_y
@@ -21,7 +29,7 @@ class Vector:
             result_x: float = self.end_x * other
             result_y: float = self.end_y * other
             return Vector(result_x, result_y)
-        if isinstance(other, Vector):
+        if isinstance(other, "Vector"):
             dot_product: float = float(
                 self.end_x * other.end_x + self.end_y * other.end_y
             )
@@ -67,7 +75,7 @@ class Vector:
         return round(angle_deg)
 
     def get_angle(self) -> int:
-        axis_y: Vector = Vector(0.0, 1.0)
+        axis_y: "Vector" = Vector(0.0, 1.0)
         return self.angle_between(axis_y)
 
     def rotate(self, degrees: int) -> "Vector":
@@ -77,3 +85,6 @@ class Vector:
         rotated_x: float = self.end_x * cos_angle - self.end_y * sin_angle
         rotated_y: float = self.end_x * sin_angle + self.end_y * cos_angle
         return Vector(rotated_x, rotated_y)
+
+    def __repr__(self) -> str:
+        return f"Vector({self.end_x}, {self.end_y})"
