@@ -33,7 +33,7 @@ class Vector:
             dot_product: float = float(
                 self.end_x * other.end_x + self.end_y * other.end_y
             )
-            return round(dot_product, 2)
+            return dot_product
         raise TypeError(
             "Multiplicação suportada apenas por número ou outro Vector"
         )
