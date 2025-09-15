@@ -29,7 +29,7 @@ class Vector:
             result_x: float = self.end_x * other
             result_y: float = self.end_y * other
             return Vector(result_x, result_y)
-        if isinstance(other, "Vector"):
+        if isinstance(other, Vector):
             dot_product: float = float(
                 self.end_x * other.end_x + self.end_y * other.end_y
             )
