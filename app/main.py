@@ -1,86 +1,82 @@
 import math
-from typing import Tuple, Union
 
 
 class Vector:
-    def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
-        self.x: float = round(coordinate_x, 2)
-        self.y: float = round(coordinate_y, 2)
+    def __init__(self, end_x: float, end_y: float) -> None:
+        self.end_x: float = round(end_x, 2)
+        self.end_y: float = round(end_y, 2)
 
-    def __add__(self, other_vector: "Vector") -> "Vector":
-        new_x: float = self.x + other_vector.x
-        new_y: float = self.y + other_vector.y
-        return Vector(new_x, new_y)
+    def __add__(self, other: "Vector") -> "Vector":
+        result_x: float = self.end_x + other.end_x
+        result_y: float = self.end_y + other.end_y
+        return Vector(result_x, result_y)
 
-    def __sub__(self, other_vector: "Vector") -> "Vector":
-        new_x: float = self.x - other_vector.x
-        new_y: float = self.y - other_vector.y
-        return Vector(new_x, new_y)
+    def __sub__(self, other: "Vector") -> "Vector":
+        result_x: float = self.end_x - other.end_x
+        result_y: float = self.end_y - other.end_y
+        return Vector(result_x, result_y)
 
-    def __mul__(
-        self, other: Union["Vector", float]
-    ) -> Union["Vector", float]:
+    def __mul__(self, other: object) -> object:
+        if isinstance(other, (int, float)):
+            result_x: float = self.end_x * other
+            result_y: float = self.end_y * other
+            return Vector(result_x, result_y)
         if isinstance(other, Vector):
-            dot_product: float = (
-                self.x * other.x + self.y * other.y
+            dot_product: float = float(
+                self.end_x * other.end_x + self.end_y * other.end_y
             )
-            return round(dot_product, 4)
-        else:
-            new_x: float = self.x * other
-            new_y: float = self.y * other
-            return Vector(new_x, new_y)
+            return round(dot_product, 2)
+        raise TypeError(
+            "Multiplicação suportada apenas por número ou outro Vector"
+        )
 
     @classmethod
     def create_vector_by_two_points(
-        cls, start_point: Tuple[float, float],
-        end_point: Tuple[float, float]
+        cls, start_point: tuple[float, float], end_point: tuple[float, float]
     ) -> "Vector":
-        delta_x: float = end_point[0] - start_point[0]
-        delta_y: float = end_point[1] - start_point[1]
-        return cls(delta_x, delta_y)
+        start_x: float
+        start_y: float
+        end_x: float
+        end_y: float
+        start_x, start_y = start_point
+        end_x, end_y = end_point
+        return cls(end_x - start_x, end_y - start_y)
 
     def get_length(self) -> float:
-        length: float = math.sqrt(self.x ** 2 + self.y ** 2)
-        return length
+        length: float = math.sqrt(self.end_x**2 + self.end_y**2)
+        return round(length, 2)
 
     def get_normalized(self) -> "Vector":
-        vector_length: float = self.get_length()
-        if vector_length == 0:
-            return Vector(0, 0)
-        normalized_x: float = self.x / vector_length
-        normalized_y: float = self.y / vector_length
+        length: float = self.get_length()
+        if length == 0:
+            return Vector(0.0, 0.0)
+        normalized_x: float = self.end_x / length
+        normalized_y: float = self.end_y / length
         return Vector(normalized_x, normalized_y)
 
     def angle_between(self, other_vector: "Vector") -> int:
-        dot_product: float = self * other_vector
-        self_length: float = self.get_length()
-        other_length: float = other_vector.get_length()
-        if self_length == 0 or other_length == 0:
+        dot: float = float(self * other_vector)
+        length_self: float = self.get_length()
+        length_other: float = other_vector.get_length()
+        if length_self == 0 or length_other == 0:
             return 0
-        cosine_of_angle: float = dot_product / (
-            self_length * other_length
-        )
-        cosine_of_angle = max(min(cosine_of_angle, 1), -1)
-        angle_in_degrees: float = math.degrees(
-            math.acos(cosine_of_angle)
-        )
-        return round(angle_in_degrees)
+        cos_angle: float = float(dot / (length_self * length_other))
+        cos_angle = max(-1.0, min(1.0, cos_angle))
+        angle_rad: float = math.acos(cos_angle)
+        angle_deg: float = math.degrees(angle_rad)
+        return round(angle_deg)
 
     def get_angle(self) -> int:
-        angle_in_radians: float = math.atan2(self.x, self.y)
-        angle_in_degrees: float = math.degrees(angle_in_radians)
-        if angle_in_degrees < 0:
-            angle_in_degrees += 360
-        return round(angle_in_degrees)
+        axis_y: Vector = Vector(0.0, 1.0)
+        return self.angle_between(axis_y)
 
-    def rotate(self, degrees_to_rotate: int) -> "Vector":
-        radians_to_rotate: float = math.radians(degrees_to_rotate)
-        cosine: float = math.cos(radians_to_rotate)
-        sine: float = math.sin(radians_to_rotate)
-        rotated_x: float = (
-            self.x * cosine - self.y * sine
-        )
-        rotated_y: float = (
-            self.x * sine + self.y * cosine
-        )
+    def rotate(self, degrees: int) -> "Vector":
+        rad: float = math.radians(degrees)
+        cos_angle: float = math.cos(rad)
+        sin_angle: float = math.sin(rad)
+        rotated_x: float = self.end_x * cos_angle - self.end_y * sin_angle
+        rotated_y: float = self.end_x * sin_angle + self.end_y * cos_angle
         return Vector(rotated_x, rotated_y)
+
+    def __repr__(self) -> str:
+        return f"Vector({self.end_x}, {self.end_y})"
