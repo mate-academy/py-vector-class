@@ -77,6 +77,3 @@ class Vector:
         rotated_x: float = self.end_x * cos_angle - self.end_y * sin_angle
         rotated_y: float = self.end_x * sin_angle + self.end_y * cos_angle
         return Vector(rotated_x, rotated_y)
-
-    def __repr__(self) -> str:
-        return f"Vector({self.end_x}, {self.end_y})"
