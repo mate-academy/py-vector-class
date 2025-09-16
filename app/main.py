@@ -25,7 +25,7 @@ class Vector:
             cls,
             start_point: tuple,
             end_point: tuple
-            ) -> Vector:
+    ) -> Vector:
         return cls(end_point[0] - start_point[0],
                    end_point[1] - start_point[1]
                    )
@@ -43,8 +43,10 @@ class Vector:
                 math.acos(
                     (self * vector)
                     / (self.get_length()
-                    * vector.get_length()
-                ))))
+                        * vector.get_length()
+                )
+            )
+        ))
 
     def get_angel(self) -> int:
         return round(math.degrees(math.acos(self.y / self.get_length())))
@@ -52,8 +54,8 @@ class Vector:
     def rotate(self, degrees: int) -> Vector:
         return Vector(
             round(
-                self.x * math.cos(math.radians(degrees)
-                - self.y * math.sin(math.radians(degrees))),
+                self.x * math.cos(math.radians(degrees))
+                - self.y * math.sin(math.radians(degrees)),
                 2
             ),
             round(
