@@ -29,7 +29,7 @@ class Vector:
                    )
 
     def get_length(self) -> int | float:
-        return round(((self.x ** 2) + (self.y ** 2)) ** 0.5, 3)
+        return ((self.x ** 2) + (self.y ** 2)) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
