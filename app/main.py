@@ -15,7 +15,7 @@ class Vector:
 
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if isinstance(other, Vector):
-            return round(self.x * other.x + self.y * other.y, 4)
+            return (self.x * other.x) + (self.y * other.y)
         return Vector(round(self.x * other, 2), round(self.y * other, 2))
 
     @classmethod
