@@ -16,9 +16,7 @@ class Vector:
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if isinstance(other, Vector):
             return (self.x * other.x) + (self.y + other.y)
-        self.x = round(self.x * other, 2)
-        self.y = round(self.y * other, 2)
-        return self
+        return Vector(round(self.x * other, 2), round(self.y * other, 2))
 
     @classmethod
     def create_vector_by_two_points(
@@ -37,7 +35,7 @@ class Vector:
         length = self.get_length()
         return Vector(self.x / length, self.y / length)
 
-    def angel_between(self, vector: Vector) -> int:
+    def angle_between(self, vector: Vector) -> int:
         return round(
             math.degrees(
                 math.acos(
@@ -48,8 +46,8 @@ class Vector:
             )
         )
 
-    def get_angel(self) -> int:
-        return round(math.degrees(math.acos(self.y / self.get_length())))
+    def get_angle(self) -> int:
+        return round(math.degrees(math.acos(self.x / self.get_length())))
 
     def rotate(self, degrees: int) -> Vector:
         return Vector(
