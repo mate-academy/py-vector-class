@@ -38,8 +38,8 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         return self.__class__(
-            self.x / self.get_length(),
-            self.y / self.get_length()
+            round((self.x / self.get_length()), 2),
+            round((self.y / self.get_length()), 2)
         )
 
     def angle_between(self, other: Vector) -> int:
