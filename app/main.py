@@ -4,8 +4,8 @@ import math
 
 class Vector:
     def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+        self.x = x
+        self.y = y
 
     def __add__(self, other: Vector) -> Vector:
         return self.__class__(self.x + other.x, self.y + other.y)
