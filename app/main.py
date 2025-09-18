@@ -50,4 +50,5 @@ class Vector:
         return self.__class__(
             self.x * math.cos(degrees) - self.y * math.sin(degrees),
             self.x * math.sin(degrees) + self.y * math.cos(degrees)
+        )
 
