@@ -47,12 +47,11 @@ class Vector:
         return round(math.degrees(math.acos(cos)))
 
     def get_angle(self) -> int:
-        other = self.__class__(0, 1)
-        return self.angle_between(other)
+        return round(math.degrees(math.acos(self.y / self.get_length())))
 
     def rotate(self, degrees: int) -> Vector:
         degrees = math.radians(degrees)
         return self.__class__(
-            self.x * math.cos(degrees) - self.y * math.sin(degrees),
-            self.x * math.sin(degrees) + self.y * math.cos(degrees)
+            round((self.x * math.cos(degrees) - self.y * math.sin(degrees)), 2),
+            round((self.x * math.sin(degrees) + self.y * math.cos(degrees)), 2)
         )
