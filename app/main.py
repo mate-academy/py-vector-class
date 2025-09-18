@@ -17,7 +17,10 @@ class Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
-        return self.__class__(self.x * other, self.y * other)
+        return self.__class__(
+            round((self.x * other), 2),
+            round((self.y * other), 2)
+        )
 
     @classmethod
     def create_vector_by_two_points(
