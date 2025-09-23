@@ -48,3 +48,10 @@ class Vector:
             angle = math.degrees(math.acos(max(-1 ,min(1, data))))
             return round(angle)
         return NotImplemented
+
+    def get_angle(self) -> int:
+        length = self.get_length()
+        if length == 0:
+            return 0
+        angle = math.degrees(math.acos(self.y / length))
+        return round(angle)
