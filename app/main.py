@@ -55,3 +55,11 @@ class Vector:
             return 0
         angle = math.degrees(math.acos(self.y / length))
         return round(angle)
+
+    def rotate(self, degrees: int) -> Vector:
+        if degrees == 0:
+            return NotImplemented
+        radians = math.radians(degrees)
+        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(new_x, new_y)
