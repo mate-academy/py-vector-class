@@ -1,4 +1,5 @@
 from __future__ import annotations
+import math
 
 class Vector:
     def __init__(self, x, y) -> None:
@@ -8,5 +9,10 @@ class Vector:
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
             return Vector(self.x + other.x, self.y + other.y)
+        return NotImplemented
+
+    def __sub__(self, other: Vector) -> Vector:
+        if isinstance(other, Vector):
+            return Vector(self.x - other.x, self.y - other.y)
         return NotImplemented
 
