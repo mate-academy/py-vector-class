@@ -1,5 +1,5 @@
 from __future__ import annotations
-import math
+
 
 class Vector:
     def __init__(self, x, y) -> None:
