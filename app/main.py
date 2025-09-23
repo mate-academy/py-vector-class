@@ -1,10 +1,11 @@
 from __future__ import annotations
 import math
 
+
 class Vector:
-    def __init__(self, x, y) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinates_x: float, coordinates_y: float) -> None:
+        self.x = round(coordinates_x, 2)
+        self.y = round(coordinates_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
@@ -16,7 +17,7 @@ class Vector:
             return Vector(self.x - other.x, self.y - other.y)
         return NotImplemented
 
-    def __mul__(self, other: int | float | Vector) -> Vector:
+    def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if isinstance(other, (float, int)):
             return Vector(self.x * other, self.y * other)
         if isinstance(other, Vector):
@@ -25,9 +26,16 @@ class Vector:
         return NotImplemented
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls,
+            start_point: tuple,
+            end_point: tuple
+    ) -> Vector:
         if len(start_point) == 2 or len(end_point) == 2:
-            return Vector(end_point[0] - start_point[0] , end_point[1] - start_point[1])
+            return Vector(
+                end_point[0] - start_point[0],
+                end_point[1] - start_point[1]
+            )
         return NotImplemented
 
     def get_length(self) -> float:
@@ -45,7 +53,7 @@ class Vector:
             return 0
         if isinstance(other, Vector):
             data = (self * other) / (self.get_length() * other.get_length())
-            angle = math.degrees(math.acos(max(-1 ,min(1, data))))
+            angle = math.degrees(math.acos(max(-1.0 , min(1.0 , data))))
             return round(angle)
         return NotImplemented
 
