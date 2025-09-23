@@ -16,3 +16,10 @@ class Vector:
             return Vector(self.x - other.x, self.y - other.y)
         return NotImplemented
 
+    def __mul__(self, other: int | float | Vector) -> Vector:
+        if isinstance(other, (float, int)):
+            return Vector(self.x * other, self.y * other)
+        if isinstance(other, Vector):
+            dot_product = self.x * other.x + self.y * other.y
+            return dot_product
+        return NotImplemented
