@@ -60,8 +60,7 @@ class Vector:
         )
 
     def __mul__(
-            self,
-            other: Union[int, float, Vector]
+            self, other: Union[int, float, Vector]
     ) -> Union[Vector, float]:
         if isinstance(other, Vector):
             return (
@@ -69,6 +68,5 @@ class Vector:
                     + self.coordinate_y * other.coordinate_y
             )
         return Vector(
-            self.coordinate_x * other,
-            self.coordinate_y * other
+            self.coordinate_x * other, self.coordinate_y * other
         )
