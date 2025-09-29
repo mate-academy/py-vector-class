@@ -46,12 +46,18 @@ class Vector:
         return Vector(new_x, new_y)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.coordinate_x + other.coordinate_x, self.coordinate_y + other.coordinate_y)
+        return Vector(
+            self.coordinate_x + other.coordinate_x,
+            self.coordinate_y + other.coordinate_y,
+        )
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.coordinate_x - other.coordinate_x, self.coordinate_y - other.coordinate_y)
+        return Vector(
+            self.coordinate_x - other.coordinate_x,
+            self.coordinate_y - other.coordinate_y,
+        )
 
     def __mul__(self, other: Union[int, float, Vector]) -> Union[Vector, float]:
-        if isinstance(other, Vector):
-            return self.coordinate_x * other.coordinate_x + self.coordinate_y * other.coordinate_y
+        return (self.coordinate_x * other.coordinate_x +
+                self.coordinate_y * other.coordinate_y)
         return Vector(self.coordinate_x * other, self.coordinate_y * other)
