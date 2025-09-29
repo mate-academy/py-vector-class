@@ -59,10 +59,10 @@ class Vector:
             self.coordinate_y - other.coordinate_y,
         )
 
-    def __mul__(self,
-                other:
-                Union[int, float, Vector])\
-            -> Union[Vector, float]:
+    def __mul__(
+            self,
+            other: Union[int, float, Vector]
+    ) -> Union[Vector, float]:
         return (
                 self.coordinate_x * other.coordinate_x
                 + self.coordinate_y * other.coordinate_y
