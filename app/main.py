@@ -1,10 +1,11 @@
 from __future__ import annotations
 import math
+from typing import Union
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
+        self.coordinate_x = round(coordinate_x, 2)
+        self.coordinate_y = round(coordinate_y, 2)
 
     @classmethod
     def create_vector_by_two_points(
@@ -15,13 +16,13 @@ class Vector:
         return cls(new_x, new_y)
 
     def get_length(self) -> float:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.coordinate_x ** 2 + self.coordinate_y ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
-        return Vector(self.x / length, self.y / length)
+        return Vector(self.coordinate_x / length, self.coordinate_y / length)
 
     def angle_between(self, other_vector: Vector) -> int:
         dot_product = self * other_vector
@@ -40,17 +41,17 @@ class Vector:
         angle_in_radians = math.radians(degrees)
         cos_a = math.cos(angle_in_radians)
         sin_a = math.sin(angle_in_radians)
-        new_x = self.x * cos_a - self.y * sin_a
-        new_y = self.x * sin_a + self.y * cos_a
+        new_x = self.coordinate_x * cos_a - self.coordinate_y * sin_a
+        new_y = self.coordinate_x * sin_a + self.coordinate_y * cos_a
         return Vector(new_x, new_y)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.coordinate_x + other.coordinate_x, self.coordinate_y + other.coordinate_y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(self.coordinate_x - other.coordinate_x, self.coordinate_y - other.coordinate_y)
 
-    def __mul__(self, other: int | float | Vector):
+    def __mul__(self, other: Union[int, float, Vector]) -> Union[Vector, float]:
         if isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
-        return Vector(self.x * other, self.y * other)
+            return self.coordinate_x * other.coordinate_x + self.coordinate_y * other.coordinate_y
+        return Vector(self.coordinate_x * other, self.coordinate_y * other)
