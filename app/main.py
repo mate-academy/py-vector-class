@@ -4,9 +4,9 @@ from typing import Union
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     @classmethod
     def create_vector_by_two_points(
@@ -52,7 +52,10 @@ class Vector:
     def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: Union[int, float, Vector]) -> Union[Vector, float]:
+    def __mul__(
+        self,
+        other: Union[int, float, Vector]
+    ) -> Union[Vector, float]:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(self.x * other, self.y * other)
