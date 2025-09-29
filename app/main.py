@@ -63,7 +63,12 @@ class Vector:
             self,
             other: Union[int, float, Vector]
     ) -> Union[Vector, float]:
-        return (
-                self.coordinate_x * other.coordinate_x
-                + self.coordinate_y * other.coordinate_y
+        if isinstance(other, Vector):
+            return (
+                    self.coordinate_x * other.coordinate_x
+                    + self.coordinate_y * other.coordinate_y
+            )
+        return Vector(
+            self.coordinate_x * other,
+            self.coordinate_y * other
         )
