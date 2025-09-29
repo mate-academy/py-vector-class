@@ -2,6 +2,7 @@ from __future__ import annotations
 import math
 from typing import Union
 
+
 class Vector:
 
     def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
@@ -59,5 +60,7 @@ class Vector:
         )
 
     def __mul__(self, other: Union[int, float, Vector]) -> Union[Vector, float]:
-        return (self.coordinate_x * other.coordinate_x
-                + self.coordinate_y * other.coordinate_y)
+        return (
+                self.coordinate_x * other.coordinate_x
+                + self.coordinate_y * other.coordinate_y
+        )
