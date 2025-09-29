@@ -2,6 +2,7 @@ from __future__ import annotations
 import math
 from typing import Union
 
+
 class Vector:
     def __init__(self, x: float, y: float) -> None:
         self.x = round(x, 2)
