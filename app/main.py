@@ -4,7 +4,6 @@ from typing import Union
 
 
 class Vector:
-
     def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
         self.coordinate_x = round(coordinate_x, 2)
         self.coordinate_y = round(coordinate_y, 2)
@@ -50,23 +49,25 @@ class Vector:
     def __add__(self, other: Vector) -> Vector:
         return Vector(
             self.coordinate_x + other.coordinate_x,
-            self.coordinate_y + other.coordinate_y,
+            self.coordinate_y + other.coordinate_y
         )
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(
             self.coordinate_x - other.coordinate_x,
-            self.coordinate_y - other.coordinate_y,
+            self.coordinate_y - other.coordinate_y
         )
 
     def __mul__(
-            self, other: Union[int, float, Vector]
+        self, other: Union[int, float, Vector]
     ) -> Union[Vector, float]:
         if isinstance(other, Vector):
+
             return (
-                    self.coordinate_x * other.coordinate_x
-                    + self.coordinate_y * other.coordinate_y
+                self.coordinate_x * other.coordinate_x
+                + self.coordinate_y * other.coordinate_y
             )
         return Vector(
-            self.coordinate_x * other, self.coordinate_y * other
+            self.coordinate_x * other,
+            self.coordinate_y * other
         )
