@@ -4,9 +4,9 @@ from math import degrees
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, axis_x: int | float, axis_y: int | float) -> None:
+        self.x = round(axis_x, 2)
+        self.y = round(axis_y, 2)
 
     def __add__(self, other: Vector) -> Vector | None:
         if isinstance(other, Vector):
@@ -28,9 +28,9 @@ class Vector:
         return self.__mul__(other)
 
     @classmethod
-    def create_vector(cls, start_point: tuple, end_point: tuple) -> Vector:
-        dx = (end_point[0] - start_point[0])
-        dy = (end_point[1] - start_point[1])
+    def create_vector_by_two_points(cls, start: tuple, end: tuple) -> Vector:
+        dx = (end[0] - start[0])
+        dy = (end[1] - start[1])
         return cls(dx, dy)
 
     def get_length(self) -> float:
