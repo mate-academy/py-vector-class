@@ -2,20 +2,20 @@ import math
 
 
 class Vector:
-    def __init__(self, ox: float, oy: float) -> None:
-        self.ox = round(ox, 2)
-        self.oy = round(oy, 2)
+    def __init__(self, x: float, y: float) -> None:
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
-    def __add__(self, other: "Vector" | int) -> object:
-        return Vector(self.ox + other.ox, self.oy + other.oy)
+    def __add__(self, other: "Vector") -> object:
+        return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: "Vector" | int) -> object:
-        return Vector(self.ox - other.ox, self.oy - other.oy)
+    def __sub__(self, other: "Vector") -> object:
+        return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: "Vector" | int) -> object:
+    def __mul__(self, other: object | float) -> object:
         if isinstance(other, Vector):
-            return self.ox * other.ox + self.oy * other.oy
-        return Vector(self.ox * other, self.oy * other)
+            return self.x * other.x + self.y * other.y
+        return Vector(self.x * other, self.y * other)
 
     @classmethod
     def create_vector_by_two_points(cls,
@@ -33,11 +33,11 @@ class Vector:
                    end_point[1] - start_point[1])
 
     def get_length(self) -> float:
-        length = (self.ox ** 2 + self.oy ** 2) ** 0.5
+        length = (self.x ** 2 + self.y ** 2) ** 0.5
         return abs(length)
 
     def get_normalized(self) -> object:
-        return Vector(self.ox / self.get_length(), self.oy / self.get_length())
+        return Vector(self.x / self.get_length(), self.y / self.get_length())
 
     def angle_between(self, vector: "Vector") -> int:
         dot = self * vector
@@ -58,7 +58,7 @@ class Vector:
         len_self = self.get_length()
         if len_self == 0:
             raise ValueError("zero vector")
-        angle_rad = math.atan2(self.ox, self.oy)
+        angle_rad = math.atan2(self.x, self.y)
         angle_deg = math.degrees(angle_rad)
 
         return round(abs(angle_deg))
@@ -67,5 +67,5 @@ class Vector:
         rad = math.radians(deg)
         cos_t = math.cos(rad)
         sin_t = math.sin(rad)
-        return Vector(self.ox * cos_t - self.oy * sin_t,
-                      self.ox * sin_t + self.oy * cos_t)
+        return Vector(self.x * cos_t - self.y * sin_t,
+                      self.x * sin_t + self.y * cos_t)
