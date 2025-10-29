@@ -14,7 +14,7 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: Vector) -> float:
-        return self.x * other.x + self.y * other.y
+        return (self.x * other.x) + (self.y * other.y)
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
