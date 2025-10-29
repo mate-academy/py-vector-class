@@ -3,13 +3,16 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(
+            self,
+            vector_x: float,
+            vector_y: float
+    ) -> None:
+        self.x = round(vector_x, 2)
+        self.y = round(vector_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
-
 
     def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
@@ -25,14 +28,14 @@ class Vector:
             start_point: tuple,
             end_point: tuple
     ) -> Vector:
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        new_x = end_point[0] - start_point[0]
+        new_y = end_point[1] - start_point[1]
+        return cls(new_x, new_y)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> Vector:
         length = self.get_length()
         if length == 0:
             return Vector(0, 0)
@@ -54,7 +57,7 @@ class Vector:
     def get_angle(self) -> float:
         positive_y_axis = Vector(0, 1)
         return self.angle_between(positive_y_axis)
-    
+
     def rotate(self, degrees: float | int) -> Vector:
         radians = math.radians(degrees)
         cos_angle = math.cos(radians)
