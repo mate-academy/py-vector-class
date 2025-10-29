@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = x
-        self.y = y
+    def __init__(self, _x: float, _y: float) -> None:
+        self.x = _x
+        self.y = _y
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
