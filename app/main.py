@@ -4,8 +4,8 @@ import math
 
 class Vector:
     def __init__(self, _x: float, _y: float) -> None:
-        self.x = _x
-        self.y = _y
+        self.x = round(_x, 2)
+        self.y = round(_y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -29,7 +29,7 @@ class Vector:
         length = self.get_length()
         if length == 0:
             raise ValueError()
-        return Vector(self.x / length, self.y / length)
+        return Vector(round(self.x / length, 2), round(self.y / length, 2))
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self.x * other.x + self.y * other.y
