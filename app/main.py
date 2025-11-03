@@ -49,6 +49,3 @@ class Vector:
                       - self.y * math.sin(radians),
                       y=self.x * math.sin(radians)
                       + self.y * math.cos(radians))
-vector1 = Vector(2, 4)
-vector2 = vector1 * 3.743
-print(isinstance(vector2, Vector)) #
