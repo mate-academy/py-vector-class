@@ -5,9 +5,9 @@ from math import degrees, cos, sin, radians, acos
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -47,7 +47,3 @@ class Vector:
         return Vector(
             self.x * cos(radians(degrees)) - self.y * sin(radians(degrees)),
             self.x * sin(radians(degrees)) + self.y * cos(radians(degrees)))
-
-
-vector = Vector(-4.44, 5.2)
-vector.angle_between(Vector(15, -76))
