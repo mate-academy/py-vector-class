@@ -1,10 +1,11 @@
 import math
+# flake8: noqa=E741
 
 
 class Vector:
     def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)  # noqa: E741
-        self.y = round(y, 2)  # noqa: E741
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
