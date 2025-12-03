@@ -1,5 +1,5 @@
 # noqa: VNE001
-
+from __future__ import annotations
 from math import sqrt, acos, degrees, radians, cos, sin
 from typing import Tuple, Union
 
@@ -17,8 +17,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: Union["Vector", Number]) -> (
-            Union)["Vector", float]:
+    def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(self.x * float(other), self.y * float(other))
