@@ -1,3 +1,5 @@
+# noqa: VNE001
+
 from math import sqrt, acos, degrees, radians, cos, sin
 from typing import Tuple, Union
 
