@@ -7,7 +7,7 @@ Number = Union[int, float]
 
 
 class Vector:
-    def __init__(self, x: Number, y: Number) -> None:
+    def __init__(self, x_number: Number, y_number: Number) -> None:
         self.x = round(float(x), 2)
         self.y = round(float(y), 2)
 
