@@ -31,8 +31,8 @@ class Vector:
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
         return cls(
-            x=end_point[0] - start_point[0],
-            y=end_point[1] - start_point[1]
+            x_coord=end_point[0] - start_point[0],
+            y_coord=end_point[1] - start_point[1]
         )
 
     def get_length(self) -> float:
@@ -51,8 +51,8 @@ class Vector:
 
     def rotate(self, degrees: int) -> Vector:
         return Vector(
-            x=self.x * math.cos(math.radians(degrees))
+            x_coord=self.x * math.cos(math.radians(degrees))
             - self.y * math.sin(math.radians(degrees)),
-            y=self.x * math.sin(math.radians(degrees))
+            y_coord=self.x * math.sin(math.radians(degrees))
             + self.y * math.cos(math.radians(degrees))
         )
