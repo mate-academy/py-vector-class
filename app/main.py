@@ -17,7 +17,7 @@ class Vector:
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
+            return (self.x * other.x) + (self.y * other.y)
     
     @classmethod
     def create_vector_by_two_points(cls, point1: tuple[int | float, int | float], point2: tuple[int | float, int | float]) -> Vector:
@@ -35,10 +35,10 @@ class Vector:
         magnitude_self = self.get_length()
         magnitude_other = other.get_length()
         cos_angle = dot_product / (magnitude_self * magnitude_other)
-        return round(math.degrees(math.acos(cos_angle)), 2)
+        return round(math.degrees(math.acos(cos_angle)))
     
     def get_angle(self) -> float:
-        return round(math.degrees(math.acos(self.y / self.get_length())), 2)
+        return round(math.degrees(math.acos(self.y / self.get_length())))
 
 
     def rotate(self, angle: float) -> Vector:
