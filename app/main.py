@@ -1,4 +1,5 @@
 from __future__ import annotations
+import math
 
 
 class Vector:
@@ -23,13 +24,24 @@ class Vector:
         return cls(point2[0] - point1[0], point2[1] - point1[1])
     
     def get_length(self) -> float:
-        pass
+        return math.hypot(self.x, self.y)
 
     def get_normalized(self) -> Vector:
-        pass
+        magnitude = self.get_length()
+        return Vector(self.x / magnitude, self.y / magnitude)
 
     def angle_between(self, other: Vector) -> float:
-        pass
+        dot_product = self * other
+        magnitude_self = self.get_length()
+        magnitude_other = other.get_length()
+        cos_angle = dot_product / (magnitude_self * magnitude_other)
+        return round(math.degrees(math.acos(cos_angle)), 2)
+    
+    def get_angle(self) -> float:
+        return round(math.degrees(math.acos(self.y / self.get_length())), 2)
+
 
     def rotate(self, angle: float) -> Vector:
-        pass
+        new_x = self.x * math.cos(math.radians(angle)) - self.y * math.sin(math.radians(angle))
+        new_y = self.x * math.sin(math.radians(angle)) + self.y * math.cos(math.radians(angle))
+        return Vector(new_x, new_y)
