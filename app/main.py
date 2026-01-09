@@ -59,15 +59,9 @@ class Vector:
             return abs(angle_self - angle_other)
 
     def rotate(self, angle: int) -> "Vector":
-        old_angle = self.get_angle()
-        if self.y < 0:
-            old_angle *= -1
-        new_angle = old_angle - angle
-        if new_angle < 0:
-            new_angle = new_angle % -360
-        else:
-            new_angle = new_angle % 360
         return Vector(
-            math.sin(math.radians(new_angle)) * self.get_length(),
-            math.cos(math.radians(new_angle)) * self.get_length()
+            self.x * math.cos(math.radians(angle))
+            - self.y * math.sin(math.radians(angle)),
+            self.x * math.sin(math.radians(angle))
+            + self.y * math.cos(math.radians(angle))
         )
