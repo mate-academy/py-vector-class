@@ -68,6 +68,6 @@ class Vector:
         else:
             new_angle = new_angle % 360
         return Vector(
-            round(math.sin(math.radians(new_angle)) * self.get_length(), 2),
-            round(math.cos(math.radians(new_angle)) * self.get_length(), 2)
+            math.sin(math.radians(new_angle)) * self.get_length(),
+            math.cos(math.radians(new_angle)) * self.get_length()
         )
