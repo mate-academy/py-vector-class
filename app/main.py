@@ -30,7 +30,9 @@ class Vector:
             )
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> "Vector":
+    def create_vector_by_two_points(
+        cls, start_point: tuple, end_point: tuple
+    ) -> "Vector":
         x_delta = end_point[0] - start_point[0]
         y_delta = end_point[1] - start_point[1]
         return cls(x_delta, y_delta)
@@ -56,7 +58,6 @@ class Vector:
         return round(math.degrees(math.acos(cos_angle)))
 
     def get_angle(self) -> int:
-        # angle from positive Y-axis clockwise
         angle = math.degrees(math.atan2(-self.x, self.y))
         if angle < 0:
             angle += 360
@@ -68,7 +69,10 @@ class Vector:
         sin_r = math.sin(radians_value)
         x_new = self.x * cos_r - self.y * sin_r
         y_new = self.x * sin_r + self.y * cos_r
-        return Vector(round(x_new, 2), round(y_new, 2))
+        return Vector(
+            round(x_new, 2),
+            round(y_new, 2)
+        )
 
     def __repr__(self) -> str:
         return f"Vector({self.x}, {self.y})"
