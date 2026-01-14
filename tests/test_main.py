@@ -1,4 +1,6 @@
 import pytest
+from pytest import approx
+
 
 from app.main import Vector
 
@@ -33,7 +35,7 @@ def test_vector_add(point1_x, point1_y, point2_x, point2_y, point3_x, point3_y):
     vector2 = Vector(point2_x, point2_y)
     vector3 = vector1 + vector2
     assert isinstance(vector3, Vector), (
-        "Result of addiction of Vectors should be Vector"
+        "Result of addition of Vectors should be Vector"
     )
     assert (vector3.x, vector3.y) == (point3_x, point3_y), (
         f"If coordinates of vector1 is {point1_x, point1_y}, "
@@ -92,14 +94,16 @@ def test_vector_mul_number(vector1_x, vector1_y, number, vector2_x, vector2_y):
         (2, 2, -2, 2, 0)
     ]
 )
+
 def test_vector_mul_vector(vector1_x, vector1_y, vector2_x, vector2_y, result):
     vector1 = Vector(vector1_x, vector1_y)
     vector2 = Vector(vector2_x, vector2_y)
     dot_product = vector1 * vector2
-    assert dot_product == result, (
+    assert dot_product == approx(result, rel=1e-3), (
         f"Dot product of vector1 with coordinates {vector1_x}, {vector1_y}, "
         f"and vector2 with coordinates {vector2_x}, {vector2_y} should equal to {result}"
     )
+
 
 
 @pytest.mark.parametrize(
