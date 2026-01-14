@@ -17,7 +17,7 @@ class Vector:
         if isinstance(param, (float, int)):
             return Vector(round(self.x * param, 2), round(self.y * param, 2))
         elif isinstance(param, Vector):
-            return self.x * param.x + self.y * param.y, 2
+            return self.x * param.x + self.y * param.y
         else:
             raise TypeError("Parameter must be a float or Vector")
 
