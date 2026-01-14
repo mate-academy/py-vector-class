@@ -13,8 +13,8 @@ class Vector:
     def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, param: float | Vector) -> Vector | float:
-        if isinstance(param, float):
+    def __mul__(self, param: float | int | Vector) -> Vector | float:
+        if isinstance(param, (float, int)):
             return Vector(round(self.x * param, 2), round(self.y * param, 2))
         elif isinstance(param, Vector):
             return self.x * param.x + self.y * param.y, 2
