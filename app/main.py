@@ -54,9 +54,7 @@ class Vector:
     def get_angle(self) -> int:
         angle_radians = math.atan2(self.x, self.y)
         angle_degrees = math.degrees(angle_radians)
-        if angle_degrees < 0:
-            angle_degrees += 360
-        return round(angle_degrees)
+        return round(abs(angle_degrees))
 
     def rotate(self, degrees: float) -> Vector:
         radians = math.radians(degrees)
