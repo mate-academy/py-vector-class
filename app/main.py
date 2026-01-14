@@ -1,3 +1,62 @@
+import math
+
+
 class Vector:
-    # write your code here
-    pass
+    def __init__(self, point_x: float, point_y: float) -> None:
+        self.x = round(point_x, 2)
+        self.y = round(point_y, 2)
+
+    def __add__(self, other: "Vector") -> "Vector":
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: "Vector") -> "Vector":
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other: float) -> "Vector":
+        if isinstance(other, (int, float)):
+            return Vector(self.x * other, self.y * other)
+        elif isinstance(other, Vector):
+            return self.x * other.x + self.y * other.y
+
+    def get_length(self) -> float:
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+
+    def get_normalized(self) -> "Vector":
+        lenght = self.get_length()
+        if lenght == 0:
+            return Vector(0, 0)
+        else:
+            return Vector(self.x / lenght, self.y / lenght)
+
+    def angle_between(self, other: "Vector") -> int:
+        dot_product = self * other
+        angle_radians = math.acos(dot_product
+                                  / (self.get_length()
+                                     * other.get_length())
+                                  )
+        angle_degrees = math.degrees(angle_radians)
+        return round(angle_degrees)
+
+    def get_angle(self) -> int:
+        angle_in_radians = math.atan2(self.x, self.y)
+        angle_in_degrees = math.degrees(angle_in_radians)
+        if self.x == 0:
+            angle_in_degrees = 0
+        elif angle_in_degrees < 0:
+            angle_in_degrees *= -1
+        return round(angle_in_degrees)
+
+    def rotate(self, degrees: float) -> "Vector":
+        radians = math.radians(degrees)
+        rotated_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        rotated_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(rotated_x, rotated_y)
+
+    @classmethod
+    def create_vector_by_two_points(cls
+                                    , start_point: tuple
+                                    , end_point: tuple
+                                    ) -> "Vector":
+        new_x = end_point[0] - start_point[0]
+        new_y = end_point[1] - start_point[1]
+        return cls(new_x, new_y)
