@@ -124,9 +124,10 @@ to get degrees.
 - `get_angle`
 
 Returns angle between current vector and positive Y axis.
+
 ```python
 vector = Vector(33, 8)
-vector.get_angle() == 76
+vector.get_angle == 76
 ```
 - `rotate`
 
