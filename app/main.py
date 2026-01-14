@@ -17,7 +17,7 @@ class Vector:
         if isinstance(param, float):
             return Vector(round(self.x * param, 2), round(self.y * param, 2))
         elif isinstance(param, Vector):
-            return round(self.x * param.x + self.y * param.y, 2)
+            return self.x * param.x + self.y * param.y, 2
         else:
             raise TypeError("Parameter must be a float or Vector")
 
@@ -30,7 +30,7 @@ class Vector:
         return cls(first_point, second_point)
 
     def get_length(self) -> float:
-        return round((self.x**2 + self.y**2) ** 0.5, 2)
+        return (self.x**2 + self.y**2) ** 0.5
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
