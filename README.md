@@ -1,3 +1,37 @@
+# Класс Vector
+
+Прочитайте [руководство](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) перед началом.
+
+Для получения информации о векторах используйте следующие материалы:
+- [Векторы на координатной плоскости](https://phys.libretexts.org/Bookshelves/University_Physics/Book%3A_University_Physics_(OpenStax)/Book%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/02%3A_Vectors/2.04%3A__Coordinate_Systems_and_Components_of_a_Vector_(Part_1))
+- [Вектор по двум точкам](https://www.varsitytutors.com/precalculus-help/find-a-direction-vector-when-given-two-points)
+- [Сложение векторов](https://www.dummies.com/article/academics-the-arts/science/physics/how-to-add-vectors-together-148601)
+- [Нормализованный вектор](https://mathworld.wolfram.com/NormalizedVector.html)
+- [Скалярное произведение векторов](https://www.mathsisfun.com/algebra/vectors-dot-product.html)
+- [Угол между двумя векторами](https://www.wikihow.com/Find-the-Angle-Between-Two-Vectors)
+- [Поворот векторов](https://matthew-brett.github.io/teaching/rotation_2d.html)
+
+Вы недавно получили работу в компании по разработке игр на должность графического инженера. Вам нужно рассчитывать трассировку света, но это невозможно без использования векторов.
+
+Вектор на координатной плоскости — это направленный отрезок, который всегда начинается в точке (0, 0) и заканчивается в координатах (x, y).
+
+Реализуйте класс Vector, его метод `__init__` принимает и сохраняет две координаты: x, y — координаты конца вектора, **округленные до двух знаков после запятой**.
+
+Класс Vector должен иметь следующие магические методы:
+- `__add__` — сложение двух векторов должно возвращать Vector.
+- `__sub__` — вычитание двух векторов должно возвращать Vector.
+- `__mul__` — умножение вектора на число должно возвращать другой Vector. Умножение вектора на вектор должно возвращать их скалярное произведение.
+
+Также класс Vector должен иметь следующие методы:
+- `create_vector_by_two_points` — принимает `start_point` (кортеж координат точки начала вектора) и `end_point` (кортеж координат точки конца вектора). Возвращает Vector. **Примечание**: этот метод должен быть `classmethod`.
+- `get_length` — возвращает длину вектора.
+- `get_normalized` — возвращает нормализованную копию вектора.
+- `` angle_between— принимает `vector` и возвращает угол между текущим вектором и `vector` в целых градусах. **Примечание**: в этом методе округляйте только возвращаемые градусы.
+- `` —get_angle возвращает угол между текущим вектором и положительной осью Y.
+- `rotate` — принимает `degrees` (целое число градусов поворота) и возвращает повернутый Vector на `degrees`. Вы можете использовать `math.cos` и `math.sin`, но они работают с **радианами**. Для преобразования градусов в радианы используйте `math.radians`.
+
+
+
 # class Vector
 
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
@@ -141,3 +175,4 @@ vector2.y == 28.99
 ```
 You may use `math.cos`, `math.sin` here, but they use **radians**.
 In order to convert degrees to radians use `math.radians`.
+
