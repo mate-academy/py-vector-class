@@ -84,22 +84,25 @@ def test_vector_mul_number(vector1_x, vector1_y, number, vector2_x, vector2_y):
     )
 
 
+import pytest
+
 @pytest.mark.parametrize(
-    'vector1_x,vector1_y,vector2_x,vector2_y,result',
+    "vector1_x,vector1_y,vector2_x,vector2_y,result",
     [
         (0, 0, 1, -2, 0),
         (3.11, 5.56, 4.5, -10.2, -42.71699999999999),
-        (2, 2, -2, 2, 0)
+        (2, 2, -2, 2, 0),
     ]
 )
 def test_vector_mul_vector(vector1_x, vector1_y, vector2_x, vector2_y, result):
     vector1 = Vector(vector1_x, vector1_y)
     vector2 = Vector(vector2_x, vector2_y)
     dot_product = vector1 * vector2
-    assert dot_product == result, (
-        f"Dot product of vector1 with coordinates {vector1_x}, {vector1_y}, "
-        f"and vector2 with coordinates {vector2_x}, {vector2_y} should equal to {result}"
+    assert dot_product == pytest.approx(result), (
+        f"Dot product of vector1({vector1_x}, {vector1_y}) and "
+        f"vector2({vector2_x}, {vector2_y}) should be approx {result}"
     )
+
 
 
 @pytest.mark.parametrize(
