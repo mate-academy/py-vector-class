@@ -3,39 +3,39 @@ import math
 
 
 class Vector:
-    def __init__(self, x_var: float | int, y_var: float | int) -> None:
-        self.x_var = round(x_var, 2)
-        self.y_var = round(y_var, 2)
+    def __init__(self, x: float | int, y: float | int) -> None:
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
-    def __add__(self, other: Vector) -> Vector:
-        return Vector(x_var=self.x_var + other.x_var,
-                      y_var=self.y_var + other.y_var)
+    def __add__(self, other: Vector | int) -> Vector | int:
+        return Vector(x=self.x + other.x,
+                      y=self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(x_var=self.x_var - other.x_var,
-                      y_var=self.y_var - other.y_var)
+        return Vector(x=self.x - other.x,
+                      y=self.y - other.y)
 
     def __mul__(self, other: Vector | int | float) -> Vector | int | float:
         if isinstance(other, Vector):
-            return (self.x_var * other.x_var) + (self.y_var * other.y_var)
-        return Vector(x_var=other * self.x_var,
-                      y_var=other * self.y_var)
+            return (self.x * other.x) + (self.y * other.y)
+        return Vector(x=other * self.x,
+                      y=other * self.y)
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
                                     end_point: tuple) -> Vector:
-        return cls(x_var=list(end_point)[0] - list(start_point)[0],
-                   y_var=list(end_point)[1] - list(start_point)[1])
+        return cls(x=list(end_point)[0] - list(start_point)[0],
+                   y=list(end_point)[1] - list(start_point)[1])
 
     def get_length(self) -> float | int:
-        return (self.x_var ** 2 + self.y_var ** 2) ** 0.5
+        return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         initial_length = self.get_length()
-        normalized_x = self.x_var / initial_length
-        normalized_y = self.y_var / initial_length
-        return Vector(x_var=normalized_x,
-                      y_var=normalized_y)
+        normalized_x = self.x / initial_length
+        normalized_y = self.y / initial_length
+        return Vector(x=normalized_x,
+                      y=normalized_y)
 
     def angle_between(self, other: Vector) -> int:
         dot_product = self.__mul__(other)
@@ -47,7 +47,7 @@ class Vector:
         return angle
 
     def get_angle(self) -> int:
-        radian_angle_to_y_axis = math.atan2(self.x_var, self.y_var)
+        radian_angle_to_y_axis = math.atan2(self.x, self.y)
         degrees_angle_to_y_axis = abs(math.degrees(radian_angle_to_y_axis))
         return round(degrees_angle_to_y_axis)
 
@@ -55,8 +55,8 @@ class Vector:
         degrees_to_radians = math.radians(degrees)
         sinus_value = math.sin(degrees_to_radians)
         cosine_value = math.cos(degrees_to_radians)
-        new_x = cosine_value * self.x_var - sinus_value * self.y_var
-        new_y = sinus_value * self.x_var + cosine_value * self.y_var
-        return Vector(x_var=new_x, y_var=new_y)
+        new_x = cosine_value * self.x - sinus_value * self.y
+        new_y = sinus_value * self.x + cosine_value * self.y
+        return Vector(x=new_x, y=new_y)
 
     pass
