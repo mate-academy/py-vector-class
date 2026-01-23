@@ -5,27 +5,27 @@ import math
 class Vector:
     # write your code here
     def __init__(self, x_vector: float, y_vector: float) -> None:
-        self.x_vector = round(x_vector, 2)
-        self.y_vector = round(y_vector, 2)
+        self.x = round(x_vector, 2)
+        self.y = round(y_vector, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
-            x_add = round(self.x_vector + other.x_vector, 2)
-            y_add = round(self.y_vector + other.y_vector, 2)
+            x_add = round(self.x + other.x, 2)
+            y_add = round(self.y + other.y, 2)
             return Vector(x_add, y_add)
         raise TypeError("Error")
 
     def __sub__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
-            x_sub = round(self.x_vector - other.x_vector, 2)
-            y_sub = round(self.y_vector - other.y_vector, 2)
+            x_sub = round(self.x - other.x, 2)
+            y_sub = round(self.y - other.y, 2)
             return Vector(x_sub, y_sub)
         raise TypeError("Error")
 
     def __mul__(self, other: Vector) -> Vector | float:
         if isinstance(other, (float, int)):
-            x_mul = round(self.x_vector * other, 2)
-            y_mul = round(self.y_vector * other, 2)
+            x_mul = round(self.x * other, 2)
+            y_mul = round(self.y * other, 2)
             return Vector(x_mul, y_mul)
         if isinstance(other, Vector):
             dot_product = (self.x * other.x) + (self.y * other.y)
