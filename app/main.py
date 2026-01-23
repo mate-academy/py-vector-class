@@ -70,7 +70,7 @@ class Vector:
         len_vec = self.get_length()
         if len_vec == 0:
             raise ValueError("Cannot calculate angle with zero-length vector")
-        cos_angle = math.degrees(math.atan2(self.x, self.y))
+        cos_angle = math.degrees(math.atan2(self.y, self.x))
         if cos_angle < 0:
             cos_angle += 360
         return round(cos_angle)
