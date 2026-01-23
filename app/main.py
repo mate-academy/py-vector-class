@@ -67,13 +67,13 @@ class Vector:
         return round(cos_a)
 
     def get_angle(self) -> int:
-        len_vec = self.get_length()
-        if len_vec == 0:
+        length = self.get_length()
+        if length == 0:
             raise ValueError("Cannot calculate angle with zero-length vector")
-        cos_angle = math.degrees(math.atan2(self.y, self.x))
-        if cos_angle < 0:
-            cos_angle += 360
-        return round(cos_angle)
+        cos_angle = self.y / length
+        cos_angle = max(min(cos_angle, 1), -1)  # захист від похибок
+        angle = math.degrees(math.acos(cos_angle))
+        return round(angle)
 
     def rotate(self, degrees: int) -> Vector:
         rad = math.radians(degrees)
