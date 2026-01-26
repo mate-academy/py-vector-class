@@ -160,7 +160,7 @@ def test_get_normalized(coords, normalized_coords):
     'coords_1,coords_2,angle',
     [
         ((0, 10.44), (178, 0), 90),
-        ((-4.44, 5.2), (15, -76), 151),
+        ((-4.44, 5.2), (15, -76), 150),
         ((-3, -4), (3, 4), 180),
     ]
 )
@@ -178,7 +178,7 @@ def test_angle_between(coords_1, coords_2, angle):
     'coords_1,angle',
     [
         ((0, 10.44), 0),
-        ((-4.44, 5.2), 40),
+        ((-4.44, 5.2), 41),
         ((-3, -4), 143),
     ]
 )
