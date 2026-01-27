@@ -3,9 +3,9 @@ from typing import Tuple, Union
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coord_x: float, coord_y: float) -> None:
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -13,9 +13,13 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: Union["Vector", float, int]) -> Union["Vector", float]:
+    def __mul__(
+        self,
+        other: Union["Vector", float, int],
+    ) -> Union["Vector", float]:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
+
         return Vector(self.x * other, self.y * other)
 
     @classmethod
@@ -37,21 +41,25 @@ class Vector:
         return Vector(self.x / length, self.y / length)
 
     def angle_between(self, vector: "Vector") -> int:
-        dot = self * vector
-        lengths = self.get_length() * vector.get_length()
-        cos_a = dot / lengths
-        angle = math.degrees(math.acos(cos_a))
-        return round(angle)
+        dot_product = self * vector
+        lengths_product = self.get_length() * vector.get_length()
+        cos_angle = dot_product / lengths_product
+        angle_degrees = math.degrees(math.acos(cos_angle))
+        return round(angle_degrees)
 
     def get_angle(self) -> int:
-        # angle with positive Y axis
-        cos_a = self.y / self.get_length()
-        angle = math.degrees(math.acos(cos_a))
-        return round(angle)
+        cos_angle = self.y / self.get_length()
+        angle_degrees = math.degrees(math.acos(cos_angle))
+        return round(angle_degrees)
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        y = self.x * math.sin(radians) + self.y * math.cos(radians)
-        return Vector(x, y)
-
+        rotated_x = (
+            self.x * math.cos(radians)
+            - self.y * math.sin(radians)
+        )
+        rotated_y = (
+            self.x * math.sin(radians)
+            + self.y * math.cos(radians)
+        )
+        return Vector(rotated_x, rotated_y)
