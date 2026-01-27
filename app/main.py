@@ -15,8 +15,8 @@ class Vector:
         return Vector(self.horizontal_coord - other_vector.horizontal_coord,
                       self.vertical_coord - other_vector.vertical_coord)
 
-    def __mul__(self, multiplier: Union[Self, float, int])
-    -> Union[Self, float]:
+    def __mul__(self, multiplier: Union[Self, float,
+                int]) -> Union[Self, float]:
         if isinstance(multiplier, Vector):
             return (self.horizontal_coord * multiplier.horizontal_coord
                     + self.vertical_coord * multiplier.vertical_coord)
