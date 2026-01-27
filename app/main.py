@@ -13,7 +13,8 @@ class Vector:
     def __sub__(self, other_vector: Self) -> Self:
         return Vector(self.x - other_vector.x, self.y - other_vector.y)
 
-    def __mul__(self, multiplier: Union[Self, float, int]) -> Union[Self, float]:
+    def __mul__(self,
+                multiplier: Union[Self, float, int]) -> Union[Self, float]:
         if isinstance(multiplier, Vector):
             return (self.x * multiplier.x) + (self.y * multiplier.y)
         return Vector(self.x * multiplier, self.y * multiplier)
@@ -22,7 +23,10 @@ class Vector:
     def create_vector_by_two_points(
         cls, start_point: tuple[float, float], end_point: tuple[float, float]
     ) -> Self:
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+        return cls(
+            end_point[0] - start_point[0],
+            end_point[1] - start_point[1]
+        )
 
     def get_length(self) -> float:
         return math.sqrt(self.x**2 + self.y**2)
