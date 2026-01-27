@@ -37,8 +37,8 @@ class Vector:
         vector_length = self.get_length()
         if vector_length == 0:
             return Vector(0, 0)
-        return Vector(self.horizontal_coord / vector_length, self.vertical_coord
-                      / vector_length)
+        return Vector(self.horizontal_coord / vector_length,
+                      self.vertical_coord / vector_length)
 
     def angle_between(self, other_vector: Self) -> int:
         length_one = self.get_length()
@@ -52,7 +52,7 @@ class Vector:
         return int(round(angle_in_degrees))
 
     def get_angle(self) -> int:
-        angle_in_radians = math.atan2(self.horizontal_coord, 
+        angle_in_radians = math.atan2(self.horizontal_coord,
                                       self.vertical_coord)
         angle_in_degrees = math.degrees(angle_in_radians)
         return int(round(angle_in_degrees))
