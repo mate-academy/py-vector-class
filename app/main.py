@@ -20,13 +20,13 @@ class Vector:
         if isinstance(multiplier, Vector):
             return self.x * multiplier.x
             + self.y * multiplier.y
-        
+
         return Vector(self.x * multiplier,
                       self.y * multiplier)
 
     @classmethod
-    def create_vector_by_two_points(cls,
-            start_point: tuple[float, float],
+    def create_vector_by_two_points(
+        cls, start_point: tuple[float, float],
             end_point: tuple[float, float]) -> Self:
         horizontal_diff = end_point[0] - start_point[0]
         vertical_diff = end_point[1] - start_point[1]
@@ -48,28 +48,26 @@ class Vector:
         len_b = other_vector.get_length()
         if len_a == 0 or len_b == 0:
             return 0
-        
+
         dot_product = self * other_vector
         # Clamp between -1 and 1 to handle floating point precision drift
-        cosine_val = max(-1.0,
-            min(1.0, dot_product / (len_a * len_b)))
+        cosine_val = max(
+            -1.0, min(1.0, dot_product / (len_a * len_b))
+        )
         return int(round(math.degrees(
             math.acos(cosine_val))))
 
     def get_angle(self) -> int:
         angle_degrees = math.degrees(
-            math.atan2(self.x, self.y))        
+            math.atan2(self.x, self.y))    
         return int(round(angle_degrees % 360))
 
-    def rotate(self, degrees: int) -> Self:        
+    def rotate(self, degrees: int) -> Self:
         radians_val = math.radians(degrees)
         cos_val = math.cos(radians_val)
-        sin_val = math.sin(radians_val)       
-        
+        sin_val = math.sin(radians_val)
         new_horizontal = (self.x * cos_val)
         - (self.y * sin_val)
         new_vertical = (self.x * sin_val)
         + (self.y * cos_val)
-        
         return Vector(new_horizontal, new_vertical)
-
