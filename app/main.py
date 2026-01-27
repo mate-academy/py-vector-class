@@ -59,7 +59,7 @@ class Vector:
 
     def get_angle(self) -> int:
         angle_degrees = math.degrees(
-            math.atan2(self.x, self.y))    
+            math.atan2(self.x, self.y))
         return int(round(angle_degrees % 360))
 
     def rotate(self, degrees: int) -> Self:
