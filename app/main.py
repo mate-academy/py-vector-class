@@ -4,7 +4,7 @@ import math
 
 
 class Vector:
-    def __init__(self, x : float, y: float) -> None:
+    def __init__(self, x : float, y: float) -> None: # noqa
         self.x = round(x, 2)
         self.y = round(y, 2)
 
@@ -68,4 +68,3 @@ class Vector:
 
         return Vector(self.x * cos_radians - self.y * sin_radians,
                       self.x * sin_radians + self.y * cos_radians)
-    
