@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import math
-from typing import Union, Tuple
+from typing import Tuple, Union
 
 Number = Union[int, float]
 
@@ -73,7 +73,7 @@ class Vector:
         if self.x == 0 and self.y == 0:
             raise ValueError("Angle is undefined for zero vector.")
 
-        angle_degrees = math.degrees(math.atan2(self.x, self.y))
+        angle_degrees = math.degrees(math.atan2(self.y, self.x))
         if angle_degrees < 0:
             angle_degrees += 360
 
