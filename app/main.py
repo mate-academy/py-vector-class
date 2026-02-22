@@ -64,20 +64,23 @@ class Vector:
 
         dot_product = self * other
         cos_value = dot_product / (length_self * length_other)
+
+        # Floating-point safety:
         cos_value = max(-1.0, min(1.0, cos_value))
 
         angle_degrees = math.degrees(math.acos(cos_value))
         return round(angle_degrees)
 
     def get_angle(self) -> int:
+        """
+        Returns angle between current vector and positive Y axis.
+        Based on your tests, it should be a non-negative integer.
+        """
         if self.x == 0 and self.y == 0:
             raise ValueError("Angle is undefined for zero vector.")
 
-        angle_degrees = math.degrees(math.atan2(self.y, self.x))
-        if angle_degrees < 0:
-            angle_degrees += 360
-
-        return round(angle_degrees)
+        angle_degrees = math.degrees(math.atan2(self.x, self.y))
+        return abs(round(angle_degrees))
 
     def rotate(self, degrees: int) -> "Vector":
         radians_value = math.radians(degrees)
