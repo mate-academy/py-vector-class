@@ -72,7 +72,11 @@ class Vector:
     def get_angle(self) -> int:
         if self.x == 0 and self.y == 0:
             raise ValueError("Angle is undefined for zero vector.")
+
         angle_degrees = math.degrees(math.atan2(self.x, self.y))
+        if angle_degrees < 0:
+            angle_degrees += 360
+
         return round(angle_degrees)
 
     def rotate(self, degrees: int) -> "Vector":
