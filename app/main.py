@@ -14,6 +14,7 @@ class Vector:
     def __mul__(self, other):
         return Vector(self.x * other.x, self.y * other.y)
 
+    @classmethod
     def create_vector_by_two_points(cls, start_point, end_point):
         x = end_point[0] - start_point[0]
         y = end_point[1] - start_point[1]
@@ -37,5 +38,3 @@ class Vector:
         cos_theta = max(-1, min(1, cos_theta))
         angle_rad = math.acos(cos_theta)
         return round(math.degrees(angle_rad))
-
-
