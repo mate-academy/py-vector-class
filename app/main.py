@@ -31,8 +31,8 @@ class Vector:
     def angle_between(self, other : Vector) -> int:
         cos_angle = self.__mul__(other) / (self.get_length()
                                            * other.get_length())
-        arccos = math.degrees(math.acos(cos_angle))
-        return round(arccos)
+        arcCos = math.degrees(math.acos(cos_angle))
+        return round(arcCos)
 
     def get_angle(self) -> int:
         angle = math.degrees(math.acos(self.y / self.get_length()))
