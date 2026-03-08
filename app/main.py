@@ -18,7 +18,7 @@ class Vector:
         v2 = self.y - other.y
         return Vector(v1, v2)
 
-    def __mul__(self, other) -> Vector | float:
+    def __mul__(self, other: Vector | int) -> Vector | float:
         if isinstance(other, Vector):
             v1 = self.x * other.x
             v2 = self.y * other.y
