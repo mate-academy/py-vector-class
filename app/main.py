@@ -1,3 +1,4 @@
+# flake8: noqa=VNE001
 import math
 from math import degrees, acos, sin, cos, radians
 
