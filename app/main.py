@@ -1,13 +1,17 @@
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.point_x = round(x, 2)
-        self.point_y = round(y, 2)
+    def __init__(self, point_x: int | float, point_y: int | float) -> None:
+        self.point_x = round(point_x, 2)
+        self.point_y = round(point_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(self.point_x + other.point_x, self.point_y + other.point_y)
+        point_x = self.point_x + other.point_x
+        point_y = self.point_y + other.point_y
+        return Vector(point_x, point_y)
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(self.point_x - other.point_x, self.point_y - other.point_y)
+        point_x = self.point_x - other.point_x
+        point_y = self.point_y - other.point_y
+        return Vector(point_x, point_y)
 
     def __mul__(self, other: "Vector | float | int") -> "Vector | float | int":
         if isinstance(other, (int, float)):
