@@ -1,5 +1,5 @@
 class Vector:
-    def __init__(self, x, y) -> None:
+    def __init__(self, x: int | float, y: int | float) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
@@ -9,7 +9,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other) -> "Vector | float | int":
+    def __mul__(self, other: "Vector | float | int") -> "Vector | float | int":
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
