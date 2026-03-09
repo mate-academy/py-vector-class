@@ -1,5 +1,4 @@
 import math
-from typing import Union
 
 
 class Vector:
