@@ -23,8 +23,8 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-            cls, 
-            start_point: int | float, 
+            cls,
+            start_point: int | float,
             end_point: int | float) -> "Vector":
         point_x = end_point[0] - start_point[0]
         point_y = end_point[1] - start_point[1]
