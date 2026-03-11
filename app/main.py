@@ -5,27 +5,27 @@ import math
 
 class Vector:
     # write your code here
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
+        self.x = round(coordinate_x, 2)
+        self.y = round(coordinate_y, 2)
 
-    def __add__(self, v3: 'Vector' | float | int) -> Vector:
-        if isinstance(v3, Vector):
-            return Vector(self.x + v3.x, self.y + v3.y)
+    def __add__(self, vector3: "Vector" | float | int) -> Vector:
+        if isinstance(vector3, Vector):
+            return Vector(self.x + vector3.x, self.y + vector3.y)
         else:
-            return Vector(self.x + v3, self.y + v3)
+            return Vector(self.x + vector3, self.y + vector3)
 
-    def __sub__(self, v3: Vector | float | int) -> Vector:
-        if isinstance(v3, Vector):
-            return Vector(self.x - v3.x, self.y - v3.y)
+    def __sub__(self, vector3: Vector | float | int) -> Vector:
+        if isinstance(vector3, Vector):
+            return Vector(self.x - vector3.x, self.y - vector3.y)
         else:
-            return Vector(self.x - v3, self.y - v3)
+            return Vector(self.x - vector3, self.y - vector3)
 
-    def __mul__(self, v_product: Vector | int | float) -> float | Vector:
-        if isinstance(v_product, Vector):
-            return self.x * v_product.x + self.y * v_product.y
-        elif isinstance(v_product, (int, float)):
-            return Vector(self.x * v_product, self.y * v_product)
+    def __mul__(self, vector_product: Vector | int | float) -> float | Vector:
+        if isinstance(vector_product, Vector):
+            return self.x * vector_product.x + self.y * vector_product.y
+        elif isinstance(vector_product, (int, float)):
+            return Vector(self.x * vector_product, self.y * vector_product)
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple,
@@ -41,7 +41,7 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         magnitude_v = math.sqrt(self.x ** 2 + self.y ** 2)
-        return Vector(self.x/magnitude_v, self.y/magnitude_v)
+        return Vector(self.x / magnitude_v, self.y / magnitude_v)
 
     def angle_between(self, vector2: Vector) -> int:
         dot_product = (self.x * vector2.x) + (self.y * vector2.y)
