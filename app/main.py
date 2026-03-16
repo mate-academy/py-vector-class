@@ -1,4 +1,5 @@
 import math
+from typing import Union
 
 
 class Vector:
@@ -18,7 +19,7 @@ class Vector:
         else:
             return NotImplemented
 
-    def __mul__(self, other: float | int | Vector) -> "Vector | float":
+    def __mul__(self, other: float | int | Vector) ->  Union["Vector", float]:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
@@ -62,9 +63,9 @@ class Vector:
         if abs(self.x) < 1e-12 and abs(self.y) < 1e-12:
             return 0
         angle_x_deg = math.degrees(math.atan2(self.y, self.x))
-        angle_from_y = 90 - angle_x_deg
-        angle_from_y = angle_from_y % 360
-        return round(angle_from_y)
+        angle_from_y = (90 - angle_x_deg) % 360
+        corrected = (360 - angle_from_y) % 360
+        return round(corrected)
 
     def rotate(self, angle_deg: int) -> "Vector":
         theta = math.radians(angle_deg)
