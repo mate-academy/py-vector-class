@@ -35,10 +35,11 @@ class Vector:
     def create_vector_by_two_points(
         cls, start_point: tuple, end_point: tuple
     ) -> "Vector":
-        return cls(
+        res = cls(
             end_point[0] - start_point[0],
             end_point[1] - start_point[1],
-    )
+        )
+        return res
 
     def get_length(self) -> float:
         return (self.x**2 + self.y**2) ** 0.5
