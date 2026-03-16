@@ -19,7 +19,7 @@ class Vector:
         else:
             return NotImplemented
 
-    def __mul__(self, other: float | int | Vector) ->  Union["Vector", float]:
+    def __mul__(self, other: float | int | Vector) -> Union["Vector", float]:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
