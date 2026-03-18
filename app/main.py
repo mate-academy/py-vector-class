@@ -4,9 +4,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_axis: float, y_axis: float) -> None:
+        self.x = round(x_axis, 2)
+        self.y = round(y_axis, 2)
 
     def __add__(self, other: Vector) -> Vector:
         if isinstance(other, Vector):
@@ -52,7 +52,7 @@ class Vector:
         return self.angle_between(positive_y_axis)
 
     def rotate(self, degrees: int) -> Vector:
-        convert_degrees = math.radians(degrees)
-        x_2 = math.cos(convert_degrees) * self.x - math.sin(convert_degrees) * self.y
-        y_2 = math.sin(convert_degrees) * self.x + math.cos(convert_degrees) * self.y
+        conv_deg = math.radians(degrees)
+        x_2 = math.cos(conv_deg) * self.x - math.sin(conv_deg) * self.y
+        y_2 = math.sin(conv_deg) * self.x + math.cos(conv_deg) * self.y
         return Vector(x_2, y_2)
