@@ -23,13 +23,13 @@ class Vector:
         cls, start_point: Tuple[float, float], end_point: Tuple[float, float]
     ) -> Self:
         return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
-
-    def get_length(self) -> float:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
-
-    def get_normalized(self) -> Self:
-        length = self.get_length()
-        return Vector(self.x / length, self.y / length)
+    #
+    # def get_length(self) -> float:
+    #     return math.sqrt(self.x ** 2 + self.y ** 2)
+    #
+    # def get_normalized(self) -> Self:
+    #     length = self.get_length()
+    #     return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: Self) -> int:
         dot_product = self.x * other.x + self.y * other.y
