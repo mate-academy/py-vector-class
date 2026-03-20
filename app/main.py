@@ -1,5 +1,4 @@
 import math
-from math import radians
 
 
 class Vector:
@@ -22,7 +21,9 @@ class Vector:
         return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls, start_point: tuple, end_point: tuple
+    ) -> Vector:
         x1, y1 = start_point
         x2, y2 = end_point
         return cls(x2 - x1, y2 - y1)
