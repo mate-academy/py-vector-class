@@ -26,10 +26,10 @@ class Vector:
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
-    #
-    # def get_normalized(self) -> Self:
-    #     length = self.get_length()
-    #     return Vector(self.x / length, self.y / length)
+
+    def get_normalized(self) -> Self:
+        length = self.get_length()
+        return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: Self) -> int:
         dot_product = self.x * other.x + self.y * other.y
