@@ -90,6 +90,5 @@ class Vector:
 
     def get_angle(self) -> float:
         theta = math.degrees(math.atan2(self.y, self.x))
-        angle_x = math.degrees(math.atan2(self.y, self.x))  # noqa: VNE001ret
         angle = (270 + theta) % 360
         return int(round(angle))
