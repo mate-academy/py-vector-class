@@ -4,9 +4,9 @@ import math
 
 
 class Point:
-    def __init__(self, x: float, y: float) -> None:  # noqa: VNE001
-        self.x = x
-        self.y = y
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
 
 class Vector:
@@ -26,9 +26,9 @@ class Vector:
         new_y = self.x * math.sin(rad) + self.y * math.cos(rad)
         return Vector(new_x, new_y)
 
-    def __init__(self, x: int, y: int) -> None:  # noqa: VNE001
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __sub__(self, other: Self) -> Self:
         if not isinstance(other, Vector):

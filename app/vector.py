@@ -1,4 +1,4 @@
 class Vector:
-    def init(self, x: float, y: float) -> None:  # noqa: VNE001
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
