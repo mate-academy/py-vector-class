@@ -16,10 +16,10 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: Vector | float | int) -> Vector | float:
-        if isinstance(other, float):
+        if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         else:
-            return self.x * other.x + self.y * other.y
+            return round(self.x * other.x + self.y * other.y, 2)
 
     @classmethod
     def create_vector_by_two_points(
