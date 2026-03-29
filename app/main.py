@@ -5,9 +5,9 @@ import math
 
 class Vector:
 
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coor: float, y_coor: float) -> None:
+        self.x = round(x_coor, 2)
+        self.y = round(y_coor, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
@@ -22,12 +22,15 @@ class Vector:
             return self.x * other.x + self.y * other.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
+    def create_vector_by_two_points(
+            cls,
+            start_point: tuple,
+            end_point: tuple) -> Vector:
         x1, y1 = start_point
         x2, y2 = end_point
-        x = x2 - x1
-        y = y2 - y1
-        return cls(x, y)
+        new_x = x2 - x1
+        new_y = y2 - y1
+        return cls(new_x, new_y)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
@@ -51,4 +54,3 @@ class Vector:
         new_x = self.x * cos_val - self.y * sin_val
         new_y = self.x * sin_val + self.y * cos_val
         return Vector(new_x, new_y)
-
