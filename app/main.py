@@ -2,20 +2,20 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, xx: float, yy: float) -> None:
+        self.xx = round(xx, 2)
+        self.yy = round(yy, 2)
 
     def __add__(self, vec2: Vector) -> Vector:
-        return Vector(self.x + vec2.x, self.y + vec2.y)
+        return Vector(self.xx + vec2.xx, self.yy + vec2.yy)
 
     def __sub__(self, vec2: Vector) -> Vector:
-        return Vector(self.x - vec2.x, self.y - vec2.y)
+        return Vector(self.xx - vec2.xx, self.yy - vec2.yy)
 
     def __mul__(self, factor: Vector | float) -> float | Vector:
         if isinstance(factor, Vector):
-            return self.x * factor.x + self.y * factor.y
-        return Vector(self.x * factor, self.y * factor)
+            return self.xx * factor.xx + self.yy * factor.yy
+        return Vector(self.xx * factor, self.yy * factor)
 
     @classmethod
     def create_vector_by_two_points(cls,
@@ -25,11 +25,11 @@ class Vector:
                       end_point[1] - start_point[1])
 
     def get_length(self) -> float:
-        return math.sqrt(self.x ** 2 + self.y ** 2)
+        return math.sqrt(self.xx ** 2 + self.yy ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
-        return Vector(self.x / length, self.y / length)
+        return Vector(self.xx / length, self.yy / length)
 
     def angle_between(self, vec2: Vector) -> float:
         cos_a = (self * vec2) / self.get_length() / vec2.get_length()
@@ -43,5 +43,5 @@ class Vector:
         rad_a = math.radians(angle)
         sin_a = math.sin(rad_a)
         cos_a = math.cos(rad_a)
-        return Vector(cos_a * self.x - sin_a * self.y,
-                      sin_a * self.x + cos_a * self.y)
+        return Vector(cos_a * self.xx - sin_a * self.yy,
+                      sin_a * self.xx + cos_a * self.yy)
