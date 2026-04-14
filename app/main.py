@@ -65,6 +65,6 @@ class Vector:
         sin_a = math.sin(radians)
 
         return Vector(
-            x=self.x * cos_a - self.y * sin_a,
-            y=self.x * sin_a + self.y * cos_a
+            self.x * cos_a - self.y * sin_a,  # прибрано x=
+            self.x * sin_a + self.y * cos_a   # прибрано y=
         )
