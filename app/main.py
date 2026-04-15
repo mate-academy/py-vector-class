@@ -14,8 +14,8 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: Union[Self, int, float]) -> Union[Self, float]:
-        if isinstance(other, (int, float)):
-            return Vector(self.x * other, self.y * other)
+        # if isinstance(other, (int, float)):
+        #     return Vector(self.x * other, self.y * other)
         return self.x * other.x + self.y * other.y
 
     @classmethod
