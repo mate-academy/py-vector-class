@@ -13,10 +13,10 @@ class Vector:
     def __sub__(self, other: Self) -> Self:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: Union[Self, int, float]) -> Union[Self, float]:
-        # if isinstance(other, (int, float)):
-        #     return Vector(self.x * other, self.y * other)
-        return self.x * other.x + self.y * other.y
+    # def __mul__(self, other: Union[Self, int, float]) -> Union[Self, float]:
+    #     # if isinstance(other, (int, float)):
+    #     #     return Vector(self.x * other, self.y * other)
+    #     return self.x * other.x + self.y * other.y
 
     @classmethod
     def create_vector_by_two_points(
