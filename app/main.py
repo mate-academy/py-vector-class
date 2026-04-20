@@ -13,10 +13,10 @@ class Vector:
     def __sub__(self, other: Self) -> Self:
         return Vector(self.x - other.x, self.y - other.y)
 
-    # def __mul__(self, other: Union[Self, int, float]) -> Union[Self, float]:
-    #     # if isinstance(other, (int, float)):
-    #     #     return Vector(self.x * other, self.y * other)
-    #     return self.x * other.x + self.y * other.y
+    def __mul__(self, other: Union[Self, int, float]) -> Union[Self, float]:
+        # if isinstance(other, (int, float)):
+        #     return Vector(self.x * other, self.y * other)
+        return self.x * other.x + self.y * other.y
 
     @classmethod
     def create_vector_by_two_points(
@@ -38,16 +38,15 @@ class Vector:
         if length_prod == 0:
             return 0
 
-        dot_product = self * other  # Korzystamy z zdefiniowanego __mul__
+        dot_product = self * other
         cos_a = dot_product / length_prod
-        # Poprawiony błąd w min()
         cos_a = max(-1.0, min(1.0, cos_a))
         return round(math.degrees(math.acos(cos_a)))
-
-    def get_angle(self) -> int:
-        angle_rad = math.atan2(self.y, self.x)
-        angle_deg = math.degrees(angle_rad)
-        return round(angle_deg)
+    #
+    # def get_angle(self) -> int:
+    #     angle_rad = math.atan2(self.y, self.x)
+    #     angle_deg = math.degrees(angle_rad)
+    #     return round(angle_deg)
 
     def rotate(self, degrees: int) -> Self:
         rad = math.radians(degrees)
