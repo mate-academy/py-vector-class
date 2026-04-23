@@ -14,8 +14,8 @@ class Vector:
 
     def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector):
-            return Vector(self.x * other.x, self.y * other.y)
-        return self.x * other + self.y * other
+            return self.x * other + self.y * other
+        return Vector(self.x * other.x, self.y * other.y)
 
     def __truediv__(self, other: Vector | float) -> Vector | float:
         return Vector(self.x / other.x, self.y / other.y)
