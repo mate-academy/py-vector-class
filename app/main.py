@@ -42,11 +42,11 @@ class Vector:
         cos_a = dot_product / length_prod
         cos_a = max(-1.0, min(1.0, cos_a))
         return round(math.degrees(math.acos(cos_a)))
-    #
-    # def get_angle(self) -> int:
-    #     angle_rad = math.atan2(self.y, self.x)
-    #     angle_deg = math.degrees(angle_rad)
-    #     return round(angle_deg)
+
+    def get_angle(self) -> int:
+        angle_rad = math.atan2(self.y, self.x)
+        angle_deg = math.degrees(angle_rad)
+        return round(angle_deg)
 
     def rotate(self, degrees: int) -> Self:
         rad = math.radians(degrees)
