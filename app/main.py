@@ -16,8 +16,8 @@ class Vector:
 
     def __mul__(self, other: Vector | float) -> Vector | float:
         if isinstance(other, Vector):
-            return self.x * other + self.y * other
-        return Vector(self.x * other.x, self.y * other.y)
+            return self.x * other.x + self.y * other.y
+        return Vector(self.x * other, self.y * other)
 
     def __truediv__(self, scalar: float) -> Vector:
         return Vector(round(self.x / scalar, 2), round(self.y / scalar, 2))
@@ -32,18 +32,19 @@ class Vector:
         return cls(end[0] - start[0], end[1] - start[1])
 
     def get_length(self) -> float:
-        return round(math.sqrt(self.x ** 2 + self.y ** 2), 2)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
         return Vector(round(self.x / length, 2), round(self.y / length, 2))
 
     def angle_between(self, other: Vector) -> int:
-        cos_angle = (self * other) / (self.get_length() * other.get_length())
+        dot: float = self.x * other.x + self.y * other.y
+        cos_angle = dot / (self.get_length() * other.get_length())
         return round(math.degrees(math.acos(cos_angle)))
 
     def get_angle(self) -> int:
-        return round(math.degrees(math.atan2(self.x, self.y)))
+        return round(math.degrees(math.atan2(abs(self.x), self.y)))
 
     def rotate(self, degrees: int) -> Vector:
         radians = math.radians(degrees)
