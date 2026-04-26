@@ -1,11 +1,12 @@
+# noqa: VNE001
 from __future__ import annotations
 import math
 
 
 class Vector:
-    def __init__(self, x_value: int, y_value: int) -> None:
-        self.x = round(x_value, 2)
-        self.y = round(y_value, 2)
+    def __init__(self, x: int, y: int) -> None:
+        self.x = round(x, 2)  # noqa: VNE001
+        self.y = round(y, 2)  # noqa: VNE001
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(
