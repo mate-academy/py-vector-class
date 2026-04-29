@@ -54,5 +54,5 @@ class Vector:
         new_y = self.x * math.sin(rad) + self.y * math.cos(rad)
         return Vector(new_x, new_y)
 
-    # def __repr__(self) -> str:
-    #     return f"Vector({self.x:.2f}, {self.y:.2f})"
+    def __repr__(self) -> str:
+        return f"Vector({self.x:.2f}, {self.y:.2f})"
