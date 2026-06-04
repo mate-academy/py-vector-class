@@ -54,9 +54,12 @@ class Vector:
         )
 
     def rotate(self, degrees: int) -> Vector:
+        rad_degrees = math.radians(degrees)
+        the_cos = math.cos(rad_degrees)
+        the_sin = math.sin(rad_degrees)
         return Vector(
-            (self.x * math.cos(math.radians(degrees)))
-            - (self.y * math.sin(math.radians(degrees))),
-            (self.x * math.sin(math.radians(degrees)))
-            + (self.y * math.cos(math.radians(degrees)))
+            (self.x * the_cos)
+            - (self.y * the_sin),
+            (self.x * the_sin)
+            + (self.y * the_cos)
         )
