@@ -7,15 +7,15 @@ class Vector:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, other: 'Vector') -> 'Vector':
+    def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: 'Vector') -> 'Vector':
+    def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(
-        self, other: Union['Vector', float, int]
-    ) -> Union['Vector', float]:
+        self, other: Union["Vector", float, int]
+    ) -> Union["Vector", float]:
         if isinstance(other, (int, float)):
             return Vector(
                 round(self.x * other, 2), round(self.y * other, 2)
@@ -28,7 +28,7 @@ class Vector:
     @classmethod
     def create_vector_by_two_points(
         cls, start_point: tuple, end_point: tuple
-    ) -> 'Vector':
+    ) -> "Vector":
         """Create a vector from two points."""
         delta_x = end_point[0] - start_point[0]
         delta_y = end_point[1] - start_point[1]
@@ -38,7 +38,7 @@ class Vector:
         """Return the length (magnitude) of the vector."""
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self) -> 'Vector':
+    def get_normalized(self) -> "Vector":
         """Return a normalized copy of the vector."""
         length = self.get_length()
         if length == 0:
@@ -47,7 +47,7 @@ class Vector:
             round(self.x / length, 2), round(self.y / length, 2)
         )
 
-    def angle_between(self, other: 'Vector') -> int:
+    def angle_between(self, other: "Vector") -> int:
         """Return angle between this vector and another in degrees."""
         dot_product = self * other
         magnitude_product = (
@@ -70,7 +70,7 @@ class Vector:
         y_axis = Vector(0, 1)
         return self.angle_between(y_axis)
 
-    def rotate(self, degrees: int) -> 'Vector':
+    def rotate(self, degrees: int) -> "Vector":
         """Return a rotated copy of vector by given degrees."""
         radians = math.radians(degrees)
         cos_a = math.cos(radians)
