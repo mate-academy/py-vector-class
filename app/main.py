@@ -60,4 +60,3 @@ class Vector:
         )
 
         return Vector(new_x_coordinate, new_y_coordinate)
-        
