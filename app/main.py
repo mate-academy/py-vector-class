@@ -3,9 +3,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coord: float, y_coord: float) -> None:
+        self.x = round(x_coord, 2)
+        self.y = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(x=self.x + other.x, y=self.y + other.y)
@@ -25,7 +25,7 @@ class Vector:
         cls,
         start_point: tuple[float, float],
         end_point: tuple[float, float]
-    )-> Vector:
+    ) -> Vector:
         return cls(
             x=end_point[0] - start_point[0],
             y=end_point[1] - start_point[1]
@@ -49,8 +49,8 @@ class Vector:
 
     def rotate(self, degrees: int) -> object:
         rad = math.radians(degrees)
-        c = math.cos(rad)
-        s = math.sin(rad)
-        new_x = self.x * c - self.y * s
-        new_y = self.x * s + self.y * c
+        cos_rad = math.cos(rad)
+        sin_rad = math.sin(rad)
+        new_x = self.x * cos_rad - self.y * sin_rad
+        new_y = self.x * sin_rad + self.y * cos_rad
         return Vector(round(new_x, 2), round(new_y, 2))
