@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -33,24 +33,31 @@ class Vector:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> "Vector":
-        length = self.get_length()
-        return Vector(self.x / length, self.y / length)
+        vector_length = self.get_length()
+        return Vector(self.x / vector_length, self.y / vector_length)
 
     def angle_between(self, other: "Vector") -> int:
         dot_product = self.x * other.x + self.y * other.y
-        length_product = self.get_length() * other.get_length()
+        lengths_product = self.get_length() * other.get_length()
 
-        cosine = dot_product / length_product
-        return int(round(math.degrees(math.acos(cosine))))
+        cosine_value = dot_product / lengths_product
+        return int(round(math.degrees(math.acos(cosine_value))))
 
     def get_angle(self) -> int:
-        cosine = self.y / self.get_length()
-        return int(round(math.degrees(math.acos(cosine))))
+        cosine_value = self.y / self.get_length()
+        return int(round(math.degrees(math.acos(cosine_value))))
 
-    def rotate(self, degrees: float) -> "Vector":
-        radians = math.radians(degrees)
+    def rotate(self, degrees_value: float) -> "Vector":
+        radians_value = math.radians(degrees_value)
 
-        new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        new_x_coordinate = (
+            self.x * math.cos(radians_value)
+            - self.y * math.sin(radians_value)
+        )
+        new_y_coordinate = (
+            self.x * math.sin(radians_value)
+            + self.y * math.cos(radians_value)
+        )
 
-        return Vector(new_x, new_y)
+        return Vector(new_x_coordinate, new_y_coordinate)
+        
