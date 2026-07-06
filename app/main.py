@@ -4,9 +4,11 @@ import math
 
 class Vector:
 
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(
+        self, x_coordinate: int | float, y_coordinate: int | float
+    ) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, vector: Vector) -> Vector | None:
         if isinstance(vector, Vector):
@@ -24,16 +26,18 @@ class Vector:
         return Vector((self.x * vector), (self.y * vector))
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point: tuple, end_point: tuple) -> Vector:
-        return Vector(end_point[0] - start_point[0], end_point[1] - start_point[1])
+    def create_vector_by_two_points(cls, start_point: tuple,
+                                    end_point: tuple) -> Vector:
+        return Vector(end_point[0] - start_point[0],
+                      end_point[1] - start_point[1])
 
     def get_length(self) -> float | int:
         return math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2))
 
     def get_normalized(self) -> Vector:
-        x = self.x / Vector.get_length(self)
-        y = self.y / Vector.get_length(self)
-        return Vector(x, y)
+        x_coordinate = self.x / Vector.get_length(self)
+        y_coordinate = self.y / Vector.get_length(self)
+        return Vector(x_coordinate, y_coordinate)
 
     def angle_between(self, vector: Vector) -> float | int:
         cos_a = (self * vector) / (self.get_length() * vector.get_length())
