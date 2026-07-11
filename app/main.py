@@ -2,22 +2,21 @@ import math
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, abscissa: int | float, ordinate: int | float) -> None:
+        self.x = round(abscissa, 2)
+        self.y = round(ordinate, 2)
 
-    def __add__(self, other):
+    def __add__(self, other: Vector) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
+    def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: int | float):
+    def __mul__(self, other: Vector | int | float) -> Vector | float:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         elif isinstance(other, int | float):
             return Vector(round(self.x * other, 2), round(self.y * other, 2))
-        return
 
     @classmethod
     def create_vector_by_two_points(cls, start_point: tuple[float, float],
