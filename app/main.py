@@ -77,4 +77,3 @@ class Vector:
             + self.y_coord * cos_val
         )
         return Vector(x_prime, y_prime)
-        
