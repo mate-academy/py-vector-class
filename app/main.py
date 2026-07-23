@@ -16,7 +16,10 @@ class Vector:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
-        return Vector(self.x * other, self.y * other)
+        return Vector(
+            self.x * other,
+            self.y * other
+        )
 
     @classmethod
     def create_vector_by_two_points(
@@ -36,8 +39,8 @@ class Vector:
         length = self.get_length()
 
         return Vector(
-            self.x / length,
-            self.y / length
+            round(self.x / length, 2),
+            round(self.y / length, 2)
         )
 
     def angle_between(self, vector: "Vector") -> int:
@@ -52,9 +55,9 @@ class Vector:
         return round(angle)
 
     def get_angle(self) -> int:
-        y_axis = Vector(0, 1)
+        positive_y_axis = Vector(0, 1)
 
-        return self.angle_between(y_axis)
+        return self.angle_between(positive_y_axis)
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
@@ -69,4 +72,7 @@ class Vector:
             + self.y * math.cos(radians)
         )
 
-        return Vector(x, y)
+        return Vector(
+            round(x, 2),
+            round(y, 2)
+        )
