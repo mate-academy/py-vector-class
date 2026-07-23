@@ -1,4 +1,5 @@
 import math
+from typing import Union
 
 
 class Vector:
@@ -12,13 +13,13 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: object) -> object:
+    def __mul__(self, other: Union["Vector", float]) -> Union["Vector", float]:
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
 
         return Vector(
             self.x * other,
-            self.y * other
+            self.y * other,
         )
 
     @classmethod
@@ -40,7 +41,7 @@ class Vector:
 
         return Vector(
             round(self.x / length, 2),
-            round(self.y / length, 2)
+            round(self.y / length, 2),
         )
 
     def angle_between(self, vector: "Vector") -> int:
@@ -74,5 +75,5 @@ class Vector:
 
         return Vector(
             round(x, 2),
-            round(y, 2)
+            round(y, 2),
         )
