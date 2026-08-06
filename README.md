@@ -64,7 +64,7 @@ vector2.y == 14.97
 ```
 Multiplying Vector on Vector should return their dot product.
 ```python
-vector1 = Vector(2.11, 4.55)
+vector1 = Vector(2.11, 4.55) 
 vector2 = Vector(-3.51, 10.33)
 dot_product = vector1 * vector2
 dot_product == 39.5954
