@@ -24,7 +24,7 @@ to two decimals**.
 ```python
 vector = Vector(-2.343, 8.008)
 vector.x == -2.34
-vector.y == 8.0
+vector.y == 8.01
 ```
 
 Vector class should have such magic methods:
