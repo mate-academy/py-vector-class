@@ -2,23 +2,25 @@ import math
 
 
 class Vector:
-    def create_vector_by_two_points(self, start_point:float,end_point:float) -> Vector:
-        return Vector(
-            end_point[0] - start_point[0],
+    def create_vector_by_two_points(
+            self, start_point: float,
+            end_point: float
+    ) -> Vector:
+         return Vector(end_point[0] - start_point[0],
             end_point[1] - start_point[1]
         )
 
-    def __init__(self, x: float, y:float) -> None:
+    def __init__(self, x: float, y: float) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, other:float) -> Vector:
+    def __add__(self, other: float) -> Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other:float) -> Vector:
+    def __sub__(self, other: float) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other:float) -> Vector:
+    def __mul__(self, other: float) -> Vector:
         if isinstance(other, Vector):
             return (self.x * other.x + self.y * other.y)
         elif isinstance(other, (int, float)):
@@ -62,4 +64,4 @@ class Vector:
         x_x_degrees = math.degrees(x_x)
         y_y_degrees = math.degrees(y_y)
         vector = x_x_degrees, y_y_degrees
-        return Vector
+        return vector
