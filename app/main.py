@@ -3,44 +3,45 @@ import math
 
 class Vector:
 
+    @staticmethod
     def create_vector_by_two_points(
-            self, start_point: float,
-            end_point: float
+            start_point: tuple,
+            end_point: tuple
     ) -> Vector:
+
         return Vector(
             end_point[0] - start_point[0],
             end_point[1] - start_point[1]
         )
 
     def __init__(self, coord_x: float, coord_y: float) -> None:
-        self.coord_x = round(coord_x, 2)
-        self.coord_y = round(coord_y, 2)
+        self.x = round(coord_x, 2)
+        self.y = round(coord_y, 2)
 
-    def __add__(self, other: float) -> Vector:
-        return Vector(self.coord_x + other.x, self.coord_y + other.y)
+    def __add__(self, other: Vector) -> Vector:
+        return Vector(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other: float) -> Vector:
-        return Vector(self.coord_x - other.x, self.coord_y - other.y)
+    def __sub__(self, other: Vector) -> Vector:
+        return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: float) -> Vector:
+    def __mul__(self, other: Vector | int | float) -> Vector | float:
         if isinstance(other, Vector):
-            return (self.coord_x * other.x + self.coord_y * other.y)
+            return self.x * other.x + self.y * other.y
         elif isinstance(other, (int, float)):
-            return Vector(self.coord_x * other, self.coord_y * other)
-        else:
-            return NotImplemented
+            return Vector(self.x * other, self.y * other)
+        return NotImplemented
 
     def __repr__(self) -> str:
-        return f"({self.coord_x}, {self.coord_y})"
+        return f"({self.x}, {self.y})"
 
     def get_length(self) -> float:
-        return math.sqrt(self.coord_x ** 2 + self.coord_y ** 2)
+        return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> Vector:
         length = self.get_length()
         if length == 0:
             raise ValueError("Неможливо обчислити")
-        return Vector(self.coord_x / length, self.coord_y / length)
+        return Vector(self.x / length, self.y / length)
 
     def angle_between(self, other: Vector) -> float:
         len_self = self.get_length()
@@ -54,16 +55,17 @@ class Vector:
 
     def get_angle(self) -> float:
         length = self.get_length()
-        angle = math.acos = self.coord_y / length()
+        angle = math.acos(self.y / length)
         angle_degrees = math.degrees(angle)
         return angle_degrees
 
     def rotate(self, angle: float) -> Vector:
-        a_cos = math.cos(angle)
-        b_sin = math.sin(angle)
-        x_x = a_cos * self.coord_x - self.coord_y * b_sin
-        y_y = b_sin * self.coord_x + self.coord_y * a_cos
-        x_x_degrees = math.degrees(x_x)
-        y_y_degrees = math.degrees(y_y)
-        vector = x_x_degrees, y_y_degrees
-        return vector
+        angle_rad = math.radians(angle)
+
+        a_cos = math.cos(angle_rad)
+        b_sin = math.sin(angle_rad)
+
+        new_x = a_cos * self.x - self.y * b_sin
+        new_y = b_sin * self.x + self.y * a_cos
+
+        return Vector(new_x, new_y)
