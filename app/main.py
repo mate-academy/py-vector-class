@@ -51,13 +51,14 @@ class Vector:
         dot_prod = self * other
         cos_angle = dot_prod / (len_self * len_other)
         cos_angle = max(min(cos_angle, 1), -1)
-        return math.degrees(math.acos(cos_angle))
+        angle = math.degrees(math.acos(cos_angle))
+        return round(angle)
 
     def get_angle(self) -> float:
         length = self.get_length()
         angle = math.acos(self.y / length)
         angle_degrees = math.degrees(angle)
-        return angle_degrees
+        return round(angle_degrees)
 
     def rotate(self, angle: float) -> Vector:
         angle_rad = math.radians(angle)
