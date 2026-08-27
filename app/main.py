@@ -14,7 +14,7 @@ class Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: int | Vector) -> Vector | float | int | None:
-        if type(other) is int | float :
+        if type(other) is int or type(other) is float :
             return Vector(round(self.x * other, 2), round(self.y * other, 2))
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
