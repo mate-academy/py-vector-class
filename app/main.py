@@ -30,10 +30,10 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-        cls, start_point: tuple, end_point: tuple
-        ) -> "Vector":
-        x_coord = end_point[0] - start_point[0]
-        y_coord = end_point[1] - start_point[1]
+        cls, start: tuple, end: tuple
+    ) -> "Vector":
+        x_coord = end[0] - start[0]
+        y_coord = end[1] - start[1]
         return cls(x_coord, y_coord)
 
     def get_length(self) -> float:
@@ -72,14 +72,3 @@ class Vector:
         new_y = self.x * sin_r + self.y * cos_r
 
         return Vector(new_x, new_y)
-
-    def get_angle(self) -> int:
-        # Угол с положительной осью Y (вектор (0, 1))
-        unit_y = Vector(0, 1)
-        return self.angle_between(unit_y)
-
-    def rotate(self, degrees: int):
-        rad = math.radians(degrees)
-        cos_r = math.cos(rad)
-        sin_r = math.sin(rad)
-
