@@ -21,7 +21,7 @@ class Vector:
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
-            return round(self.x * other.x + self.y * other.y, 4)
+            return self.x * other.x + self.y * other.y
         return NotImplemented
 
     def __rmul__(self, other: Any) -> Any:
