@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, coordinate_x: float, coordinate_y: float) -> None:
+        self.x = round(coordinate_x, 2)
+        self.y = round(coordinate_y, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y)
@@ -12,7 +12,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other):
+    def __mul__(self, other: "Vector | float | int") -> "Vector | float":
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
         return Vector(self.x * other, self.y * other)
@@ -48,6 +48,6 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
-        x = self.x * math.cos(radians) - self.y * math.sin(radians)
-        y = self.x * math.sin(radians) + self.y * math.cos(radians)
-        return Vector(x, y)
+        rotated_x = self.x * math.cos(radians) - self.y * math.sin(radians)
+        rotated_y = self.x * math.sin(radians) + self.y * math.cos(radians)
+        return Vector(rotated_x, rotated_y)
