@@ -2,21 +2,33 @@ import math
 
 
 class Vector:
-    def __init__(self, x: float | int, y: float | int) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(
+        self,
+        x_coordinate: float | int,
+        y_coordinate: float | int,
+    ) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(
+            self.x + other.x,
+            self.y + other.y,
+        )
 
     def __sub__(self, other: "Vector") -> "Vector":
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(
+            self.x - other.x,
+            self.y - other.y,
+        )
 
     def __mul__(self, other: "Vector | float") -> "float | Vector":
-        return (
-            (self.x * other.x) + (self.y * other.y)
-            if isinstance(other, Vector)
-            else Vector(self.x * other, self.y * other)
+        if isinstance(other, Vector):
+            return self.x * other.x + self.y * other.y
+
+        return Vector(
+            self.x * other,
+            self.y * other,
         )
 
     @classmethod
@@ -45,26 +57,37 @@ class Vector:
         )
 
     def angle_between(self, other: "Vector") -> int:
+        dot_product = self * other
+        lengths_product = self.get_length() * other.get_length()
+
         return round(
             math.degrees(
-                math.acos(
-                    self.__mul__(other)
-                    / (self.get_length() * other.get_length())
-                )
+                math.acos(dot_product / lengths_product)
             )
         )
 
     def get_angle(self) -> float:
         return round(
-            abs(math.degrees(math.atan2(self.x, self.y)))
+            abs(
+                math.degrees(
+                    math.atan2(self.x, self.y)
+                )
+            )
         )
 
     def rotate(self, degrees: int) -> "Vector":
-        rad = math.radians(degrees)
-        cos_val = math.cos(rad)
-        sin_val = math.sin(rad)
+        radians = math.radians(degrees)
+        cosine = math.cos(radians)
+        sine = math.sin(radians)
 
-        new_x = self.x * cos_val - self.y * sin_val
-        new_y = self.x * sin_val + self.y * cos_val
+        new_x_coordinate = (
+            self.x * cosine - self.y * sine
+        )
+        new_y_coordinate = (
+            self.x * sine + self.y * cosine
+        )
 
-        return Vector(new_x, new_y)
+        return Vector(
+            new_x_coordinate,
+            new_y_coordinate,
+        )
