@@ -36,3 +36,5 @@ class Vector:
         rad_angle = math.acos(result)
         return round(math.degrees(rad_angle))
 
+    def get_angle(self) -> int:
+        return (self.angle_between(Vector(0, 1)))
