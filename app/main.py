@@ -33,8 +33,12 @@ class Vector:
     def angle_between(self, other: "Vector") -> int:
         result = self.__mul__(other)/(self.get_length() * other.get_length())
         result = min(1, max(-1, result))
-        rad_angle = math.acos(result)
-        return round(math.degrees(rad_angle))
+        return round(math.degrees(math.acos(result)))
 
     def get_angle(self) -> int:
         return (self.angle_between(Vector(0, 1)))
+
+    def rotate(self, degrees: int) -> "Vector":
+        # x' = x * cos(t)
+        # y' = y * sen(t)
+        
