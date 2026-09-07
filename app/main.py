@@ -1,3 +1,6 @@
+import math
+
+
 class Vector:
     def __init__(self, x: float, y: float) -> None:
         self.x = round(x, 2)
@@ -26,3 +29,10 @@ class Vector:
     def get_normalized(self) -> "Vector":
         self_length = self.get_length()
         return Vector(self.x/self_length, self.y/self_length)
+
+    def angle_between(self, other: "Vector") -> int:
+        result = self.__mul__(other)/(self.get_length() * other.get_length())
+        result = min(1, max(-1, result))
+        rad_angle = math.acos(result)
+        return round(math.degrees(rad_angle))
+
