@@ -44,3 +44,7 @@ class Vector:
         radians = math.radians(degrees)
         sin = math.sin(radians)
         cos = math.cos(radians)
+
+        x = self.x * cos - self.y * sin
+        y = self.x * sin + self.y * cos
+        return Vector(x, y)
