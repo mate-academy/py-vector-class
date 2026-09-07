@@ -40,5 +40,5 @@ class Vector:
 
     def rotate(self, degrees: int) -> "Vector":
         # x' = x * cos(t) - y sen (t)
-        # y' = y * sen(t) - x sen (t)
+        # y' = x * sen (t) + y * cos (t)
 
