@@ -22,3 +22,7 @@ class Vector:
 
     def get_length(self) -> "Vector":
         return (self.x**2 + self.y**2) ** (1/2)
+
+    def get_normalized(self) -> "Vector":
+        self_length = self.get_length()
+        return Vector(self.x/self_length, self.y/self_length)
