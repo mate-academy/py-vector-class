@@ -1,3 +1,56 @@
+from __future__ import annotations
+
+import math
+
+
 class Vector:
-    # write your code here
-    pass
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
+
+    def __add__(self, other: Vector) -> Vector:
+        return Vector(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other: Vector) -> Vector:
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other: Vector | int | float) -> Vector | float:
+        if isinstance(other, Vector):
+            return self.x * other.x + self.y * other.y
+        return Vector(self.x * other, self.y * other)
+
+    @classmethod
+    def create_vector_by_two_points(
+        cls, start_point: tuple, end_point: tuple
+    ) -> Vector:
+        return cls(
+            end_point[0] - start_point[0],
+            end_point[1] - start_point[1],
+        )
+
+    def get_length(self) -> float:
+        return math.sqrt(self.x ** 2 + self.y ** 2)
+
+    def get_normalized(self) -> Vector:
+        length = self.get_length()
+        if length == 0:
+            raise ValueError("Cannot normalize a zero vector")
+        return Vector(self.x / length, self.y / length)
+
+    def angle_between(self, vector: Vector) -> int:
+        lengths_product = self.get_length() * vector.get_length()
+        if lengths_product == 0:
+            raise ValueError("A zero vector has no direction")
+        cosine = (self * vector) / lengths_product
+        return round(math.degrees(math.acos(max(-1.0, min(1.0, cosine)))))
+
+    def get_angle(self) -> int:
+        return self.angle_between(Vector(0, 1))
+
+    def rotate(self, degrees: int) -> Vector:
+        radians = math.radians(degrees)
+        cosine, sine = math.cos(radians), math.sin(radians)
+        return Vector(
+            self.x * cosine - self.y * sine,
+            self.x * sine + self.y * cosine,
+        )
