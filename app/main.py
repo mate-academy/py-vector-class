@@ -2,9 +2,9 @@ import math
 
 
 class Vector:
-    def __init__(self, point_x: float | int, point_y: float | int) -> None:
-        self.point_x = round(point_x, 2)
-        self.point_y = round(point_y, 2)
+    def __init__(self, x: float | int, y: float | int) -> None:
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: Vector) -> Vector:
         return Vector(self.point_x + other.point_x,
