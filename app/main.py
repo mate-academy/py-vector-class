@@ -7,19 +7,19 @@ class Vector:
         self.y = round(y, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.point_x + other.point_x,
-                      self.point_y + other.point_y)
+        return Vector(self.x + other.x,
+                      self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.point_x - other.point_x,
-                      self.point_y - other.point_y)
+        return Vector(self.x - other.x,
+                      self.y - other.y)
 
     def __mul__(self, other: Vector | float | int) -> Vector | float:
         if isinstance(other, (float, int)):
-            return Vector(self.point_x * other, self.point_y * other)
+            return Vector(self.x * other, self.y * other)
         if isinstance(other, Vector):
-            return ((self.point_x * other.point_x)
-                    + (self.point_y * other.point_y))
+            return ((self.x * other.x)
+                    + (self.y * other.y))
         return NotImplemented
 
     @classmethod
@@ -30,11 +30,11 @@ class Vector:
         return cls(cls.point_x, cls.point_y)
 
     def get_length(self) -> float:
-        return ((self.point_x) ** 2 + (self.point_y ** 2)) ** .5
+        return ((self.x) ** 2 + (self.y ** 2)) ** .5
 
     def get_normalized(self) -> Vector:
         normalized = self.get_length()
-        return Vector(self.point_x / normalized, self.point_y / normalized)
+        return Vector(self.x / normalized, self.y / normalized)
 
     def angle_between(self, other: Vector) -> int:
         value = round(math.degrees(math.acos((self * other)
@@ -43,13 +43,13 @@ class Vector:
         return value
 
     def get_angle(self) -> int:
-        return round(math.degrees(math.acos(self.point_y
+        return round(math.degrees(math.acos(self.y
                                             / Vector.get_length(self))))
 
     def rotate(self, by_degree: int) -> Vector:
 
-        new_x = ((math.cos(math.radians(by_degree)) * self.point_x)
-                 - (math.sin(math.radians(by_degree)) * self.point_y))
-        new_y = ((math.sin(math.radians(by_degree)) * self.point_x)
-                 + (math.cos(math.radians(by_degree)) * self.point_y))
+        new_x = ((math.cos(math.radians(by_degree)) * self.x)
+                 - (math.sin(math.radians(by_degree)) * self.y))
+        new_y = ((math.sin(math.radians(by_degree)) * self.x)
+                 + (math.cos(math.radians(by_degree)) * self.y))
         return Vector(new_x, new_y)
