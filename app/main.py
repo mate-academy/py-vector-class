@@ -42,17 +42,19 @@ class Vector:
         scalar_product = self * other
         length = self.get_length() * other.get_length()
         return round(
-            math.degrees(math.acos(
-                min(1, max(-1, scalar_product / length))
-            )
+            math.degrees(
+                math.acos(
+                    min(1, max(-1, scalar_product / length))
+                )
             )
         )
 
     def get_angle(self) -> int:
         return round(
-            math.degrees(math.acos(
-                min(1, max(-1, self.y / self.get_length()))
-            )
+            math.degrees(
+                math.acos(
+                    min(1, max(-1, self.y / self.get_length()))
+                )
             )
         )
 
